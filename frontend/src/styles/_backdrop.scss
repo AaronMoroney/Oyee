@@ -1,0 +1,55 @@
+@import './utils/variables.scss';
+@import './utils/mixins';
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: $primary-color;
+}
+
+.login-navbar {
+    position: absolute;
+    z-index: 1;
+    padding: 30px 40px;
+}
+.login-navbar-logo {
+   width: 250px; 
+}
+
+.login-backdrop-overlay {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: $primary-color;
+   opacity: 50%;
+   z-index: -1;
+}
+
+.login-backdrop-image {
+  width: 100%;
+  height: 1000px;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.login-card__parent {
+  position: absolute;
+  z-index: 1;
+  margin: 20% 25% 100% 25%;
+}
+
+.login-card {
+  background-color: white;
+  height: 600px;
+  width: 500px;
+  border-radius: 2.5%;
+}
+
+
+
+
