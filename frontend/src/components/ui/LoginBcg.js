@@ -2,7 +2,7 @@ import '../../styles/_backdrop.scss';
 import skyline from '../../assets/images/skyline.jpg'
 import React from 'react'
 import whitelogo from '../../assets/logos/iconleftwhite.svg'
-
+//test comment
 function loginBcg() {
   return (
     <div>
