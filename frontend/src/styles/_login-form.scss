@@ -1,0 +1,23 @@
+@import './utils/variables.scss';
+@import './utils/mixins';
+
+.login-form {
+    width: 100%;
+}
+
+.login-form-parent {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-link {
+    color: $primary-color__light;
+    font-family: montserrat;
+    font-weight: 400;
+}
+
+
+
+

@@ -1,11 +1,25 @@
-import LoginBcg from './components/ui/LoginBcg'
+
+//import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LoginSignupTemp from './components/ui/LoginSignupTemp';
+
+/*
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path = '/' element={<LoginSignupTemp />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+*/
 
 function App() {
   return (
-   <div>
-    <LoginBcg />
-   </div>
+    <div>
+      <LoginSignupTemp />
+    </div>
   );
 }
-//
+
 export default App;
