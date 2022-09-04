@@ -1,12 +1,13 @@
 //mui components
 import TextField from '@mui/material/TextField'
-//router
-//import { Link } from 'react-router-dom'
+//react
+import { Link } from 'react-router-dom'
 //Theme
 import { createTheme, ThemeProvider, Button } from '@mui/material'
 //styles
 import '../../styles/_login-form.scss'
-//import { bgcolor } from '@mui/system';
+import '../../styles/components/link/_link-global.scss'
+
 
 
 const theme = createTheme ({
@@ -67,15 +68,17 @@ function signupForm() {
                     />
                 </div>
                 <div >
-                    <Button varient='contained' 
-                        sx={{ 
-                        width: 500, 
-                        bgcolor: 'button.secondary.main', 
-                        color: 'primary.contrastText', 
-                        marginTop: 1, 
-                        marginBottom: 2
-                        }}> Sign Up
-                    </Button>
+                    <Link className='link-global' to='/homepage'>
+                        <Button varient='contained' 
+                            sx={{ 
+                            width: 500, 
+                            bgcolor: 'button.secondary.main', 
+                            color: 'primary.contrastText', 
+                            marginTop: 1, 
+                            marginBottom: 2
+                            }}> SIGN UP
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </ThemeProvider>

@@ -1,3 +1,5 @@
+//react
+import { Link } from 'react-router-dom'
 //mui components
 import TextField from '@mui/material/TextField'
 //Theme
@@ -48,15 +50,18 @@ function loginForm() {
                     />
                 </div>
                 <div >
-                    <Button varient='contained' 
-                        sx={{ 
-                        width: 500, 
-                        bgcolor: 'button.secondary.main', 
-                        color: 'primary.contrastText', 
-                        marginTop: 1, 
-                        marginBottom: 2
-                        }}> LOG IN 
-                    </Button>
+                    {/* For UI dev purposes, created link to home page */}
+                    <Link className='link-global' to='/homepage'>
+                        <Button varient='contained' 
+                            sx={{ 
+                            width: 500, 
+                            bgcolor: 'button.secondary.main', 
+                            color: 'primary.contrastText', 
+                            marginTop: 1, 
+                            marginBottom: 2
+                            }}> LOG IN 
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </ThemeProvider>

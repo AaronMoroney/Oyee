@@ -1,25 +1,22 @@
 
-//import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LoginSignupTemp from './components/ui/LoginSignupTemp';
+import { BrowserRouter, Route, Routes }  from 'react-router-dom';
+import LoginSignup from './pages/LoginSignupPage/LoginSignup';
+import HomePage from './pages/HomePage/HomePage';
 
-/*
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path = '/' element={<LoginSignupTemp />} />
+        <Route path = '/' element = {<LoginSignup />} />
+        <Route path = '/homepage' element = {<HomePage />} />
+          {/* For UI dev purposes, created link to home page */}
       </Routes>
     </BrowserRouter>
   );
 }
-*/
 
-function App() {
-  return (
-    <div>
-      <LoginSignupTemp />
-    </div>
-  );
-}
+export default App
 
-export default App;
+
+
