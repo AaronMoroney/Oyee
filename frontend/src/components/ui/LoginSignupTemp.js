@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 //Styles
 import '../../styles/_loginCard.scss'
-import '../../styles/_backdrop.scss'
+import '../../styles/_login-bcg.scss'
 import '../../styles/components/buttons/_button.scss'
 import '../../styles/components/link/_link-global.scss'
 //Assets

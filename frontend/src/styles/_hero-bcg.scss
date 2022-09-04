@@ -1,0 +1,46 @@
+@import './utils/variables.scss';
+@import './utils/mixins';
+
+.hero-backdrop__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background-color: $primary-color;
+    opacity: 50%;
+    z-index: -1;
+}
+  
+.hero-backdrop__image {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.home-bcg_title {
+    padding: 100px 0px 0px 20px;
+    color: white;
+    z-index: 1;
+    font-weight: 400;
+    font-size: 30px;
+    margin: 0px;
+    position: relative;
+    z-index: 2;
+   
+}
+
+.home-bcg_subtitle {
+    padding: 0px 0px 0px 20px;
+    color: white;
+    z-index: 1;
+    font-weight: 600;
+    font-style: italic;
+    font-size: 30px;
+    margin: 0px;
+    position: relative;
+    z-index: 2;
+}

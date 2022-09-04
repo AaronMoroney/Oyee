@@ -44,7 +44,7 @@ function Navbar() {
         <AppBar sx={{height: 70, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', bgcolor: 'appbar.primary.main'}}  >
           <img src={whitelogo} alt ='groupomania logo in white' className='navbar-logo__home'></img>
           <div className='navbar-parent'>
-            <Badge badgeContent = {1} max = {99} sx ={{bgcolor: 'transparent'}}>
+            <Badge sx ={{bgcolor: 'transparent'}}>
               <NotificationsNoneOutlinedIcon />
             </Badge>
             <Avatar />
