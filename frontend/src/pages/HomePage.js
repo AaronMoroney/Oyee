@@ -10,10 +10,6 @@ import AddBackToTop from '../components/buttons/AddBackToTop';
 import  '../styles/_hero-bcg.scss'
 import '../styles/_home-feed.scss'
 import '../styles/components/buttons/_addBackToTop.scss'
-import { createTheme, ThemeProvider } from '@mui/material'
-
-
-
 
 function HomePage() {
   return (
@@ -23,18 +19,13 @@ function HomePage() {
         <div className='home-feed__left'>
          <Feed />
         </div>
-
         <div className='home-feed__right'>
-        
           <Trending />
-
           <div className='addBackToTop'>
             <AddBackToTop />
           </div>
-
           <Copyright />
         </div>
-
       </div>
     </div>
   )

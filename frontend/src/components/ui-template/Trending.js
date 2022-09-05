@@ -25,9 +25,9 @@ function Trending() {
           alt='skyline'
         />
         <CardContent>
-          <h3> 50km Gravel Adventure Cycle </h3>
+          <h3> 50km Gravel Adventure Cycle - @ The Burren. </h3>
           <p> 
-            This saturday, the cycling club will be cycling the burren,
+            This saturday, the gravel bike adventure club will be cycling the burren, Co. Clare!
             all medium - advanced riders welcome!
           </p>
           <div className='like-functionality-parent'>

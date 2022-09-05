@@ -1,19 +1,20 @@
 //React
 import React from 'react'
+import { Link } from 'react-router-dom'
 //assets
 import whitelogo from '../../assets/logos/iconleftwhite.svg'
 //mui
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
-import Badge from '@mui/material/Avatar';
-//import  bgcolor  from '@mui/system';
+import Badge from '@mui/material/Badge';
+
 //icon
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 //Styles
 import '../../styles/components/logo/_logo.scss'
 import '../../styles/components/navbar/_navbar.scss'
 //Theme
-import { createTheme, ThemeProvider } from '@mui/material'
+import { createTheme, ThemeProvider, Button } from '@mui/material'
 
 const theme = createTheme ({
   palette: {
@@ -47,7 +48,11 @@ function Navbar() {
             <Badge sx ={{ bgcolor: 'transparent'}}>
               <NotificationsNoneOutlinedIcon />
             </Badge>
-            <Avatar />
+            <Link className='link-global' to='/profilepage'>
+              <Button varient='contained'>
+                  <Avatar />
+              </Button>
+            </Link>
           </div>
         </AppBar>
       </div>
