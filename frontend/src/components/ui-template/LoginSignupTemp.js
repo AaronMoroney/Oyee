@@ -34,10 +34,6 @@ const theme = createTheme ({
   },
 });
 
-//components created
-//require conditons 
-//use state hooks 
-
 function LoginSignupTemp() {
   const [ isToggled, setIsToggled ] = useState(false);
   return (

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 //Theme
 import { createTheme, ThemeProvider, Button } from '@mui/material'
 //styles
-import '../../styles/_login-form.scss'
+import '../../styles/components/forms/_login-form.scss'
 import '../../styles/components/link/_link-global.scss'
 
 

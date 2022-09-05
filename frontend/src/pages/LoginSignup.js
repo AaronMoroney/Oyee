@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginSignupTemp from '../../components/ui/LoginSignupTemp'
+import LoginSignupTemp from '../components/ui-template/LoginSignupTemp'
 
 function LoginSignup() {
   return (

@@ -1,0 +1,35 @@
+.home-feed {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2.5% 10% 0% 10%;
+}
+
+.home-feed__trending {
+   margin-top: 0%;
+}
+
+.home-feed__feed {
+    background-color: yellow;
+    margin-right: 10%;
+    height: 100%;
+}
+
+.home-feed__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+}
+.home-feed__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 60%;
+}
+
+.trending {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+

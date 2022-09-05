@@ -2,4 +2,11 @@
     color: #091D39;
     opacity: 10%;
 }
+@mixin justify-left {
+    text-align: left;
+}
+@mixin justify-center {
+    text-align: left;
+}
+
 
