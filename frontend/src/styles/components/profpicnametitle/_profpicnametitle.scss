@@ -8,20 +8,36 @@
 .employee-info-parent{
     display: flex;
     flex-direction: column;
-    margin-left: 10px;
+    margin-left: 25px;
     justify-content: flex-end;
 }
-
 .employee-info__gender {
-    font-weight: 400;  
+    font-weight: 400;
+    font-size: 12pt;
+    opacity: 50%;  
 }
 .employee-info__name {
     font-weight: 600;
-    padding-bottom: 5px;
-    font-size: 22.5pt;
+    padding-bottom: 2px;
+    font-size: 25pt;
 }
 .employee-info__company-title {
-    font-weight: 500;
-    font-size: 20pt;
+    font-weight: 400;
+    font-size: 16pt;
     
 }
+.about-employee__hr {
+    width: 20%;
+    margin-left: 2.5%;
+}
+.about-employee {
+    margin: 1% 0% 0% 2.5%;  
+}
+.about-employee__heading {
+    margin-left: 5%;  
+}
+.about-employee-list__parent {
+    margin-left: 5%;
+}
+
+
