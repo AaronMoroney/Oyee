@@ -1,5 +1,6 @@
 //react
 import React from 'react'
+import { useLocation  } from "react-router-dom";
 //components
 import Navbar from '../components/navbar/Navbar'
 import Hero from '../components/ui-template/Hero'
@@ -9,9 +10,8 @@ import DeleteButton from '../components/buttons/DeleteButton'
 //mui
 import Card from '@mui/material/Card';
 
-
-
 function ProfilePage() {
+  const location = useLocation();
   return (
     <div>
       <Navbar />
@@ -41,11 +41,13 @@ function ProfilePage() {
               </div>
           </div>
         </Card> 
-      </div>
-      <div className='confirm-delete-button-parent'>
-        <ConfirmButton />
-        <DeleteButton />
-      </div>
+        { location.pathname === '/profilepage' ? (
+        <div className='confirm-delete-button-parent'>
+          <ConfirmButton />
+          <DeleteButton />
+        </div>
+        ) :  null  }
+        </div>
     </div>
   )
 }
