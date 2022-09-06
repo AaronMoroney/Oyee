@@ -1,0 +1,27 @@
+.employee-parent{
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    padding-top: 10%;
+    margin-left: 10%;
+}
+.employee-info-parent{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    justify-content: flex-end;
+}
+
+.employee-info__gender {
+    font-weight: 400;  
+}
+.employee-info__name {
+    font-weight: 600;
+    padding-bottom: 5px;
+    font-size: 22.5pt;
+}
+.employee-info__company-title {
+    font-weight: 500;
+    font-size: 20pt;
+    
+}

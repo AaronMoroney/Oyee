@@ -4,7 +4,7 @@ import LoginSignupTemp from '../components/ui-template/LoginSignupTemp'
 function LoginSignup() {
   return (
     <>
-    <LoginSignupTemp />
+      <LoginSignupTemp />
     </>
   )
 }

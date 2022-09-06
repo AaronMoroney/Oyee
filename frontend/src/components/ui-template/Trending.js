@@ -11,7 +11,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt'
 
 //assets
-import skyline from '../../assets/images/skyline.jpg'
+import gravelbike from '../../assets/images/gravelbike.jpg'
 
 function Trending() {
   return (
@@ -21,7 +21,7 @@ function Trending() {
         <CardMedia 
           component="img"
           height="140"
-          src = { skyline }
+          src = { gravelbike }
           alt='skyline'
         />
         <CardContent>
