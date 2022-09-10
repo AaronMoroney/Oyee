@@ -54,6 +54,7 @@ function LoginSignupTemp() {
               <img src={skyline} alt ='corporate building city skyline' className ='login-backdrop__image' /> 
               <div className='login-backdrop__overlay'></div>
           </div>
+          
       </div>
     </ThemeProvider>
   )
