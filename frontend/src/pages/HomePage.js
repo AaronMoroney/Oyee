@@ -13,21 +13,23 @@ import '../styles/components/buttons/_addBackToTop.scss'
 
 function HomePage() {
   return (
-    <div>
+    <>
       <HomeProfileTemp />
       <div className='home-feed'>
         <div className='home-feed__left'>
          <Feed />
         </div>
         <div className='home-feed__right'>
-          <Trending />
-          <div className='addBackToTop'>
-            <AddBackToTop />
+          <div className='home-feed__right-parent'> 
+            <Trending />
+            <div className='addBackToTop'>
+              <AddBackToTop />
+            </div>
           </div>
           <Copyright />
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

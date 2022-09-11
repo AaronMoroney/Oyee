@@ -2,17 +2,20 @@
     color: #091D39;
     opacity: 10%;
 }
+//text
 @mixin justify-left {
     text-align: left;
 }
 @mixin justify-center {
     text-align: left;
 }
+//flex-center
 @mixin center-item {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+//media querys
 @mixin mobile-only {
     @media screen and (min-width: 300px) and (max-width: 767px){
         @content;
@@ -22,5 +25,14 @@
     @media screen and (min-width: 768px) and (max-width: 991px){
         @content;
     }
+}
+//media-query layouts
+@mixin mobile-column {
+    display: flex;
+    flex-direction: column;
+}
+@mixin tablet-column {
+    display: flex;
+    flex-direction: column;
 }
 

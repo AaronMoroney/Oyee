@@ -8,10 +8,10 @@ import Hero from './Hero'
 
 function HomeProfileTemp() {
   return (
-    <div>
+    <>
         <Navbar />
         <Hero />
-    </div>
+    </>
   )
 }
 

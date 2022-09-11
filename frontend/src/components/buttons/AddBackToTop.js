@@ -37,8 +37,8 @@ function addBackToTop() {
                 <AddOutlinedIcon />
             </Fab> 
             <Fab variant='extended' sx={{ height: '55.590px', bgcolor: 'button.secondary.main', color: 'button.primary.contrastText'}}>
-                <VerticalAlignTopOutlinedIcon sx={{ mr: 2 }} />
-                Back to top
+                <VerticalAlignTopOutlinedIcon sx={{ mr: 1 }} />
+               back to top
             </Fab>
         </>
      </ThemeProvider>

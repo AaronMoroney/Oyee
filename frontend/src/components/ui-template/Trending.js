@@ -16,7 +16,7 @@ import gravelbike from '../../assets/images/gravelbike.jpg'
 function Trending() {
   return (
     <div className='home-feed__trending'>
-      <h2 className='trending'> T R E N D I N G  🔥 🔥 </h2>
+      <h2 className='trending'> T R E N D I N G  🔥 </h2>
       <Card >
         <CardMedia 
           component="img"

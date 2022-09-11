@@ -49,6 +49,9 @@
     font-weight: 400;
     font-size: 30px;
     margin: 0px;
+    @include mobile-only {
+        margin-top: 50px;
+    }
 }
 
 .home-bcg_subtitle {

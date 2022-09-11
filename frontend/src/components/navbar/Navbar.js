@@ -57,7 +57,7 @@ function Navbar() {
 
   return (
     <ThemeProvider theme={theme}>
-      <div >
+      < >
         <AppBar sx={{height: 70, display: 'flex', flexDirection: 'row', justifyContent: 'space-between', bgcolor: 'appbar.primary.main'}}>
           <div className='navbar-parent'>
             {/* render depending on viewport w */}
@@ -78,7 +78,7 @@ function Navbar() {
             </div>
           </div>
         </AppBar>
-      </div>
+      </>
     </ThemeProvider>
   )
 }

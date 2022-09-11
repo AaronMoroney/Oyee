@@ -7,7 +7,8 @@
         width: 8%;
     }
     @include mobile-only {
-        width: 17%;
+        min-width: 11%;
+        max-width: 12%;
     }
 }
 
