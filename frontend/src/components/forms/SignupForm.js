@@ -115,7 +115,7 @@ function SignupForm() {
                     <Link className='link-global' to='/homepage'>
                         <Button varient='contained' 
                             sx={{ 
-                            width: 500, 
+                            width: '100%', 
                             bgcolor: 'button.secondary.main', 
                             color: 'primary.contrastText', 
                             marginTop: 1, 

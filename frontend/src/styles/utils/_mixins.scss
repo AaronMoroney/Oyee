@@ -8,5 +8,19 @@
 @mixin justify-center {
     text-align: left;
 }
-
+@mixin center-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin mobile-only {
+    @media screen and (min-width: 300px) and (max-width: 767px){
+        @content;
+    }
+}
+@mixin tablet-only {
+    @media screen and (min-width: 768px) and (max-width: 991px){
+        @content;
+    }
+}
 

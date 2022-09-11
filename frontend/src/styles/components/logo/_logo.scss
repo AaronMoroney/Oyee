@@ -1,4 +1,14 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins';
+
 .navbar-logo__home {
-    width: 15%;
-    padding-left: 10%;
+    width: 17.5%;
+    @include tablet-only {
+        width: 8%;
+    }
+    @include mobile-only {
+        width: 17%;
+    }
 }
+
+//conditionally render logo depending on screen size? 
