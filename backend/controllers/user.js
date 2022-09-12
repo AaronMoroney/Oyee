@@ -1,19 +1,19 @@
 //const mysql = require('mysql'); //import mysql
 const bcrypt = require('bcrypt'); //import bcrypt 
 const User = require('../models/user.js'); //import user model 
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken'); //import Jwt
 
 //signup
 exports.signup = (req, res, next) => {
-    console.log(req.body.userName)
-    console.log(req.body.userPassword)
     //10 = number of salting iteration
-    bcrypt.hash(req.body.userPassword,10).then(
+    bcrypt.hash(req.body.userPassword, 10).then(
         (hash) => {
             const user =  new User({
                 userName: req.body.userName,
                 userPassword: hash //req.body.userPassword,
             });
+            console.log(req.body.userName)
+            console.log(req.body.userPassword)
             user.save().then(
                 () => {
                     res.status(201).json({

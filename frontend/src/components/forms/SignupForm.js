@@ -25,35 +25,31 @@ const theme = createTheme ({
   },
 });
 
-
-/*
-
-** | LOGIN LOGIC |
-** | capture data with onChange - username and password data
-** | run function createAccount on button click
-
-** | create userName & paddword empty object
-** | then push the target value into the obj
-** | send with axios
-
-// ERRORS: (FRONT) THE INPUT IS RECEIVING MULTIPLE CHARECOTORS FROM FRONTEND
-// ERRORS: (BCRYPT) data must be a string or Buffer and salt must either be a salt string or a number of rounds'
-// ERRORS: (BACKEND) UNDEFINED STRING, LINE 09, USER.JS
-
-*/
-
-
 function SignupForm() {
-    let userNameStorage
-    let userPasswordStorage 
+    let userNameStorage;
+    let userPasswordStorage; 
+    //refactor second axios call into own function
 
     const createAccount = () => {
         Axios.post('http://localhost:3000/signup', {
             userName: userNameStorage,
             userPassword: userPasswordStorage
-        }).then((response) => {
-            console.log(response);
-        });
+        }).then(() => {
+
+            //call axios LOGIN ROUTE function
+            Axios.post('http://localhost:3000/login', {
+                userName: userNameStorage,
+                userPassword: userPasswordStorage
+            }).then((response) => {
+                console.log(response);
+            }).catch((error) => {
+                console.log(error)
+            })
+
+            //error handling of SIGNUP ROUTE axios 
+        }).catch((error) => {
+            console.log(error);
+        })
     };
     
     return (

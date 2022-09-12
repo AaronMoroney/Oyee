@@ -6,9 +6,12 @@ import TextField from '@mui/material/TextField'
 import { createTheme, ThemeProvider, Button } from '@mui/material'
 //styles
 import '../../styles/components/forms/_login-form.scss'
+//axios
+import Axios from 'axios'
 
 
 
+//refactor second axios call into own function
 
 const theme = createTheme ({
   palette: {
@@ -25,6 +28,20 @@ const theme = createTheme ({
 });
 
 function loginForm() {
+    let userNameStorage;
+    let userPasswordStorage; 
+
+    const login = () => {
+        Axios.post('http://localhost:3000/login', {
+            userName: userNameStorage,
+            userPassword: userPasswordStorage
+        }).then((response) => {
+                console.log('logged in!', response);
+            }).catch((error) => {
+                console.log(error);
+        })
+    };
+
     return (
         <ThemeProvider theme={theme}>
             <div>
@@ -38,6 +55,10 @@ function loginForm() {
                         sx = {{
                             marginBottom: 2,
                         }} 
+                        onChange = {(e) => {
+                            userNameStorage = e.target.value;
+                            console.log(userNameStorage);
+                        }}
                     />
                     <TextField 
                         id='outlined-password-input'
@@ -47,6 +68,10 @@ function loginForm() {
                         sx = {{
                             marginBottom: 2,
                         }} 
+                        onChange = {(e) => {
+                            userPasswordStorage = e.target.value;
+                            console.log(userNameStorage);
+                        }}
                     />
                 </div>
                 <div >
@@ -59,8 +84,10 @@ function loginForm() {
                             color: 'primary.contrastText', 
                             marginTop: 1, 
                             marginBottom: 2
-                            }}> LOG IN 
-                        </Button>
+                            }}
+                            onClick = { login }
+                            > LOG IN 
+                        </Button >
                     </Link>
                 </div>
             </div>

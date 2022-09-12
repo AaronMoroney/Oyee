@@ -17,15 +17,7 @@ app.use((req, res, next) => {
 //models
 const db = require('./models/user');
 
-/*
-db.sequelize.sync().then((req) => {
-    app.listen(3036, () => {
-        console.log('server running');
-    });
-});
-*/
-
 //app.use('/api/auth', userRoutes);
-app.use('/', userRoutes);
+app.use('/', userRoutes); 
 
 module.exports = app;

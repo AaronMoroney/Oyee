@@ -11,7 +11,7 @@ const User = sequelize.define('user', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    userID: {
+    userId: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
