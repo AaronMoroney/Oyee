@@ -28,26 +28,26 @@ const theme = createTheme ({
 function SignupForm() {
     let userNameStorage;
     let userPasswordStorage; 
-    //refactor second axios call into own function
+    //login invoked with resp. data from signup
 
+    const login = () => {
+        Axios.post('http://localhost:3000/login', {
+            userName: userNameStorage,
+            userPassword: userPasswordStorage
+        }).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+    
     const createAccount = () => {
         Axios.post('http://localhost:3000/signup', {
             userName: userNameStorage,
-            userPassword: userPasswordStorage
-        }).then(() => {
-
-            //call axios LOGIN ROUTE function
-            Axios.post('http://localhost:3000/login', {
-                userName: userNameStorage,
-                userPassword: userPasswordStorage
-            }).then((response) => {
-                console.log(response);
-            }).catch((error) => {
-                console.log(error)
-            })
-
-            //error handling of SIGNUP ROUTE axios 
-        }).catch((error) => {
+            userPassword: userPasswordStorage,
+        }).then(function(response) {
+            login(response);
+        }).catch(function(error) {
             console.log(error);
         })
     };
