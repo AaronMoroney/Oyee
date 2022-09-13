@@ -18,12 +18,13 @@
 }
 
 .home-feed__feed {
-    background-color: yellow;
     margin-right: 10%;
+    padding: 0px 10px 10px 0px;
     height: 100%;
     overflow-x: scroll; 
     white-space: wrap;
-   
+    mask-image: linear-gradient(to bottom, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%);
+
     @include mobile-only {
         height: 370px;
         width: 100%;
