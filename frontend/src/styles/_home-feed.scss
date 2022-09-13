@@ -21,7 +21,9 @@
     background-color: yellow;
     margin-right: 10%;
     height: 100%;
-    width: 100%;
+    overflow-x: scroll; 
+    white-space: wrap;
+   
     @include mobile-only {
         height: 370px;
         width: 100%;
@@ -29,19 +31,20 @@
         margin-right: auto;
     }
 }
+
 .home-feed__right {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 30%;
-    margin-top: 27.5%;
+    margin-top: 15%;
     @include tablet-only {
         width: 35%;
-        margin-top: 40%;
+        margin-top: 20%;
        }
     @include mobile-only {
         width: 90%;
-        margin-top: 5%;
+        margin-top: 6%;
         margin-left: auto;
         margin-right: auto;
     }
@@ -57,11 +60,17 @@
     flex-direction: column;
     justify-content: space-around;
     width: 60%;
+    height: 75vh;
+    @include tablet-only {
+        height: 740px;
+    }
     @include mobile-only {
         width: 90%;
-        margin-top: 5%;
+        margin-top: 1%;
+        justify-content: unset;
         margin-left: auto;
         margin-right: auto;
+        height: 55vh;
     }
 }
 
