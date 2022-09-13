@@ -1,8 +1,9 @@
+
 //mui components
 import TextField from '@mui/material/TextField'
 //react
+//import { State } from 'react';
 import { Link } from 'react-router-dom'
-//import { useState } from 'react';
 //axios
 import Axios from 'axios'
 //Theme
@@ -25,11 +26,43 @@ const theme = createTheme ({
   },
 });
 
-function SignupForm() {
-    let userNameStorage;
-    let userPasswordStorage; 
-    //login invoked with resp. data from signup
+/*
+** | function for error handling 
+** | if error status != success
+** | tern. op. to display a, if not 'null'
+** | append to the relevant place using (?)
+** | write the function
+** | call in catch block, invoking the function with error status
+*/
 
+function SignupForm() {
+
+    let userNameStorage;
+    let userPasswordStorage
+    
+     /*
+    ** | ERROR HANDLING function
+    */
+
+    //get access to DOM, always at assigned positions.
+    let nameErrorMsg = document.getElementById('userNameErrorMsg');
+    let passwordErrorMsg = document.getElementById('userNameErrorMsg');
+
+    //email
+    //let regexEmail = /\S+@\S+\.\S+/g;
+    //charectors
+    let regexCharectors = /^[a-zA-Z ]/;
+
+    //function
+    function regexCharectorsResult() {
+        regexCharectors.test(userNameStorage.value, userPasswordStorage.value);
+    }; 
+
+    /*
+    ** | POST REQS function(s)
+    */
+    
+    //login invoked with resp. data from signup
     const login = () => {
         Axios.post('http://localhost:3000/login', {
             userName: userNameStorage,
@@ -37,10 +70,11 @@ function SignupForm() {
         }).then((response) => {
             console.log(response);
         }).catch((error) => {
-            console.log(error)
+           console.log(error);
         })
     }
     
+    //working
     const createAccount = () => {
         Axios.post('http://localhost:3000/signup', {
             userName: userNameStorage,
@@ -48,7 +82,7 @@ function SignupForm() {
         }).then(function(response) {
             login(response);
         }).catch(function(error) {
-            console.log(error);
+           console.log(error);
         })
     };
     
@@ -63,6 +97,7 @@ function SignupForm() {
                         variant='outlined' 
                         className='login-form'
                         type='text' 
+
                         sx = {{
                             marginBottom: 2,
                         }} 
@@ -70,8 +105,13 @@ function SignupForm() {
                         onChange = {(e) => {
                             userNameStorage = e.target.value;
                             console.log(userNameStorage);
+
+                            if (userPasswordStorage.value.length <= 1 || regexCharectorsResult === false ) {
+                                passwordErrorMsg.innerText = 'first name must be greater than 1 letter and contain no special charectors(except spaces where required)';
+                            }
                         }}
                     />
+                    <p id='userNameErrorMsg'></p>
                     <TextField 
                         id='outlined-password-input'
                         label='Password' 
@@ -84,8 +124,13 @@ function SignupForm() {
                         onChange = {(e) => {
                             userPasswordStorage = e.target.value;
                             console.log(userNameStorage);
+
+                            if (userNameStorage.value.length <= 1 || regexCharectorsResult === false ) {
+                                nameErrorMsg.innerText = 'first name must be greater than 1 letter and contain no special charectors(except spaces where required)';
+                            }
                         }}
                     />
+                    <p id='userPasswordErrorMsg'></p>
                     {/*
                     <TextField 
                         id="outlined-basic" 
@@ -106,8 +151,9 @@ function SignupForm() {
                         }} 
                     />
                     */}
+        
                 </div>
-                <div >
+                <div>
                     <Link className='link-global' to='/homepage'>
                         <Button varient='contained' 
                             sx={{ 
@@ -117,7 +163,7 @@ function SignupForm() {
                             marginTop: 1, 
                             marginBottom: 2
                             }}
-                            onClick = { createAccount }
+                            onClick = {() => { createAccount(); regexCharectorsResult(); }}
                             > CREATE ACCOUNT
                         </Button>
                     </Link>
