@@ -6,12 +6,15 @@ import HomeProfileTemp from '../components/ui-template/HomeProfileTemp'
 import Trending from '../components/ui-template/Trending'
 import Copyright from '../components/copyright/Copyright'
 import AddBackToTop from '../components/buttons/AddBackToTop';
+
 //styles
 import  '../styles/_hero-bcg.scss'
 import '../styles/_home-feed.scss'
 import '../styles/components/buttons/_addBackToTop.scss'
+//import { Modal } from '@mui/material'
 
 function HomePage() {
+  
   return (
     <>
       <HomeProfileTemp />

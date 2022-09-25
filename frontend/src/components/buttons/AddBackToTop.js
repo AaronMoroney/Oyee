@@ -1,5 +1,9 @@
+//React
+import React, {useState} from 'react'
 //mui components
 import Fab from '@mui/material/Fab'
+//components
+import Modal from '../../components/modal/Modal'
 //mui icons 
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 import VerticalAlignTopOutlinedIcon from '@mui/icons-material/VerticalAlignTopOutlined';
@@ -29,21 +33,39 @@ palette: {
     },
 });
 
-function addBackToTop() {
+function AddBackToTop() {
+    /*
+    ** | MODAL FUNCTION |
+    */
+
+    const [ showModal, setShowModal ] = useState(false)
+    const openModal = () => {
+    setShowModal(prev => !prev)
+    }
+
     return (
      <ThemeProvider theme={theme}>
         <>
             <Fab aria-label='add' sx={{bgcolor: 'button.secondary.main', color: 'button.primary.contrastText'}}>
-                <AddOutlinedIcon />
+                <AddOutlinedIcon onClick={openModal} />
+                <Modal showModal={showModal} setShowModal ={setShowModal} />
             </Fab> 
-            <Fab variant='extended' sx={{ height: '55.590px', bgcolor: 'button.secondary.main', color: 'button.primary.contrastText'}}>
+            <Fab 
+                variant='extended'
+                sx={{ 
+                    height: '55.590px', 
+                    bgcolor: 'button.secondary.main', 
+                    color: 'button.primary.contrastText'
+                }}
+                >
                 <VerticalAlignTopOutlinedIcon sx={{ mr: 1 }} />
-               back to top
+                back to top
             </Fab>
+            
         </>
      </ThemeProvider>
     )
    
 }
 
-export default addBackToTop
+export default AddBackToTop
