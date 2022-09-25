@@ -40,7 +40,7 @@ function SignupForm() {
     let userNameStorage;
     let userPasswordStorage
     
-     /*
+    /*
     ** | ERROR HANDLING function
     */
 

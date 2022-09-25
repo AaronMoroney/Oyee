@@ -40,7 +40,7 @@ function AddBackToTop() {
 
     const [ showModal, setShowModal ] = useState(false)
     const openModal = () => {
-    setShowModal(prev => !prev)
+        setShowModal(prev => !prev)
     }
 
     return (
@@ -48,8 +48,9 @@ function AddBackToTop() {
         <>
             <Fab aria-label='add' sx={{bgcolor: 'button.secondary.main', color: 'button.primary.contrastText'}}>
                 <AddOutlinedIcon onClick={openModal} />
-                <Modal showModal={showModal} setShowModal ={setShowModal} />
+                <Modal showModal={showModal} setShowModal={setShowModal} />
             </Fab> 
+            { showModal ? null :  
             <Fab 
                 variant='extended'
                 sx={{ 
@@ -57,11 +58,11 @@ function AddBackToTop() {
                     bgcolor: 'button.secondary.main', 
                     color: 'button.primary.contrastText'
                 }}
-                >
-                <VerticalAlignTopOutlinedIcon sx={{ mr: 1 }} />
+                >  
+                <VerticalAlignTopOutlinedIcon sx={{ mr: 1 }}   />
                 back to top
             </Fab>
-            
+            }
         </>
      </ThemeProvider>
     )
