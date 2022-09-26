@@ -1,10 +1,12 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins';
+
 .modal-wrapper {
     margin-right: 200px;
     position: fixed;
     width: 100%;
     height: 100%;
 }
-
 .modal-parent {
     height: 500px;
     width: 800px;
@@ -12,24 +14,35 @@
     flex-direction: row;
     background-color: white;
     position: absolute;
-    z-index: 10000;
     border-radius: 20px;
     -webkit-box-shadow: 5px 5px 700px 700px #091D39; 
     box-shadow: 5px 5px 500px 500px #091D39;
 }
-
 .modal-parent__left {
     width: 400px;
     overflow: hidden;
 }
-
 .modal-left__img {
     width: 400px;
     height: 500px;
     border-radius: 20px 0 0 20px;
 }
-
 .modal-parent__right  {
     width: 400px;
     border-radius: 0 20px 20px 0;
+}
+.modal-form__parent  {
+    margin: 20px;
+}
+.modal-form__heading  {
+    color: $primary-color;
+    text-align: left;
+}
+.modal-form__create-close  {
+    display: flex;
+    justify-content: space-between;
+    color: $primary-color;
+}
+.modal-form__close  {
+    color: $primary-color;
 }
