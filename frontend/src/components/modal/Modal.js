@@ -50,7 +50,7 @@ export const Modal = ({showModal, setShowModal }) => {
                     <div className='modal-wrapper'>
                         <div className='modal-parent'>
                             
-                            <div className='Modal-parent__left'>
+                            <div className='modal-parent__left'>
                                 <img className = 'modal-left__img' src={typewriter} alt='oldschool typewriter' />
                             </div>
     
