@@ -1,4 +1,4 @@
-//const mysql = require('mysql'); //import mysql
+
 const bcrypt = require('bcrypt'); //import bcrypt 
 const User = require('../models/user.js'); //import user model 
 const jwt = require('jsonwebtoken'); //import Jwt

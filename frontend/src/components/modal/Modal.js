@@ -35,30 +35,25 @@ const theme = createTheme ({
     
 
 export const Modal = ({showModal, setShowModal }) => {
-    const modalRef = useRef();
-    const closeModal = e => {
-        if (modalRef.current === e.target) {
-          setShowModal(false);
-        }
-    };
+    
+    let postTitle;
+    let postContent;
+
     return (
         <>
         {showModal ? 
             <ThemeProvider theme={theme}>
                 <>
-
                     <div className='modal-wrapper'>
                         <div className='modal-parent'>
-                            
                             <div className='modal-parent__left'>
                                 <img className = 'modal-left__img' src={typewriter} alt='oldschool typewriter' />
                             </div>
-    
                             <div className='modal-parent__right'>
                                 <div className='modal-form__parent'>
                                     <div className='modal-form__create-close'>
                                         <h2 className='modal-form__heading'>Create a Post 😇 </h2>
-                                        <CloseIcon onClick={() => setShowModal(prev=> !prev)} sx={{marginTop: 1,}} />
+                                        <CloseIcon onClick={() => setShowModal(prev=>!prev)} sx={{marginTop: 1,}} />
                                     </div>
                                     <TextField 
                                     id="outlined-basic" 
@@ -68,7 +63,10 @@ export const Modal = ({showModal, setShowModal }) => {
                                     sx = {{
                                         marginBottom: 2,
                                         marginTop: 2,
-                                    }} 
+                                    }}
+                                    onChange = {(e) => {
+                                        postTitle = e.target.value;
+                                    }}
                                     />
                                     <TextField
                                     id="outlined-multiline-static"
@@ -79,15 +77,16 @@ export const Modal = ({showModal, setShowModal }) => {
                                     sx = {{
                                         marginTop: 1,
                                     }} 
+                                    onChange = {(e) => {
+                                        e.preventDefault()
+                                        postContent = e.target.value;
+                                    }}
                                     />
                                 </div>
-
                                 <CreatePostButton />
-
                             </div>
                         </div>
                     </div> 
-
                 </>
             </ThemeProvider>
         : null }
