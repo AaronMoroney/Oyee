@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 //mui components
 import Fab from '@mui/material/Fab'
 //components
-import Modal from '../../components/modal/Modal'
+import Modal from '../../components/ui-template/Modal'
 //mui icons 
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 import VerticalAlignTopOutlinedIcon from '@mui/icons-material/VerticalAlignTopOutlined';
@@ -47,10 +47,12 @@ function AddBackToTop() {
     return (
      <ThemeProvider theme={theme}>
         <>
-            <Fab aria-label='add'  sx={{bgcolor: 'button.secondary.main', color: 'button.primary.contrastText', textTransform: 'none'}}>
-                <AddOutlinedIcon onClick={openModal} />
-                <Modal  showModal={showModal} setShowModal={setShowModal} />
+            
+            <Fab aria-label='add' sx={{bgcolor: 'button.secondary.main', color: 'button.primary.contrastText', textTransform: 'none'}}>
+                <AddOutlinedIcon  onClick={openModal}/>
+                <Modal showModal={showModal} setShowModal={setShowModal} />        
             </Fab> 
+            
             { showModal ? null :  
             <Fab 
                 variant='extended'

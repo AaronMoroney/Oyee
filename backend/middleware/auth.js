@@ -1,15 +1,15 @@
-//use file on POSTS, LIKES  routes, etc.
 const jwt =  require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
-        const decodedToken = jwt.verify(token, 'RANDOM_VERY_LONG_VERY_CRYPTIC_TOKEN');
-        const userId = decodedToken.userId; //extract user id
-        //every subsequent piece of middleware, we'll get userId from the token
-        req.auth = { userId: userId }
+        const decodedToken = jwt.verify(token, 'RANDOM_VERY_LONG_VERY_CRYPTIC_TOKEN'); //working
+        const userId = decodedToken.userId; //working
+        //req.auth = { userId: userId }
+        //if req.body has userId check if it is the same as userID
+        //from token = invalid req.
         if (req.body.userId && req.body.userId !== userId) {
-            throw 'Invalid user Id';
+            throw 'Invalid user ID';
         } else {
             next();
         }

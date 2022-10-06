@@ -11,6 +11,8 @@ import { createTheme, ThemeProvider, Button } from '@mui/material'
 //styles
 import '../../styles/components/forms/_login-form.scss'
 import '../../styles/components/link/_link-global.scss'
+//jwt
+import jwt from 'jwt-decode'
 
 const theme = createTheme ({
   palette: {
@@ -26,19 +28,12 @@ const theme = createTheme ({
   },
 });
 
-/*
-** | function for error handling 
-** | if error status != success
-** | tern. op. to display a, if not 'null'
-** | append to the relevant place using (?)
-** | write the function
-** | call in catch block, invoking the function with error status
-*/
+
 
 function SignupForm() {
-
     let userNameStorage;
-    let userPasswordStorage
+    let userPasswordStorage;
+    //let userId;
     
     /*
     ** | ERROR HANDLING function
@@ -61,28 +56,36 @@ function SignupForm() {
     /*
     ** | POST REQS function(s)
     */
-    
-    //login invoked with resp. data from signup
-    const login = () => {
-        Axios.post('http://localhost:3000/login', {
-            userName: userNameStorage,
-            userPassword: userPasswordStorage
-        }).then((response) => {
-            console.log(response);
-        }).catch((error) => {
-           console.log(error);
-        })
-    }
-    
-    //working
+
+    let token = localStorage.getItem('jwt');
+
     const createAccount = () => {
-        Axios.post('http://localhost:3000/signup', {
+        Axios.post('http://localhost:3000/auth/signup', {
             userName: userNameStorage,
             userPassword: userPasswordStorage,
         }).then(function(response) {
             login(response);
         }).catch(function(error) {
            console.log(error);
+        })
+    };
+
+    const login = () => {
+        Axios.post('http://localhost:3000/auth/login', {
+            userName: userNameStorage,
+            userPassword: userPasswordStorage
+        },
+        { headers: {
+                'Authorization': `Bearer ${token}`
+        }
+        }).then(function(response) {
+            //send the JWT to local storage
+            const token = response.data.token;
+            sessionStorage.setItem('jwt', response.data.token);
+            const tokenDecode = jwt(token); //decode
+            sessionStorage.setItem('userId', JSON.stringify(tokenDecode.userId));
+        }).catch(function(error)  {
+            console.log(error);
         })
     };
     
@@ -97,7 +100,6 @@ function SignupForm() {
                         variant='outlined' 
                         className='login-form'
                         type='text' 
-
                         sx = {{
                             marginBottom: 2,
                         }} 
@@ -105,7 +107,6 @@ function SignupForm() {
                         onChange = {(e) => {
                             userNameStorage = e.target.value;
                             console.log(userNameStorage);
-
                             if (userPasswordStorage.value.length <= 1 || regexCharectorsResult === false ) {
                                 passwordErrorMsg.innerText = 'first name must be greater than 1 letter and contain no special charectors(except spaces where required)';
                             }
@@ -124,7 +125,6 @@ function SignupForm() {
                         onChange = {(e) => {
                             userPasswordStorage = e.target.value;
                             console.log(userNameStorage);
-
                             if (userNameStorage.value.length <= 1 || regexCharectorsResult === false ) {
                                 nameErrorMsg.innerText = 'first name must be greater than 1 letter and contain no special charectors(except spaces where required)';
                             }

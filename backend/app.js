@@ -1,11 +1,14 @@
 //import 
 const express = require ('express');
 const app = express();
-//const path = require('path');
-const userRoutes = require('./routes/user');
-//const mysql = require('mysql');
-
+const path = require('path');
+//body parser
 app.use(express.json());
+
+//routes
+const postRoutes = require('./routes/post');
+const userRoutes = require('./routes/user');
+
 //Cors 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -14,10 +17,8 @@ app.use((req, res, next) => {
     next();
 });
 
-//models
-const db = require('./models/user');
-
-//app.use('/api/auth', userRoutes);
-app.use('/', userRoutes); 
+//p6 has /api/.. check?
+app.use('/posts', postRoutes); 
+app.use('/auth', userRoutes); 
 
 module.exports = app;

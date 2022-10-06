@@ -1,17 +1,21 @@
-import React, {useRef} from 'react'
-
+import React from 'react';
+//axios
+import Axios from 'axios';
 //assets
-import typewriter from '../../assets/images/typewriter.jpg'
+import typewriter from '../../assets/images/typewriter.jpg';
 //styles
-import '../../styles/components/modal/_modal.scss'
+import '../../styles/components/modal/_modal.scss';
 //mui
-import TextField from '@mui/material/TextField'
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
 //mui icons
 import CloseIcon from '@mui/icons-material/Close';
 //theme
-import { createTheme, ThemeProvider } from '@mui/material'
-//components
-import CreatePostButton from '../buttons/CreatePostButton'
+import { createTheme, ThemeProvider} from '@mui/material';
+//jwt
+//import jwt from 'jwt-decode';
+//import { decodeToken } from "react-jwt";
+
 
 const theme = createTheme ({
     palette: {
@@ -22,6 +26,10 @@ const theme = createTheme ({
             },
             secondary: {
                 main: '#D44651',
+            },
+            confirm: {
+                main: '#2FD381',
+                contrastText: '#FFFFFF',
             },
             },
             appbar: {
@@ -35,9 +43,31 @@ const theme = createTheme ({
     
 
 export const Modal = ({showModal, setShowModal }) => {
+    //storage for e.target.value
+    let postTitleStorage;
+    let postContentStorage;
     
-    let postTitle;
-    let postContent;
+    //get token from local storage
+    let token = sessionStorage.getItem('jwt');
+    let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+    
+    //create post
+    const createPost = () => {
+        Axios.post('http://localhost:3000/posts', {
+            userId: userIdStorage,
+            postTitle: postTitleStorage,
+            postContent: postContentStorage,
+        },
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then(function(response) {
+            console.log(response);
+        }).catch(function(error)  {
+            console.log(error);
+        })
+    };
 
     return (
         <>
@@ -65,7 +95,7 @@ export const Modal = ({showModal, setShowModal }) => {
                                         marginTop: 2,
                                     }}
                                     onChange = {(e) => {
-                                        postTitle = e.target.value;
+                                       postTitleStorage = e.target.value;
                                     }}
                                     />
                                     <TextField
@@ -78,12 +108,14 @@ export const Modal = ({showModal, setShowModal }) => {
                                         marginTop: 1,
                                     }} 
                                     onChange = {(e) => {
-                                        e.preventDefault()
-                                        postContent = e.target.value;
+                                        postContentStorage = e.target.value;
                                     }}
                                     />
                                 </div>
-                                <CreatePostButton />
+                                <Paper 
+                                sx={{ bgcolor: 'button.confirm.main', color: 'button.confirm.contrastText', width: '150px', height: '25px', margin: 'auto' }}
+                                onClick = {() => createPost()}
+                                > SHARE POST </Paper>
                             </div>
                         </div>
                     </div> 

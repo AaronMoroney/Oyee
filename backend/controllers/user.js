@@ -1,6 +1,5 @@
-
 const bcrypt = require('bcrypt'); //import bcrypt 
-const User = require('../models/user.js'); //import user model 
+const User = require('../models/user'); //import user model 
 const jwt = require('jsonwebtoken'); //import Jwt
 
 //signup
@@ -10,10 +9,8 @@ exports.signup = (req, res, next) => {
         (hash) => {
             const user =  new User({
                 userName: req.body.userName,
-                userPassword: hash //req.body.userPassword,
+                userPassword: hash 
             });
-            console.log(req.body.userName)
-            console.log(req.body.userPassword)
             user.save().then(
                 () => {
                     res.status(201).json({
@@ -34,10 +31,7 @@ exports.signup = (req, res, next) => {
 
 //login
 exports.login = (req, res, next) => {
-    //sequelize findOne
-    User.findOne({ 
-        where: {userName: req.body.userName },
-        }).then(
+    User.findOne({ where: {userName: req.body.userName }, }).then(
         (user) => {
             //if no user
             if (!user) {
@@ -53,13 +47,15 @@ exports.login = (req, res, next) => {
                             errorMsg: 'incorrect user password, please try again'
                         });
                     }
+                    //createToken
                     const token = jwt.sign(
-                         { userId: user._id},
-                         'RANDOM_VERY_LONG_VERY_CRYPTIC_TOKEN',
-                         { expiresIn: '12h'});
+                        { userId: user.userId }, 
+                        'RANDOM_VERY_LONG_VERY_CRYPTIC_TOKEN',
+                        { expiresIn: '12h' });
                     res.status(200).json({
-                        userId: user._id,
-                        token: token
+                        userId: user.userId, 
+                        userName: user.userName,
+                        token: token,
                     });
                 }
             ).catch(
@@ -78,4 +74,3 @@ exports.login = (req, res, next) => {
         }
     )
 }
-

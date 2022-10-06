@@ -3,6 +3,11 @@ const sequelize = require('./index');
 
 //user model
 const User = sequelize.define('user', {
+    userId: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
     userName: {
         type: DataTypes.STRING,
         allowNull: false, 
@@ -10,11 +15,6 @@ const User = sequelize.define('user', {
     userPassword: {
         type: DataTypes.STRING,
         allowNull: false,
-    },
-    userId: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true
     },
     createdAt: {
         field: 'created_at',
@@ -29,7 +29,6 @@ const User = sequelize.define('user', {
 })
 
 module.exports = User;
-
 
 
 

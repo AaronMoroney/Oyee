@@ -1,20 +1,18 @@
-const fs = require('fs'); // file system - gives access to functions that allow you to modify the file system
-const { db, updateOne, remove }   = require('../models/post'); //check?
-const user = require('../models/user.js');
+const Post = require('../models/post');
+//const fs = require('fs'); // file system - gives access to functions that allow you to modify the file system
+//const { db }   = require('../models/post'); 
+//const User = require('../models/user');
 
+//save a new post
 exports.createPost = (req, res, next) => {
-    //because to send file, frontend sends as form, req.body.sauce
-    let post = JSON.parse(req.body.post);
+    //because to send file, frontend sends as form, req.body.post
+    const post = (req.body);
     const newPost = new Post({
-        title: post.name,
-        post: post.body,
-        likes: 0,
-        dislikes: 0,
-        usersLiked: [],
-        usersDisliked: [],
         userId: post.userId,
-        usersRead: post.usersRead
+        postTitle: post.postTitle,
+        postContent: post.postContent,
     });
+    console.log('newPost', newPost);
     newPost.save().then(
         () => {
             res.status(201).json({
@@ -24,19 +22,20 @@ exports.createPost = (req, res, next) => {
     ).catch(
        (error) => {
         res.status(400).json({
-            errorMsg: 'cannot create sauce'
+            errorMsg: 'cannot create post'
         });
        } 
     );
 }
 
-//find one sc
-exports.getOneSauce = (req, res, next) => {
+/*
+//find one post
+exports.getOnePost = (req, res, next) => {
     Post.findOne({
         _id: req.params.id
     }).then(
         (post) => {
-            res.status(200).json(sauce);
+            res.status(200).json(post);
         }
     ).catch(
         (error) => {
@@ -46,3 +45,4 @@ exports.getOneSauce = (req, res, next) => {
         }
     );
 };
+*/

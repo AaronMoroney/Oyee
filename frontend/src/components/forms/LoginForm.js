@@ -8,6 +8,8 @@ import { createTheme, ThemeProvider, Button } from '@mui/material'
 import '../../styles/components/forms/_login-form.scss'
 //axios
 import Axios from 'axios'
+//token
+import jwt from 'jwt-decode'
 //import LoginMsg from '../../components/errormsg/loginMsg'
 
 //refactor second axios call into own function
@@ -25,16 +27,10 @@ const theme = createTheme ({
   },
 });
 
-/*
-** | REGEX functionality
-** | get access to username, password fields
-** | Check username & password fields against .value
-** | give error message
-*/
-
 function loginForm() {
     let userNameStorage;
     let userPasswordStorage; 
+    //let userId;
 
     /*
     ** | ERROR HANDLING function
@@ -57,13 +53,24 @@ function loginForm() {
     /*
     ** | POST REQS function
     */
+
+    let token = localStorage.getItem('jwt');
    
     const login = () => {
-        Axios.post('http://localhost:3000/login', {
+        Axios.post('http://localhost:3000/auth/login', {
             userName: userNameStorage,
             userPassword: userPasswordStorage
+        },
+        { headers: {
+                'Authorization': `Bearer ${token}`
+        }
         }).then(function(response) {
-            console.log(response);
+            //send the JWT to local storage
+            const token = response.data.token;
+            sessionStorage.setItem('jwt', response.data.token);
+            const tokenDecode = jwt(token); //decode
+            sessionStorage.setItem('userId', JSON.stringify(tokenDecode.userId));
+
         }).catch(function(error)  {
             console.log(error);
         })
