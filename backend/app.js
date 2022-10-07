@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     next();
 });
 
-
+//p6 has /api/.. check?
 app.use('/posts', postRoutes); 
 app.use('/auth', userRoutes); 
 

@@ -15,16 +15,16 @@ const Post = sequelize.define('post', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    updatedAt: {
+        field: 'updated_at',
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
     createdAt: {
         field: 'created_at',
         type: DataTypes.DATE,
         allowNull: false,
     },
-    updatedAt: {
-        field: 'updated_at',
-        type: DataTypes.DATE,
-        allowNull: false,
-    }
    
     /*
     likes: {

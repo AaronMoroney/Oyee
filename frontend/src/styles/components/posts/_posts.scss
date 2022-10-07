@@ -4,9 +4,10 @@
 .post-feed__post {
     background-color: white;
     height: 30vh;
-    border-radius: 7.5px;
+    border-radius: 20px;
     width: 100%;
     margin-top: 10px;
+    
     
     @include tablet-only {
         height: 25vh;

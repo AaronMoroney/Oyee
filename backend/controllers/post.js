@@ -28,12 +28,11 @@ exports.createPost = (req, res, next) => {
     );
 }
 
-/*
 //retrieve a list
 exports.postList = (req, res, next) => {
-    Post.find().then(
-        (Post) => {
-            res.status(200).json(Post);
+    Pauce.find().then(
+        (posts) => {
+            res.status(200).json(posts);
         }
     ).catch(
         (error) => {
@@ -43,5 +42,4 @@ exports.postList = (req, res, next) => {
         }
     );
 }
-*/
 
