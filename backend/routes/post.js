@@ -6,7 +6,7 @@ const auth = require('../middleware/auth');
 const PostCtrl = require('../controllers/post');
 
 //retrieve an array of posts
-router.get('/', auth, PostCtrl.postList); 
+//router.get('/', auth, PostCtrl.postList); 
 //saving new posts to DB 
 router.post('/', auth, PostCtrl.createPost); //added auth
 
