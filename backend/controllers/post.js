@@ -28,21 +28,18 @@ exports.createPost = (req, res, next) => {
     );
 }
 
-/*
-//find one post
-exports.getOnePost = (req, res, next) => {
-    Post.findOne({
-        _id: req.params.id
-    }).then(
-        (post) => {
-            res.status(200).json(post);
+//retrieve a list
+exports.postList = (req, res, next) => {
+    Pauce.find().then(
+        (posts) => {
+            res.status(200).json(posts);
         }
     ).catch(
         (error) => {
-            res.status(404).json({
+            res.status(400).json({
                 error: error
             });
         }
     );
-};
-*/
+}
+
