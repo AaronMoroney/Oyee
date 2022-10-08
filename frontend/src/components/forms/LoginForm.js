@@ -10,7 +10,7 @@ import '../../styles/components/forms/_login-form.scss'
 import Axios from 'axios'
 //token
 import jwt from 'jwt-decode'
-//import LoginMsg from '../../components/errormsg/loginMsg'
+
 
 //refactor second axios call into own function
 const theme = createTheme ({
@@ -30,7 +30,6 @@ const theme = createTheme ({
 function loginForm() {
     let userNameStorage;
     let userPasswordStorage; 
-    //let userId;
 
     /*
     ** | ERROR HANDLING function
@@ -67,10 +66,9 @@ function loginForm() {
         }).then(function(response) {
             //send the JWT to local storage
             const token = response.data.token;
-            sessionStorage.setItem('jwt', response.data.token);
+            sessionStorage.setItem('jwt', token);
             const tokenDecode = jwt(token); //decode
             sessionStorage.setItem('userId', JSON.stringify(tokenDecode.userId));
-
         }).catch(function(error)  {
             console.log(error);
         })

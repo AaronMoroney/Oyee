@@ -33,7 +33,6 @@ const theme = createTheme ({
 function SignupForm() {
     let userNameStorage;
     let userPasswordStorage;
-    //let userId;
     
     /*
     ** | ERROR HANDLING function
@@ -73,15 +72,15 @@ function SignupForm() {
     const login = () => {
         Axios.post('http://localhost:3000/auth/login', {
             userName: userNameStorage,
-            userPassword: userPasswordStorage
+            userPassword: userPasswordStorage,
         },
         { headers: {
-                'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${token}`
         }
         }).then(function(response) {
             //send the JWT to local storage
             const token = response.data.token;
-            sessionStorage.setItem('jwt', response.data.token);
+            sessionStorage.setItem('jwt', token);
             const tokenDecode = jwt(token); //decode
             sessionStorage.setItem('userId', JSON.stringify(tokenDecode.userId));
         }).catch(function(error)  {

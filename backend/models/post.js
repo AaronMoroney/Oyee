@@ -5,7 +5,12 @@ const sequelize = require('./index');
 const Post = sequelize.define('post', {
     userId: {
         type: DataTypes.INTEGER,
-        primaryKey: true,
+        foreignKey: true,
+    },
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true 
     },
     postTitle: {
         type: DataTypes.STRING,
@@ -15,35 +20,16 @@ const Post = sequelize.define('post', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    updatedAt: {
-        field: 'updated_at',
-        type: DataTypes.DATE,
-        allowNull: false,
-    },
     createdAt: {
         field: 'created_at',
         type: DataTypes.DATE,
         allowNull: false,
     },
-   
-    /*
-    likes: {
-        type: DataTypes.INTEGER,
-        primaryKey: false,
-    },
-    dislikes: {
-        type: DataTypes.INTEGER,
-        primaryKey: false,
-    },
-    usersLiked: {
-        type: DataTypes.STRING,
-        primaryKey: false, 
-    },
-    usersDisliked: {
-        type: DataTypes.STRING,
-        primaryKey: false,
-    },
-    */
+    updatedAt: {
+        field: 'updated_at',
+        type: DataTypes.DATE,
+        allowNull: false,
+    }
 })
 
 

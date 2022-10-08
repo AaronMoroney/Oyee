@@ -1,11 +1,28 @@
 import React from 'react'
-//import { useRef } from 'react';
+//axios
+import Axios from 'axios';
 //styles
 import '../../styles/components/posts/_posts.scss'
 //javascript utils
 
 function Posts() {
-    //const topRef = useRef(null);
+    //retrieve a list of posts from the DB  
+    let token = sessionStorage.getItem('jwt');
+    let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+    console.log('userIdStorage log', userIdStorage);
+    //axios post
+    Axios.get(`http://localhost:3000/posts?userId=${userIdStorage}`, 
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }
+    ).then(function(response) {
+        console.log(response);
+    }).catch(function(error)  {
+        console.log(error);
+    })
+   
     return (
     <>
      <div className='post-feed__parent'>

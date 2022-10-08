@@ -7,6 +7,7 @@ const Post = require('../models/post');
 exports.createPost = (req, res, next) => {
     //because to send file, frontend sends as form, req.body.post
     const post = (req.body);
+    console.log('request post',post);
     const newPost = new Post({
         userId: post.userId,
         postTitle: post.postTitle,
@@ -27,6 +28,32 @@ exports.createPost = (req, res, next) => {
        } 
     );
 }
+
+
+
+//retrieve a list
+exports.postList = (req, res, next) => {
+    Post.findAll({
+      
+    }).then(
+        (posts) => {
+            res.status(200).json(posts);
+        }
+    ).catch(
+        (error) => {
+            res.status(400).json({
+                error: error
+            });
+        }
+    );
+}
+
+
+
+
+
+
+
 
 /*
 //find one post

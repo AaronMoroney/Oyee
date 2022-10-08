@@ -8,5 +8,3 @@ router.post('/login',  userCtrl.login );
 
 //export router
 module.exports = router;
-
-//checked

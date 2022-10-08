@@ -12,10 +12,6 @@ import Paper from '@mui/material/Paper';
 import CloseIcon from '@mui/icons-material/Close';
 //theme
 import { createTheme, ThemeProvider} from '@mui/material';
-//jwt
-//import jwt from 'jwt-decode';
-//import { decodeToken } from "react-jwt";
-
 
 const theme = createTheme ({
     palette: {
@@ -109,6 +105,7 @@ export const Modal = ({showModal, setShowModal }) => {
                                     }} 
                                     onChange = {(e) => {
                                         postContentStorage = e.target.value;
+                                        console.log(postContentStorage);
                                     }}
                                     />
                                 </div>
