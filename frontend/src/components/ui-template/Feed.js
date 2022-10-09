@@ -6,6 +6,20 @@ function Feed() {
     <div className='home-feed__feed'>
       <div>
         <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        <Posts />
+        
       </div>
     </div>
   )
