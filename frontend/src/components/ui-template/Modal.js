@@ -17,27 +17,27 @@ import PhotoCamera from '@mui/icons-material/PhotoCamera'
 
 const theme = createTheme ({
     palette: {
-            button: {
-            primary: {
-                main: '#091D39',
-                contrastText: '#FFFFFF', 
-            },
-            secondary: {
-                main: '#D44651',
-            },
-            confirm: {
-                main: '#2FD381',
-                contrastText: '#FFFFFF',
-            },
-            },
-            appbar: {
-            primary: {
-                main: '#091D39',
-                contrastText: '#FFFFFF'
-            }
-            }
+        button: {
+        primary: {
+            main: '#091D39',
+            contrastText: '#FFFFFF', 
         },
-    });
+        secondary: {
+            main: '#D44651',
+        },
+        confirm: {
+            main: '#2FD381',
+            contrastText: '#FFFFFF',
+        },
+        },
+        appbar: {
+        primary: {
+            main: '#091D39',
+            contrastText: '#FFFFFF'
+        }
+        }
+    },
+});
     
 
 export const Modal = ({showModal, setShowModal }) => {
@@ -101,7 +101,6 @@ export const Modal = ({showModal, setShowModal }) => {
                                     />
                                     <div className='modal-form-file-upload__parent'>
                                         <h4 className='upload-a-file'>UPLOAD AN IMAGE (required)</h4>
-                                        
                                             <IconButton color="primary" aria-label="upload picture" component="label">
                                                 <input 
                                                 hidden accept="image/*" 
@@ -111,7 +110,6 @@ export const Modal = ({showModal, setShowModal }) => {
                                                 }}/>
                                                 <PhotoCamera />
                                             </IconButton>
-                                       
                                     </div>
                                     <TextField
                                     id="outlined-multiline-static"
