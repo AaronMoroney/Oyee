@@ -30,51 +30,7 @@ function Posts() {
         <div className='post-feed__post'>
             
         </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
-        <div className='post-feed__post'>
-            
-        </div>
+       
         <div className='post-feed__buffer-bottom'></div>
      </div>
     </>

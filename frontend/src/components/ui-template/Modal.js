@@ -11,7 +11,9 @@ import Paper from '@mui/material/Paper';
 //mui icons
 import CloseIcon from '@mui/icons-material/Close';
 //theme
-import { createTheme, ThemeProvider} from '@mui/material';
+import { createTheme, ThemeProvider, IconButton} from '@mui/material';
+//icons
+import PhotoCamera from '@mui/icons-material/PhotoCamera'
 
 const theme = createTheme ({
     palette: {
@@ -39,20 +41,23 @@ const theme = createTheme ({
     
 
 export const Modal = ({showModal, setShowModal }) => {
+
     //storage for e.target.value
     let postTitleStorage;
     let postContentStorage;
-    
+    let imageContentStorage;
+
     //get token from local storage
     let token = sessionStorage.getItem('jwt');
     let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
     
     //create post
     const createPost = () => {
-        Axios.post('http://localhost:3000/posts', {
+        Axios.post('http://localhost:3000/posts',  {
             userId: userIdStorage,
             postTitle: postTitleStorage,
             postContent: postContentStorage,
+            imageContent: imageContentStorage,
         },
         {
             headers: {
@@ -94,11 +99,25 @@ export const Modal = ({showModal, setShowModal }) => {
                                        postTitleStorage = e.target.value;
                                     }}
                                     />
+                                    <div className='modal-form-file-upload__parent'>
+                                        <h4 className='upload-a-file'>UPLOAD AN IMAGE (required)</h4>
+                                        
+                                            <IconButton color="primary" aria-label="upload picture" component="label">
+                                                <input 
+                                                hidden accept="image/*" 
+                                                type="file" 
+                                                onChange={(e) => {
+                                                    imageContentStorage = e.target.value;
+                                                }}/>
+                                                <PhotoCamera />
+                                            </IconButton>
+                                       
+                                    </div>
                                     <TextField
                                     id="outlined-multiline-static"
                                     label="Post Body"
                                     multiline 
-                                    rows={10}
+                                    rows={8}
                                     className = 'login-form'
                                     sx = {{
                                         marginTop: 1,
@@ -111,7 +130,7 @@ export const Modal = ({showModal, setShowModal }) => {
                                 </div>
                                 <Paper 
                                 sx={{ bgcolor: 'button.confirm.main', color: 'button.confirm.contrastText', width: '150px', height: '25px', margin: 'auto' }}
-                                onClick = {() => createPost()}
+                                onClick = {() => { createPost(); setShowModal(prev=>!prev) }}
                                 > SHARE POST </Paper>
                             </div>
                         </div>

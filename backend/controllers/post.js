@@ -11,7 +11,9 @@ exports.createPost = (req, res, next) => {
     const newPost = new Post({
         userId: post.userId,
         postTitle: post.postTitle,
+        imageContent: post.imageContent,
         postContent: post.postContent,
+
     });
     console.log('newPost', newPost);
     newPost.save().then(

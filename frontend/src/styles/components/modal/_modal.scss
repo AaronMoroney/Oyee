@@ -82,3 +82,15 @@
 .modal-form__close  {
     color: $primary-color;
 }
+.modal-form-file-upload__parent {
+    display: flex;
+    justify-content:space-between;
+    padding-top: 10px;
+}
+.file-upload__button {
+    background-color: none;
+}
+.upload-a-file {
+    color:#091D39;
+    padding-top: 6px;
+}
