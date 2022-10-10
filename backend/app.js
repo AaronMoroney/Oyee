@@ -17,6 +17,8 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 //p6 has /api/.. check?
 app.use('/posts', postRoutes); 
 app.use('/auth', userRoutes); 

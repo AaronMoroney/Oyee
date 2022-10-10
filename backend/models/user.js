@@ -16,6 +16,18 @@ const User = sequelize.define('user', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    userEmail: {
+        type: DataTypes.STRING,
+        allowNull: false, 
+    },
+    userCompanyPosition: {
+        type: DataTypes.STRING,
+        allowNull: false, 
+    },
+    userGender: {
+        type: DataTypes.STRING,
+        allowNull: false, 
+    },
     createdAt: {
         field: 'created_at',
         type: DataTypes.DATE,

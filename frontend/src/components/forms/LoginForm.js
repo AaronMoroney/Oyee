@@ -37,7 +37,7 @@ function loginForm() {
 
     //get access to DOM, always at assigned positions.
     let nameErrorMsg = document.getElementById('userNameErrorMsg');
-    let passwordErrorMsg = document.getElementById('userNameErrorMsg');
+    let passwordErrorMsg = document.getElementById('passwordErrorMsg');
     
     //email
     //let regexEmail = /\S+@\S+\.\S+/g;
@@ -48,7 +48,7 @@ function loginForm() {
     function regexCharectorsResult() {
         regexCharectors.test(userNameStorage.value, userPasswordStorage.value);
     }; 
-                           
+                  
     /*
     ** | POST REQS function
     */
@@ -91,12 +91,12 @@ function loginForm() {
                             userNameStorage = e.target.value;
                             console.log(userNameStorage);
 
-                            if (userPasswordStorage.value.length <= 1 || regexCharectorsResult === false ) {
-                                passwordErrorMsg.innerText = 'first name must be greater than 1 letter and contain no special charectors(except spaces where required)';
+                            if (userNameStorage.length <= 1 || regexCharectorsResult === false ) {
+                                nameErrorMsg.innerText = 'username must be greater than 5 letter and contain no special charectors';
                             }
                         }}
                     />
-                    <p id='userNameErrorMsg'></p>
+                    <p id='nameErrorMsg'></p>
                     <TextField 
                         id='outlined-password-input'
                         label='Password' 
@@ -107,14 +107,13 @@ function loginForm() {
                         }} 
                         onChange = {(e) => {
                             userPasswordStorage = e.target.value;
-                            console.log(userNameStorage);
                             //regex function
-                            if (userNameStorage.value.length <= 1 || regexCharectorsResult === false ) {
-                                nameErrorMsg.innerText = 'first name must be greater than 1 letter and contain no special charectors(except spaces where required)';
+                            if (userPasswordStorage.length < 5 || regexCharectorsResult === false ) {
+                                passwordErrorMsg.innerText = 'password must greater than 5 charectors';
                             }
                         }}
                     />
-                    <p id='userPasswordErrorMsg'></p>
+                    <p id='passwordErrorMsg'></p>
                 </div>
                 <div >
                     {/* For UI dev purposes, created link to home page */}

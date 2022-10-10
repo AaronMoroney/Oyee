@@ -5,16 +5,19 @@ const Post = require('../models/post');
 
 //save a new post
 exports.createPost = (req, res, next) => {
-    //because to send file, frontend sends as form, req.body.post
+    //changed line 9, 10
+    const url = req.protocol + '://' + req.get('host');
+    //req.body.post = JSON.stringify(req.body.post);
     const post = (req.body);
-    console.log('request post',post);
+    console.log('request post', req.body);
     const newPost = new Post({
         userId: post.userId,
         postTitle: post.postTitle,
-        imageContent: post.imageContent,
+        //changed imageContent
+        imageContent: url +'/images/' + post.imageContent,
         postContent: post.postContent,
-
     });
+    //console.log('imageContent', imageContent);
     console.log('newPost', newPost);
     newPost.save().then(
         () => {
@@ -30,8 +33,6 @@ exports.createPost = (req, res, next) => {
        } 
     );
 }
-
-
 
 //retrieve a list
 exports.postList = (req, res, next) => {
@@ -49,13 +50,6 @@ exports.postList = (req, res, next) => {
         }
     );
 }
-
-
-
-
-
-
-
 
 /*
 //find one post

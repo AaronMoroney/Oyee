@@ -9,7 +9,10 @@ exports.signup = (req, res, next) => {
         (hash) => {
             const user =  new User({
                 userName: req.body.userName,
-                userPassword: hash 
+                userPassword: hash,
+                userEmail: req.body.userEmail,
+                userCompanyPosition: req.body.userCompanyPosition,
+                userGender: req.body.userGender
             });
             user.save().then(
                 () => {
@@ -56,6 +59,9 @@ exports.login = (req, res, next) => {
                         userId: user.userId, 
                         userName: user.userName,
                         token: token,
+                        userEmail: req.body.userEmail,
+                        userCompanyPosition: req.body.userCompanyPosition,
+                        userGender: req.body.userGender
                     });
                 }
             ).catch(
@@ -74,3 +80,46 @@ exports.login = (req, res, next) => {
         }
     )
 }
+
+
+//retrieve a list of users
+/*
+exports.userList = (req, res, next) => {
+    User.find().then(
+        (users) => {
+            res.status(200).json(users);
+        }
+    ).catch(
+        (error) => {
+            res.status(400).json({
+                error: error
+            });
+        }
+    );
+}
+*/
+
+exports.getOneUser = (req, res, next) => {
+    const id = req.params.id;
+    console.log('id log', id);
+    User.findByPk(id).then(
+        (user) => {
+            res.status(200).json({
+                userName: user.userName,
+                userEmail: user.userEmail,
+                userCompanyPosition: user.userCompanyPosition,
+                userGender: user.userGender
+            });
+        }
+    ).catch(
+        (error) => {
+            res.status(404).json({
+                error: error
+            });
+        }
+    );
+};
+
+
+
+

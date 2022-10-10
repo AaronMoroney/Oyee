@@ -11,6 +11,12 @@
     display: flex;
     flex-direction: column;
 }
+.signup-form-parent {
+    width: 100%;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
 
 .signup-link {
     color: $primary-color__light;

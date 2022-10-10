@@ -11,24 +11,12 @@ import { Button, Avatar} from '@mui/material';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt'
 
-/*
-** | Dynamic posts functionality |
-** We have a list of the posts create using the get request
-** in Posts component, we dynamically populate the info for each post 
-** same as p5 - review
-** QQQ: if something is logged to the console, can In access it from varios components?
-*/
-
 function Posts() {
     const [data, setData] = useState([]);
-    //retrieve a list of posts from the DB  
+     
     let token = sessionStorage.getItem('jwt');
     let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
 
-    //get access
-    //let userIdName = document.getElementsByClassName('post-topline__username')[0];
-
-    
     useEffect(() => {
         //axios post
         Axios.get(`http://localhost:3000/posts?userId=${userIdStorage}`, 
@@ -39,7 +27,6 @@ function Posts() {
             }
         ).then(async(response) => {
             setData(response.data);
-            //console.log('setData', setData); //works
         });
         }, []);
     
@@ -53,15 +40,15 @@ function Posts() {
                             <div className='post-topline'>
                                 <div className='post-topline__avatar-name'>
                                     <Avatar  sx={{ width: 30, height: 30, margin: 'auto' }} />
-                                    <p className='post-topline__username'>  
+                                    <p className='post-topline__username' >  
                                         {posts.userId}
                                     </p>
                                 </div>
                                 <p>new</p>
                             </div>
-                            <h4 className='post-title'> {posts.postTitle}</h4>
-                            <img className='post-img' alt='alt' src={ posts.imageContent } />
-                            <p className='post-content'> {posts.postContent}</p>
+                            <h4 className='post-title' > {posts.postTitle}</h4>
+                            <img className='post-img' alt='alt' src={ posts.imageContent} />
+                            <p className='post-content' > {posts.postContent} </p>
                             <div className='post__bottomline'>
                                 <Button variant="text">view post</Button>
                                 <div className='like-functionality-parent'>

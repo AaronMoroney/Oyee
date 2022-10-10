@@ -33,14 +33,20 @@ const theme = createTheme ({
 function SignupForm() {
     let userNameStorage;
     let userPasswordStorage;
+    let companyPositionStorage;
+    let emailStorage;
+    let genderStorage;
     
     /*
     ** | ERROR HANDLING function
     */
 
     //get access to DOM, always at assigned positions.
-    let nameErrorMsg = document.getElementById('userNameErrorMsg');
-    let passwordErrorMsg = document.getElementById('userNameErrorMsg');
+    let nameErrorMsg = document.getElementById('nameErrorMsg');
+    let passwordErrorMsg = document.getElementById('passwordErrorMsg');
+    //let positionErrorMsg = document.getElementById('positionErrorMsg');
+    let emailErrorMsg = document.getElementById('emailErrorMsg');
+    //let genderErrorMsg = document.getElementById('genderErrorMsg');
 
     //email
     //let regexEmail = /\S+@\S+\.\S+/g;
@@ -62,6 +68,9 @@ function SignupForm() {
         Axios.post('http://localhost:3000/auth/signup', {
             userName: userNameStorage,
             userPassword: userPasswordStorage,
+            userEmail: emailStorage,
+            userCompanyPosition: companyPositionStorage,
+            userGender: genderStorage
         }).then(function(response) {
             login(response);
         }).catch(function(error) {
@@ -78,11 +87,14 @@ function SignupForm() {
             'Authorization': `Bearer ${token}`
         }
         }).then(function(response) {
-            //send the JWT to local storage
+            //send to local storage
             const token = response.data.token;
             sessionStorage.setItem('jwt', token);
             const tokenDecode = jwt(token); //decode
             sessionStorage.setItem('userId', JSON.stringify(tokenDecode.userId));
+            const userName = response.data.userName;
+            sessionStorage.setItem('userName', userName);
+
         }).catch(function(error)  {
             console.log(error);
         })
@@ -92,9 +104,10 @@ function SignupForm() {
         <ThemeProvider theme={theme}>
             <div>
                 <h2>Create Account</h2>
-                <div className='login-form-parent'>
+                <div className='signup-form-parent'>
+                    <p id='nameErrorMsg'>{/*text goes here*/ } </p>
                     <TextField 
-                        id='outlined-basic' 
+                        id='outlined-username-input' 
                         label='Username' 
                         variant='outlined' 
                         className='login-form'
@@ -105,13 +118,14 @@ function SignupForm() {
                         //capture
                         onChange = {(e) => {
                             userNameStorage = e.target.value;
-                            console.log(userNameStorage);
-                            if (userPasswordStorage.value.length <= 1 || regexCharectorsResult === false ) {
-                                passwordErrorMsg.innerText = 'first name must be greater than 1 letter and contain no special charectors(except spaces where required)';
+                
+                            if (userNameStorage.length <= 1 || regexCharectorsResult === false ) {
+                                nameErrorMsg.innerText = 'userName must be greater than 5 letters and contain no special charectors';
                             }
                         }}
                     />
-                    <p id='userNameErrorMsg'></p>
+                    
+                    <p id='passwordErrorMsg'>{/*text goes here*/}</p>
                     <TextField 
                         id='outlined-password-input'
                         label='Password' 
@@ -123,34 +137,67 @@ function SignupForm() {
                         //capture
                         onChange = {(e) => {
                             userPasswordStorage = e.target.value;
-                            console.log(userNameStorage);
-                            if (userNameStorage.value.length <= 1 || regexCharectorsResult === false ) {
-                                nameErrorMsg.innerText = 'first name must be greater than 1 letter and contain no special charectors(except spaces where required)';
-                            }
+                   
+                            if (userPasswordStorage.length <= 1 || regexCharectorsResult === false ) {
+                                passwordErrorMsg.innerText = 'first name must be greater than 5 letters and contain no special charectors(except spaces where required)';
+                            } 
                         }}
                     />
-                    <p id='userPasswordErrorMsg'></p>
-                    {/*
+                    
+                    <p id='emailErrorMsg'>{/*text goes here*/}</p>
                     <TextField 
-                        id="outlined-basic" 
-                        label="Company Position" 
-                        variant="outlined" 
-                        className='login-form' 
-                        sx = {{
-                            marginBottom: 2,
-                        }} 
-                    />
-                    <TextField 
-                        id="outlined-basic" 
+                        id="outlined-email-input" 
                         label="Email" 
                         variant="outlined" 
                         className='login-form' 
                         sx = {{
                             marginBottom: 2,
                         }} 
+                        onChange = {(e) => {
+                            emailStorage = e.target.value;
+                            if (emailStorage.length <= 1 || regexCharectorsResult === false ) {
+                                emailErrorMsg.innerText = 'email must be in the format of something@something.com';
+                            } 
+                        }}
                     />
-                    */}
-        
+                    
+                    
+                    <div>
+                        <TextField 
+                            id="outlined-company-input" 
+                            label="Company Position" 
+                            variant="outlined" 
+                            className='login-form' 
+                            sx = {{
+                                marginBottom: 2,
+                                width: 242.5 
+                            }} 
+                            //capture
+                            onChange = {(e) => {
+                                companyPositionStorage = e.target.value;  
+                            }}
+                        />
+                        
+                        <TextField 
+                            id="outlined-gender-input" 
+                            label="Pronouns" 
+                            variant="outlined" 
+                            className='login-form' 
+                            sx = {{
+                                marginBottom: 2,
+                                width: 240,
+                                marginLeft: 2
+                                
+                            }} 
+                            //capture
+                            onChange = {(e) => {
+                                genderStorage= e.target.value;
+                            }}
+                        />
+                    
+
+                    </div>
+                   
                 </div>
                 <div>
                     <Link className='link-global' to='/homepage'>
@@ -162,7 +209,7 @@ function SignupForm() {
                             marginTop: 1, 
                             marginBottom: 2
                             }}
-                            onClick = {() => { createAccount(); regexCharectorsResult(); }}
+                            onClick = {() => { createAccount(); regexCharectorsResult();}}
                             > CREATE ACCOUNT
                         </Button>
                     </Link>
