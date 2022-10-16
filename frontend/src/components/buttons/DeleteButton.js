@@ -39,7 +39,12 @@ function DeleteButton() {
   return (
     <>
         <ThemeProvider theme={theme}>
-            <Button varient='text' sx={{ bgcolor: 'button.delete.main', color: 'button.delete.contrastText', marginLeft: '10%', width: '175px' }} >Delete account </Button>
+            <Button varient='text' sx={{ 
+                bgcolor: 'button.delete.main', 
+                color: 'button.delete.contrastText', 
+                marginLeft: '10%', width: '175px' 
+                }}> Delete account
+                 </Button>
         </ThemeProvider>
     </>
     

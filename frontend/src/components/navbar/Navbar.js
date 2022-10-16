@@ -37,10 +37,6 @@ const theme = createTheme ({
   },
 });
 
-/*unread posts are highlighted in array w/ red outline*/
-
-
-
 function Navbar() {
 
   const [ isDesktop, setDesktop] = useState(window.innerWidth > 768);

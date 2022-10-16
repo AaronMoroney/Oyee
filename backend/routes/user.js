@@ -9,11 +9,10 @@ const userCtrl = require('../controllers/user');
 router.post('/signup',  userCtrl.signup);
 //POST route for login
 router.post('/login',  userCtrl.login);
-//GET route for array of users
-//router.get('/', userCtrl.userList);
-//GET route for user profile page
-router.get('/:id', userCtrl.getOneUser);
-
+//GET route for logged in profile page
+router.get('/profilepage/:userId', userCtrl.getOneUser);
+//GET route for logged in profile page
+router.get('/userprofilepage/:userId', userCtrl.getOtherUser);
 
 //export router
 module.exports = router;

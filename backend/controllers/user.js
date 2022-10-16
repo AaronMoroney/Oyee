@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken'); //import Jwt
 
 //signup
 exports.signup = (req, res, next) => {
-    //10 = number of salting iteration
     bcrypt.hash(req.body.userPassword, 10).then(
         (hash) => {
             const user =  new User({
@@ -22,7 +21,7 @@ exports.signup = (req, res, next) => {
                 }
             ).catch(
                 (error) => {
-                    console.error(error)//500 server error
+                    console.error(error)
                     res.status(500).json({
                         error: error
                     });
@@ -81,26 +80,31 @@ exports.login = (req, res, next) => {
     )
 }
 
-
-//retrieve a list of users
-/*
-exports.userList = (req, res, next) => {
-    User.find().then(
-        (users) => {
-            res.status(200).json(users);
+exports.getOneUser = (req, res, next) => {
+    //params = router.get('/:userId', userCtrl.getOneUser);
+    const id = req.params.userId;
+    console.log('id log', id);
+    User.findByPk(id).then(
+        (user) => {
+            res.status(200).json({
+                userName: user.userName,
+                userEmail: user.userEmail,
+                userCompanyPosition: user.userCompanyPosition,
+                userGender: user.userGender
+            });
         }
     ).catch(
         (error) => {
-            res.status(400).json({
+            res.status(404).json({
                 error: error
             });
         }
     );
-}
-*/
+};
 
-exports.getOneUser = (req, res, next) => {
-    const id = req.params.id;
+exports.getOtherUser = (req, res, next) => {
+    //params = router.get('/:userId', userCtrl.getOneUser);
+    const id = req.params.userId;
     console.log('id log', id);
     User.findByPk(id).then(
         (user) => {

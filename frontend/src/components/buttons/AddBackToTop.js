@@ -43,16 +43,19 @@ function AddBackToTop() {
         //toggle
         setShowModal(prev => !prev)
     }
+    
 
     return (
      <ThemeProvider theme={theme}>
         <>
-            
-            <Fab aria-label='add' sx={{bgcolor: 'button.secondary.main', color: 'button.primary.contrastText', textTransform: 'none'}}>
+            <Fab aria-label='add' sx={{
+                bgcolor: 'button.secondary.main',
+                color: 'button.primary.contrastText', 
+                textTransform: 'none'
+                }}>
                 <AddOutlinedIcon  onClick={openModal}/>
                 <Modal showModal={showModal} setShowModal={setShowModal} />        
             </Fab> 
-            
             { showModal ? null :  
             <Fab 
                 variant='extended'

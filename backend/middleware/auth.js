@@ -34,8 +34,6 @@ module.exports = (req, res, next) => {
         console.log('decoded token', decodedToken);//working
         const userId = decodedToken.userId; 
         console.log('backend userId', userId); //working
-        //every subsequent piece of middleware, we'll get userId from the token
-        //every subsequent piece of middleware, we'll get userId from the token
         req.auth = { userId: userId }
         if (req.body.userId && req.body.userId !== userId) {
             throw 'Invalid user ID';

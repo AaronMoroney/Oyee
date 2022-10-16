@@ -21,9 +21,9 @@ const theme = createTheme ({
   });
 
 function FileUploadForm() {
-<ThemeProvider theme={theme}></ThemeProvider>
-  return (
-    <>  
+  <ThemeProvider theme={theme}></ThemeProvider>
+    return (
+      <>  
         <h4 className='upload-a-file'>UPLOAD AN IMAGE (required)</h4>
         <IconButton color="primary" aria-label="upload picture" component="label">
             <input hidden accept="image/*" type="file" />

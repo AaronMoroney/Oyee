@@ -15,17 +15,23 @@ import Card from '@mui/material/Card';
 import '../styles/components/profpicnametitle/_profpicnametitle.scss'
 
 function ProfilePage() {
-
   const [userData, setUserData] = useState([]);
 
-  //let token = sessionStorage.getItem('jwt');
-  let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+  /*
+  ** | STORAGE |
+  */
 
+  let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+  //to display buttons or not
   const location = useLocation();
+  
+  /*
+  ** | GET |
+  */
 
   useEffect(() => {
     //axios post
-    Axios.get(`http://localhost:3000/auth/${userIdStorage}`, 
+    Axios.get(`http://localhost:3000/auth/profilepage/${userIdStorage}`, 
     ).then(async(response) => {
       setUserData(response.data);
       console.log(response.data);

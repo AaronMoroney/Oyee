@@ -1,16 +1,14 @@
 const multer = require('multer');
 
-//map all images types
 const MIME_TYPES = {
     'image/jpeg': 'jpg',
     'image/jpg': 'jpg',
     'image/png': 'png'
 };
 
-//let splitFile;
-
 const storage = multer.diskStorage ({
     destination: (req, file, callback) => {
+        //null = no image, images folder if images present.
         callback(null, 'images');
     },
     filename: (req, file, callback) => {
@@ -19,5 +17,5 @@ const storage = multer.diskStorage ({
         callback(null, name + Date.now() + '.' + extension);
     }
 });
-
+//configured multer
 module.exports = multer({storage: storage}).single('image');

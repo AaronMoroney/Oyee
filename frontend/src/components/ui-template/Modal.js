@@ -4,7 +4,7 @@ import Axios from 'axios';
 //assets
 import typewriter from '../../assets/images/typewriter.jpg';
 //styles
-import '../../styles/components/modal/_modal.scss';
+import '../../styles/components/modals/_modal.scss';
 //mui
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
@@ -39,48 +39,29 @@ const theme = createTheme ({
     },
 });
 
-/*
-let formData = new FormData();    //formdata object
-
-formData.append('name', 'ABC');   //append the values with key, value pair
-formData.append('age', 20);
-
-const config = {     
-    headers: { 'content-type': 'multipart/form-data' }
-}
-
-axios.post(url, formData, config)
-    .then(response => {
-        console.log(response);
-    })
-    .catch(error => {
-        console.log(error);
-    });
-*/
-
 export const Modal = ({showModal, setShowModal }) => {
-
-   
 
     //storage for e.target.value
     let postTitleStorage;
     let postContentStorage;
     let imageContentStorage;
-
     //string manipulation
-    let imageSliced ;
-    
+    let imageSliced;
+
+    /*
+    let formData = new FormData(); //formdata object
+    formData.append('imageContent', imageSliced); //append the values with key, value pair
+    */
+
     //get token from local storage
     let token = sessionStorage.getItem('jwt');
     let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+    let userName = sessionStorage.getItem('userName');
 
-
-
-  
-   
     const createPost = () => {
         Axios.post('http://localhost:3000/posts', {
             userId: userIdStorage,
+            userName: userName,
             postTitle: postTitleStorage,
             postContent: postContentStorage,
             imageContent: imageSliced
@@ -89,10 +70,11 @@ export const Modal = ({showModal, setShowModal }) => {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'content-type': 'application/json',
-
             }
         }).then(function(response) {
             console.log(response);
+            
+    
         }).catch(function(error)  {
             console.log(error);
         })
@@ -110,10 +92,12 @@ export const Modal = ({showModal, setShowModal }) => {
                             </div>
                             <div className='modal-parent__right'>
                                 <div className='modal-form__parent'>
+                                    
                                     <div className='modal-form__create-close'>
                                         <h2 className='modal-form__heading'>Create a Post 😇 </h2>
                                         <CloseIcon onClick={() => setShowModal(prev=>!prev)} sx={{marginTop: 1,}} />
                                     </div>
+
                                     <TextField 
                                     id="outlined-basic" 
                                     label="Add A Title" 
@@ -126,9 +110,10 @@ export const Modal = ({showModal, setShowModal }) => {
                                     onChange = {(e) => {
                                        postTitleStorage = e.target.value;
                                     }}
+                            
                                     />
                                     <div className='modal-form-file-upload__parent'>
-                                        <h4 className='upload-a-file'>UPLOAD AN IMAGE (required)</h4>
+                                        <h4 className='upload-a-file'>UPLOAD AN IMAGE - required</h4>
                                             <IconButton color="primary" aria-label="upload picture" component="label">
                                                 <input 
                                                 hidden accept="image/*" 
@@ -136,9 +121,11 @@ export const Modal = ({showModal, setShowModal }) => {
                                                 onChange={(e) => {
                                                     imageContentStorage = e.target.value;
                                                     console.log(imageContentStorage);
-                                                    imageSliced= imageContentStorage.slice(12);
+                                                    imageSliced = imageContentStorage.slice(12);
                                                     console.log(imageSliced);
-                                                }}/>
+                                                }}
+                                                
+                                                />
                                                 <PhotoCamera />
                                             </IconButton>
                                     </div>

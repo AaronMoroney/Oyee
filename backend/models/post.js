@@ -12,6 +12,10 @@ const Post = sequelize.define('post', {
         autoIncrement: true,
         primaryKey: true 
     },
+    userName: {
+        type: DataTypes.STRING,
+        allowNull: false, 
+    },
     postTitle: {
         type: DataTypes.STRING,
         allowNull: false, 

@@ -38,7 +38,14 @@ function confirmButton() {
   return (
     <>
         <ThemeProvider theme={theme}>
-            <Button varient='text' sx={{ bgcolor: 'button.confirm.main', color: 'button.confirm.contrastText', width: '175px', height: '45px' }} >Modify account </Button>
+            <Button varient='text' sx={{ 
+                bgcolor: 'button.confirm.main', 
+                color: 'button.confirm.contrastText', 
+                width: '175px', 
+                height: '45px' 
+                }}> 
+                Modify account 
+            </Button>
         </ThemeProvider>
     </>
     
