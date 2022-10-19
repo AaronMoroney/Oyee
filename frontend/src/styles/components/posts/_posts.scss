@@ -7,8 +7,6 @@
     border-radius: 3px;
     width: 100%;
     margin-top: 10px;
-    
-    
     @include tablet-only {
         height: 37vh;
     }
@@ -53,7 +51,9 @@
 }
 .link-global, .link-global:visited {
     text-decoration: none;
-    color: inherit;
-    
+    color: inherit; 
+}
+.post-parent__one-post {
+    margin: 10% 12% 2.5% 10%;
 }
 

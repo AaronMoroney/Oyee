@@ -1,20 +1,33 @@
 const Post = require('../models/post');
 const fs = require('fs'); // file system
 
+/*
+function siteUrl(req) {
+    return req.protocol + '://' + req.get('host');
+}//working
+*/
+
+
+
+/*
+function postImageUrl(req) {
+    console.log('imageContent', req.body.imageContent)
+    return siteUrl(req) + '/images/' + req.body.imageContent;
+}//working
+*/
 
 //save a new post
 exports.createPost = (req, res, next) => {
     const url = req.protocol + '://' + req.get('host'); //working
-    const post = (req.body);
-    console.log('request post', req.body);
+    const post = req.body;
+    console.log('CONTROLLER, req.body', req.body);
     const newPost = new Post({
         userId: post.userId,
         postTitle: post.postTitle,
-        imageContent: url +'/images/' + post.imageContent,
+        imageContent: url + '/images/' + post.imageContent, //undefined
         postContent: post.postContent,
         userName: post.userName,
     });
-
     console.log('newPost', newPost);
     newPost.save().then(
         () => {
@@ -33,6 +46,7 @@ exports.createPost = (req, res, next) => {
 
 //retrieve a list
 exports.postList = (req, res, next) => {
+    console.log('POSTLIST: this is working');
     Post.findAll({
     }).then(
         (posts) => {
@@ -47,22 +61,14 @@ exports.postList = (req, res, next) => {
     );
 }
 
-/*
-//find one post
+
+//find one post, working
 exports.getOnePost = (req, res, next) => {
-    //const id = req.params.id;
-    //console.log('id log', id);
-    Post.findByPk(id).then(
-        (posts) => {
-            res.status(200).json({
-                userId: posts.userId,
-                postTitle: posts.postTitle,
-                imageContent: url +'/images/' + posts.imageContent,
-                postContent: posts.postContent,
-                id: posts.id
-            });
+    Post.findOne({
+        where: {
+            id: req.params.id
         }
-    ).then(
+    }).then(
         (post) => {
             res.status(200).json(post);
         }
@@ -74,68 +80,23 @@ exports.getOnePost = (req, res, next) => {
         }
     );
 };
-*/
 
-//find one post
+
+/*
+//fine one post to mark as 'viewed'
 exports.getOnePost = (req, res, next) => {
     const id = req.params.id;
     console.log('id log', id);
-    Post.findByPk(id) 
-        .then((posts) => {
-            res.status(200).json({
-                userId: posts.userId,
-                postTitle: posts.postTitle,
-                imageContent: url +'/images/' + posts.imageContent,
-                postContent: posts.postContent,
-                id: posts.id
-            });
-        }
-    ).catch(
-        (error) => {
-            res.status(404).json({
-                error: error
-            });
-        })
-}
-
-
-/*
-//find one post
-exports.getOnePost = (req, res, next) => {
-    //const id = req.params.id;
-    //console.log('id log', id);
     Post.findByPk(id).then(
-        (posts) => {
-            res.status(200).json({
-                userId: posts.userId,
-                postTitle: posts.postTitle,
-                imageContent: url +'/images/' + posts.imageContent,
-                postContent: posts.postContent,
-                id: posts.id
-            });
-        }
-    ).then(
         (post) => {
-            res.status(200).json(post);
-        }
-    ).catch(
-        (error) => {
-            res.status(404).json({
-                error: error
+            res.status(200).json({
+                userId: post.userId,
+                postTitle: post.postTitle,
+                imageContent: url + '/images/' + post.imageContent,
+                postContent: post.postContent,
+                id: post.id,
+                userName: post.userName
             });
-        }
-    );
-};
-*
-
-
-/*
-exports.getOnePost = (req, res, next) => {
-    Post.findOne({
-        id: req.params.id
-    }).then(
-        (sauce) => {
-            res.status(200).json(sauce);
         }
     ).catch(
         (error) => {
@@ -146,4 +107,6 @@ exports.getOnePost = (req, res, next) => {
     );
 };
 */
+
+
 

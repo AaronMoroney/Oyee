@@ -1,4 +1,6 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState, useEffect } from 'react';
+//routerDom
+import { useLocation } from 'react-router-dom';
 //axios
 import Axios from 'axios';
 //components
@@ -11,18 +13,24 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt'
 import Avatar from '@mui/material/avatar';
 
-function PostPage() {
+export const PostPage = (response) => {
     //Data
-    const [OnePostData, setOnePostData] = useState([]);
+    const [onePostData, setOnePostData] = useState([]);
     // STORAGE 
     let token = sessionStorage.getItem('jwt');
-    let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+    //let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+    //props
+    const location = useLocation();
+    const { id } = location.state;
+    console.log( 'frontend id', id );
+
     /*
     ** | GET ONE POST |
     */
+
     useEffect(() => {
         //axios post
-        Axios.get(`http://localhost:3000/posts/id=${90}`, 
+        Axios.get(`http://localhost:3000/posts/postpage/${id}`, 
             {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -36,19 +44,19 @@ function PostPage() {
     return (
         <>
             <Navbar/>
-            <div className='post-parent'>
+            <div className='post-parent__one-post'>
                 <div className='post-topline'>
                     <div className='post-topline__avatar-name'>
                         <Avatar  sx={{ width: 30, height: 30, margin: 'auto' }} />
                         <p className='post-topline__username' >  
-                            {OnePostData.userId}
+                            {onePostData.userName}
                         </p>
                     </div>
                     <p>new</p>
                 </div>
-                <h4 className='post-title' > {OnePostData.postTitle}</h4>
-                <img className='post-img' alt='alt' src={ OnePostData.imageContent} />
-                <p className='post-content' > {OnePostData.postContent} </p>
+                <h4 className='post-title' > {onePostData.postTitle}</h4>
+                <img className='post-img' alt='alt' src={ onePostData.imageContent} />
+                <p className='post-content' > {onePostData.postContent} </p>
                 <div className='like-functionality-parent'>
                     <div className='like-functionality__up'>
                         <ThumbUpOffAltIcon />

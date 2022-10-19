@@ -69,6 +69,8 @@ function loginForm() {
             sessionStorage.setItem('jwt', token);
             const tokenDecode = jwt(token); //decode
             sessionStorage.setItem('userId', JSON.stringify(tokenDecode.userId));
+            const userName = response.data.userName;
+            sessionStorage.setItem('userName', userName);
         }).catch(function(error)  {
             console.log(error);
         })

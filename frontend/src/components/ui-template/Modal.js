@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }from 'react';
 //axios
 import Axios from 'axios';
 //assets
@@ -40,41 +40,52 @@ const theme = createTheme ({
 });
 
 export const Modal = ({showModal, setShowModal }) => {
-
     //storage for e.target.value
-    let postTitleStorage;
-    let postContentStorage;
-    let imageContentStorage;
-    //string manipulation
-    let imageSliced;
+    //let postTitleStorage;
+    //let postContentStorage;
 
-    /*
-    let formData = new FormData(); //formdata object
-    formData.append('imageContent', imageSliced); //append the values with key, value pair
-    */
-
-    //get token from local storage
+    //get values from local storage
     let token = sessionStorage.getItem('jwt');
     let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
     let userName = sessionStorage.getItem('userName');
 
+    //set states to store values
+    const [postTitle, setPostTitle] = useState(false);
+    const [postContent, setPostContent] = useState(false);
+
+  
+
+    const saveFile = (e) => {
+        setFile(e.target.files[0]);
+        setFilename(e.target.files[0].name); //working
+    };
+
+    //file upload
+    const [file, setFile] = useState();
+    const [filename, setFilename] = useState();
+
+    //when i put url search params, the file string is saved to the console.
+    const formData = new URLSearchParams();
+    formData.append('postTitle', postTitle); //set below
+    formData.append('postContent', postContent); //set below
+    formData.append('file', file); //set below 
+    formData.append('filename', filename); //set below
+
     const createPost = () => {
-        Axios.post('http://localhost:3000/posts', {
+        Axios.post('http://localhost:3000/posts',   {
             userId: userIdStorage,
             userName: userName,
-            postTitle: postTitleStorage,
-            postContent: postContentStorage,
-            imageContent: imageSliced
+            postTitle: postTitle, 
+            postContent: postContent,
+            ImageContent:  file + filename,
         },
         {
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'content-type': 'application/json',
+                'Content-Type': 'multipart/form-data'
             }
         }).then(function(response) {
             console.log(response);
-            
-    
         }).catch(function(error)  {
             console.log(error);
         })
@@ -99,39 +110,38 @@ export const Modal = ({showModal, setShowModal }) => {
                                     </div>
 
                                     <TextField 
-                                    id="outlined-basic" 
-                                    label="Add A Title" 
-                                    variant="outlined" 
-                                    className='login-form' 
+                                    id = "outlined-basic" 
+                                    name = 'postTitle'
+                                    label = "Add A Title" 
+                                    variant = "outlined" 
+                                    className = 'login-form' 
                                     sx = {{
                                         marginBottom: 2,
                                         marginTop: 2,
                                     }}
                                     onChange = {(e) => {
-                                       postTitleStorage = e.target.value;
+                                       setPostTitle(e.target.value);
                                     }}
                             
                                     />
                                     <div className='modal-form-file-upload__parent'>
                                         <h4 className='upload-a-file'>UPLOAD AN IMAGE - required</h4>
-                                            <IconButton color="primary" aria-label="upload picture" component="label">
+                                            <IconButton color="primary" aria-label="upload picture" component="label" onClick = { formData } >
                                                 <input 
-                                                hidden accept="image/*" 
-                                                type="file" 
-                                                onChange={(e) => {
-                                                    imageContentStorage = e.target.value;
-                                                    console.log(imageContentStorage);
-                                                    imageSliced = imageContentStorage.slice(12);
-                                                    console.log(imageSliced);
-                                                }}
                                                 
+                                                hidden accept="image/*" 
+                                                type='file' 
+                                                onChange = { saveFile }
+                                                name='file'
+                                                alt='user defined image'
                                                 />
                                                 <PhotoCamera />
                                             </IconButton>
                                     </div>
                                     <TextField
-                                    id="outlined-multiline-static"
-                                    label="Post Body"
+                                    id='outlined-multiline-static'
+                                    label='Post Body'
+                                    name = 'postContent'
                                     multiline 
                                     rows={8}
                                     className = 'login-form'
@@ -139,8 +149,7 @@ export const Modal = ({showModal, setShowModal }) => {
                                         marginTop: 1,
                                     }} 
                                     onChange = {(e) => {
-                                        postContentStorage = e.target.value;
-                                        console.log(postContentStorage);
+                                        setPostContent(e.target.value);
                                     }}
                                     />
                                 </div>

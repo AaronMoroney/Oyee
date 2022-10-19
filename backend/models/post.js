@@ -16,14 +16,17 @@ const Post = sequelize.define('post', {
         type: DataTypes.STRING,
         allowNull: false, 
     },
+    
     postTitle: {
         type: DataTypes.STRING,
         allowNull: false, 
     },
+    
     imageContent: {
         type: DataTypes.STRING,
-        allowNull: false,
+        
     },
+    
     postContent: {
         type: DataTypes.STRING,
         allowNull: false,

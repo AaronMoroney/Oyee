@@ -29,11 +29,11 @@ module.exports = (req, res, next) => {
 module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
-        console.log('token', token); //working
+        console.log('AUTH: token', token); //working
         const decodedToken = jwt.verify(token, 'RANDOM_VERY_LONG_VERY_CRYPTIC_TOKEN'); 
-        console.log('decoded token', decodedToken);//working
+        console.log('AUTH: decoded token', decodedToken);//working
         const userId = decodedToken.userId; 
-        console.log('backend userId', userId); //working
+        console.log('AUTH: backend userId', userId); //working
         req.auth = { userId: userId }
         if (req.body.userId && req.body.userId !== userId) {
             throw 'Invalid user ID';

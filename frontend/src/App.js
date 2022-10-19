@@ -19,7 +19,7 @@ function App() {
         <Route path = '/profilepage' element = { <ProfilePage /> } />
         <Route path = '/userprofilepage' element = { <UserProfilePage /> } />
         {/* VIEW POST */}
-        <Route path = '/postPage' element = { <PostPage  /> } />
+        <Route path = '/postpage' element = { <PostPage  /> } />
       </Routes>
     </BrowserRouter>
   );

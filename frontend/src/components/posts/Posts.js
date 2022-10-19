@@ -31,7 +31,7 @@ function Posts(props) {
     */
 
     useEffect(() => {
-        //axios post
+        //axios get
         Axios.get(`http://localhost:3000/posts?userId=${userIdStorage}`, 
             {
                 headers: {
@@ -73,14 +73,13 @@ function Posts(props) {
                             <img className='post-img' alt='alt' src={ posts.imageContent} />
                             <p className='post-content' > {posts.postContent} </p>
                             <div className='post__bottomline'>
-                                <Link  className='link-global' to = {{
-                                    pathname: '/postPage',
-                                    id: posts.id
-                                }}>
+                                {/* button / link which brings you to post page*/ }
+                                <Link  className='link-global' to = '/postpage/' state = {{id: posts.id}}>
                                     <Button  variant="text">
                                         view post
                                     </Button>
                                 </Link>
+                                {/* end */}
                                 <div className='like-functionality-parent'>
                                     <div className='like-functionality__up'>
                                         <ThumbUpOffAltIcon />

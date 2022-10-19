@@ -80,8 +80,8 @@ exports.login = (req, res, next) => {
     )
 }
 
+//get one user, (logged in)
 exports.getOneUser = (req, res, next) => {
-    //params = router.get('/:userId', userCtrl.getOneUser);
     const id = req.params.userId;
     console.log('id log', id);
     User.findByPk(id).then(
@@ -102,8 +102,8 @@ exports.getOneUser = (req, res, next) => {
     );
 };
 
+//get one other user
 exports.getOtherUser = (req, res, next) => {
-    //params = router.get('/:userId', userCtrl.getOneUser);
     const id = req.params.userId;
     console.log('id log', id);
     User.findByPk(id).then(
@@ -124,6 +124,40 @@ exports.getOtherUser = (req, res, next) => {
     );
 };
 
-
+//Delete user (logged in)
+exports.deleteUser = (req, res, next) => {
+    //find one
+    User.findByPk(id).then( 
+        (user) => {
+        //delete files from the image system created by that user    
+        const filename = post.imageContent.split('/images/')[1]; 
+        fs.unlink('images/' + filename, () => {
+            if (!user) {
+            res.status(404).json({
+                error: new Error('no such thing')
+            });
+            }
+            //if not logged in user
+            if(post.userId !== req.auth.userId) {
+            res.status(400).json({
+                error: new Error('unauthorized request!')
+            })
+            }
+            User.deleteOne({ userId: req.params.id }).then(
+            () => {
+                res.status(200).json({
+                    message: 'user deleted!'
+                });
+            }
+            ).catch(
+                (error) => {
+                    res.status(400).json({
+                        error: error
+                    });
+                }
+            ) 
+        })
+    });
+}
 
 
