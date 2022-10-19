@@ -73,12 +73,14 @@
         height: 55vh;
     }
 }
-
 .trending {
     margin-bottom: 10px;
     font-style: italic;
     @include mobile-only {
         padding-top: 7.5%;
     }
+}
+.home-feed__trending-bold {
+    font-weight: bold;
 }
 

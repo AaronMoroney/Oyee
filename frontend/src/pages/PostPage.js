@@ -56,7 +56,6 @@ export const PostPage = (response) => {
                                 {onePostData.userName}
                             </p>
                         </div>
-                        <p>new</p>
                     </div>
                     <h4 className='post-title' > {onePostData.postTitle}</h4>
                     <img className='post-img' alt='alt' src={ onePostData.imageContent} />

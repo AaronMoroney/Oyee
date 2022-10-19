@@ -11,6 +11,8 @@ import { Button, Avatar} from '@mui/material';
 //mui icons
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt'
+import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
+import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
 
 
 function Posts(props) {
@@ -66,7 +68,10 @@ function Posts(props) {
                                 {/* end */ }
 
                                 {/* Post read, unread indicator */ }
+
+                                <FileDownloadDoneIcon sx={{marginBlock: 2}}/>
                                 <p>new</p>
+                                
                             </div>
 
                             <h4 className='post-title' > {posts.postTitle}</h4>
