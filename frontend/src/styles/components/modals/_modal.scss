@@ -36,8 +36,7 @@
     width: 400px;
     overflow: hidden;
     @include tablet-only {
-        width: 350px;
-       
+        width: 350px;  
     }
     @include mobile-only {
         height:  10px;

@@ -1,6 +1,7 @@
 @import '../../utils/variables.scss';
 @import '../../utils/mixins';
 
+//all posts
 .post-feed__post {
     background-color: white;
     height: 35vh;
@@ -14,7 +15,6 @@
         height: 30vh;
     }
 }
-
 .post-feed__buffer-top {
     height: 2vh;
     @include mobile-only {
@@ -30,7 +30,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-  
 }
 .post-img {
     padding-top: 10px;
@@ -49,11 +48,49 @@
 .post-topline__username {
     padding-left: 10px;
 }
+
+.post-content {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    // Addition lines for 2 line or multiline ellipsis
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+//global
 .link-global, .link-global:visited {
     text-decoration: none;
     color: inherit; 
 }
-.post-parent__one-post {
-    margin: 10% 12% 2.5% 10%;
+//one post page
+.post-feed__post-one-post {
+    background-color: white;
+    height: auto;
+    border-radius: 3px;
+    width: 80%;
+    margin: 22.5% 0% 50% 10% ;
+    overflow-x: scroll; 
+    @include tablet-only {
+        height: 37vh;
+    }
+    @include mobile-only {
+        height: 30vh;
+    }
 }
+.post-parent__one-post {
+    margin: 2.5% 2.5% 2.5% 10%;
+}
+
+.post-parent__one-post {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.post-content__one-post {
+  height: 100%;
+}
+
+
+
+
 

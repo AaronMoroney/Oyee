@@ -61,7 +61,6 @@ exports.postList = (req, res, next) => {
     );
 }
 
-
 //find one post, working
 exports.getOnePost = (req, res, next) => {
     Post.findOne({
@@ -80,33 +79,5 @@ exports.getOnePost = (req, res, next) => {
         }
     );
 };
-
-
-/*
-//fine one post to mark as 'viewed'
-exports.getOnePost = (req, res, next) => {
-    const id = req.params.id;
-    console.log('id log', id);
-    Post.findByPk(id).then(
-        (post) => {
-            res.status(200).json({
-                userId: post.userId,
-                postTitle: post.postTitle,
-                imageContent: url + '/images/' + post.imageContent,
-                postContent: post.postContent,
-                id: post.id,
-                userName: post.userName
-            });
-        }
-    ).catch(
-        (error) => {
-            res.status(404).json({
-                error: error
-            });
-        }
-    );
-};
-*/
-
 
 
