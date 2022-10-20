@@ -15,15 +15,25 @@ import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt'
 import Avatar from '@mui/material/avatar';
 
 export const PostPage = (response) => {
-    //Data
+    /*
+    ** | Data
+    */
     const [onePostData, setOnePostData] = useState([]);
-    // STORAGE 
+    /*
+    ** | Storage
+    */
     let token = sessionStorage.getItem('jwt');
     //let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
-    //props
+    /*
+    ** | props
+    */
     const location = useLocation();
     const { id } = location.state;
     console.log( 'frontend id', id );
+
+    /*
+    ** | postRead
+    */
 
     /*
     ** | GET ONE POST |

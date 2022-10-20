@@ -13,6 +13,9 @@ router.post('/', auth, multer, PostCtrl.createPost);
 router.get('/', auth, PostCtrl.postList); 
 //single post
 router.get('/postpage/:id', auth, PostCtrl.getOnePost); 
+//update
+router.put('/:id', auth, PostCtrl.updatePost);
+
 
 //export
 module.exports = router;

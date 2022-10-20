@@ -11,8 +11,9 @@ import { Button, Avatar} from '@mui/material';
 //mui icons
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
 import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt'
-import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
+//import MarkEmailReadIcon from '@mui/icons-material/MarkEmailRead';
 import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
+import axios from 'axios';
 
 
 function Posts(props) {
@@ -29,7 +30,7 @@ function Posts(props) {
     let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
     
     /*
-    ** | GET ALL  & MAP |
+    ** | GET ALL DATA & MAP RESULTS |
     */
 
     useEffect(() => {
@@ -48,6 +49,34 @@ function Posts(props) {
 
     return <>
         {data.map((posts) => {
+            //need to set up handling to check if userID isnt already there
+            let usersRead = posts.usersRead;
+            console.log('UsersRead',usersRead); //null
+            console.log(data.length);
+           
+            //map the posts with the following function
+            //onClick, run the function / bring user to other page
+            //when user navigates back to this page, the new information will be posted,
+            //because the first get request will be getting the updated information
+
+            const usersReadFunction = () => {
+                usersRead.push(JSON.stringify(userIdStorage));
+                console.log(usersRead);
+                axios.put(`http://localhost:3000/posts/${posts.id}`, 
+                {
+                    usersRead: usersRead
+                },   
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }).then(function(response) {
+                    console.log(response);
+                }).catch(function(error) {
+                   console.log(error);
+                })
+            }
+            
             return <>
                 <div className='post-feed__buffer-top'  />
                 <div className='post-feed__parent'>
@@ -66,26 +95,29 @@ function Posts(props) {
                                     </div>
                                 </Link>
                                 {/* end */ }
-
-                                {/* Post read, unread indicator */ }
-
-                                <FileDownloadDoneIcon sx={{marginBlock: 2}}/>
-                                <p>new</p>
-                                
+                                <div>
+                                    {/* if posts = 0, don't render */ }
+                                    {( data.length > 0 ? 
+                                        ( usersRead.includes(JSON.stringify(userIdStorage)) 
+                                        ? < FileDownloadDoneIcon sx={{paddingTop: 2,}} /> 
+                                        : <p >new</p>
+                                        ) 
+                                    : null )}
+                                </div>
                             </div>
-
                             <h4 className='post-title' > {posts.postTitle}</h4>
                             <img className='post-img' alt='alt' src={ posts.imageContent} />
                             <p className='post-content' > {posts.postContent} </p>
                             <div className='post__bottomline'>
                                 {/* button / link which brings you to post page*/ }
-                                <Link  className='link-global' to = '/postpage/' state = {{id: posts.id}}>
-                                    <Button  variant="text">
+                                <Link  className='link-global'  to = '/postpage/' state = {{id: posts.id}}  >
+                                    <Button  variant="text" onClick = {usersReadFunction}>
                                         view post
                                     </Button>
                                 </Link>
                                 {/* end */}
-                                <div className='like-functionality-parent'>
+                                {/*
+                                 <div className='like-functionality-parent'>
                                     <div className='like-functionality__up'>
                                         <ThumbUpOffAltIcon />
                                         <h3> 1 </h3>
@@ -95,6 +127,8 @@ function Posts(props) {
                                         <h3> 0 </h3>
                                     </div>
                                 </div>
+                                */}
+                               
                             </div>
                         </div>
                     </div>

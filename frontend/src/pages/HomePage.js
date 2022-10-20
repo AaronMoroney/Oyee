@@ -13,7 +13,6 @@ import '../styles/components/buttons/_addBackToTop.scss'
 
 
 function HomePage() {
-  
   return (
     <>
       <HomeProfileTemp />
@@ -28,6 +27,7 @@ function HomePage() {
               <AddBackToTop />
             </div>
           </div>
+          
           <Copyright />
         </div>
       </div>

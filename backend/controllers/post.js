@@ -7,14 +7,15 @@ function siteUrl(req) {
 }//working
 */
 
-
-
 /*
 function postImageUrl(req) {
     console.log('imageContent', req.body.imageContent)
     return siteUrl(req) + '/images/' + req.body.imageContent;
 }//working
 */
+
+
+
 
 //save a new post
 exports.createPost = (req, res, next) => {
@@ -27,6 +28,7 @@ exports.createPost = (req, res, next) => {
         imageContent: url + '/images/' + post.imageContent, //undefined
         postContent: post.postContent,
         userName: post.userName,
+        usersRead: post.userId
     });
     console.log('newPost', newPost);
     newPost.save().then(
@@ -80,4 +82,57 @@ exports.getOnePost = (req, res, next) => {
     );
 };
 
+exports.updatePost = (req,res, next) => {
+    const post = req.body;
+    const url = req.protocol + '://' + req.get('host'); //working
+    console.log('this is the posts log', post);
+    Post.update(
+        {usersRead: post.usersRead},
+        {returning: true, where: {id: req.params.id}}
+    ).then(
+        (post) => {
+            res.status(200).json(post);
+        }
+    ).catch(
+        (error) => {
+            res.status(404).json({
+                error: error
+            });
+        }
+    );
+};
 
+
+
+/*
+//post modify
+exports.updatePost = (req, res, next) => {
+    const post = req.body;
+    const url = req.protocol + '://' + req.get('host'); //working
+    console.log('this is the posts log', post);
+    const newPost = new Post({
+        userId: post.userId,
+        postTitle: post.postTitle,
+        imageContent: url + '/images/' + post.imageContent, //undefined
+        postContent: post.postContent,
+        userName: post.userName,
+        //usersRead comes from the frontend
+        usersRead: post.usersRead
+    }); //here ok
+    Post.update({
+        where: {
+            id: req.params.id
+        }
+    }).then(
+        (post) => {
+            res.status(200).json(post);
+        }
+    ).catch(
+        (error) => {
+            res.status(404).json({
+                error: error
+            });
+        }
+    );
+};
+*/

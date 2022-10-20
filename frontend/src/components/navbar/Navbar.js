@@ -63,9 +63,7 @@ function Navbar() {
               <img src ={whiteIconSvg}  alt ='groupomania logo in white' className='navbar-logo__home' />
             )}
             <div>
-              <Badge sx ={{ bgcolor: 'transparent'}}>
-                <NotificationsNoneOutlinedIcon />
-              </Badge>
+              <Badge sx ={{ bgcolor: 'transparent'}}/>
               <Link className='link-global' to='/profilepage'>
                 <Button varient='contained'>
                     <Avatar />
