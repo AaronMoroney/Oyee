@@ -78,7 +78,7 @@ export const Modal = ({showModal, setShowModal }) => {
             postTitle: postTitle, 
             postContent: postContent,
             ImageContent:  file + filename,
-            usersRead: userIdStorage 
+            usersRead: userIdStorage
         },
         {
             headers: {
