@@ -28,6 +28,9 @@ const User = sequelize.define('user', {
         type: DataTypes.STRING,
         allowNull: false, 
     },
+    userImageContent: {
+        type: DataTypes.STRING,
+    },
     createdAt: {
         field: 'created_at',
         type: DataTypes.DATE,

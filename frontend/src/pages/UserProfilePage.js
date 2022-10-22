@@ -8,7 +8,7 @@ import Axios from 'axios';
 import Navbar from '../components/navbar/Navbar';
 import Hero from '../components/ui-template/Hero';
 import Avatar from '@mui/material/avatar';
-import ConfirmButton from '../components/buttons/ConfirmButton';
+import LogoutButton from '../components/buttons/LogoutButton';
 import DeleteButton from '../components/buttons/DeleteButton';
 //mui
 import Card from '@mui/material/Card';
@@ -46,7 +46,9 @@ export const ProfilePage = (response) => {
         <Hero />
       </div>
       <div className='employee-parent'>
-          <Avatar sx={{ width: '190px', height: '190px', borderRadius: '5px'}}/>
+          <Avatar sx={{ width: '190px', height: '190px', borderRadius: '5px'}}>
+            <img className='employee-info__image' src={userData.userImageContent}/>
+          </Avatar>
           <div className='employee-info-parent'>
               <h6 className = 'employee-info__gender'> {userData.userGender}</h6>
               <h2 className = 'employee-info__name'> {userData.userName}</h2>
@@ -69,7 +71,7 @@ export const ProfilePage = (response) => {
           </div>
           { userId === userIdStorage ? (
           <div className='confirm-delete-button-parent'>
-            <ConfirmButton />
+            <LogoutButton />
             <DeleteButton />
           </div>
           ) :  null  }

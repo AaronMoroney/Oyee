@@ -9,13 +9,12 @@ const PostCtrl = require('../controllers/post');
 
 //saving new posts to DB 
 router.post('/', auth, multer, PostCtrl.createPost); 
-//retrieve an array of posts 
+//retrieve an array of posts (working)
 router.get('/', auth, PostCtrl.postList); 
-//single post
+//single post (working)
 router.get('/postpage/:id', auth, PostCtrl.getOnePost); 
-//update
+//update (working)
 router.put('/:id', auth, PostCtrl.updatePost);
-
 
 //export
 module.exports = router;

@@ -5,11 +5,12 @@ import Axios from 'axios';
 //styles
 import '../../styles/components/posts/_posts.scss';
 //mui
-import { Button, Avatar} from '@mui/material';
+import { Button } from '@mui/material';
 //icons
 import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
 //axios
 import axios from 'axios';
+
 
 function Posts(props) {
     /*
@@ -77,7 +78,6 @@ function Posts(props) {
                                 {/* button / link which brings you to profile page*/ }
                                 <Link className='link-global' to='/userprofilepage' state = {{userId: posts.userId}}>
                                     <div className='post-topline__avatar-name'>
-                                        <Avatar  sx={{ width: 30, height: 30, margin: 'auto' }} />
                                         <p className='post-topline__username' >  
                                             {posts.userName}
                                         </p>
@@ -98,7 +98,7 @@ function Posts(props) {
                                 </div>
                             </div>
                             <h4 className='post-title' > {posts.postTitle}</h4>
-                            <img className='post-img' alt='alt' src={ posts.imageContent} />
+                            <img className='post-img' alt='user submitted' src={ posts.imageContent } />
                             <p className='post-content' > {posts.postContent} </p>
                             <div className='post__bottomline'>
 

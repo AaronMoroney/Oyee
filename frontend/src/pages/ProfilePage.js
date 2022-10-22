@@ -7,7 +7,7 @@ import Axios from 'axios';
 import Navbar from '../components/navbar/Navbar';
 import Hero from '../components/ui-template/Hero';
 import Avatar from '@mui/material/avatar';
-import ConfirmButton from '../components/buttons/ConfirmButton';
+import LogoutButton from '../components/buttons/LogoutButton';
 import DeleteButton from '../components/buttons/DeleteButton';
 //mui
 import Card from '@mui/material/Card';
@@ -44,7 +44,10 @@ function ProfilePage() {
         <Hero />
       </div>
       <div className='employee-parent'>
-          <Avatar sx={{ width: '190px', height: '190px', borderRadius: '5px'}}/>
+          
+          <Avatar sx={{ width: '190px', height: '190px', borderRadius: '5px', backgroundColor: 'white'}}>
+            <img className='employee-info__image' src={userData.userImageContent} />
+          </Avatar>
           <div className='employee-info-parent'>
               <h6 className = 'employee-info__gender'> {userData.userGender}</h6>
               <h2 className = 'employee-info__name'> {userData.userName}</h2>
@@ -67,8 +70,8 @@ function ProfilePage() {
           </div>
           { location.pathname === '/profilepage' ? (
           <div className='confirm-delete-button-parent'>
-            <ConfirmButton />
             <DeleteButton />
+            <LogoutButton />
           </div>
           ) :  null  }
         </Card> 

@@ -7,8 +7,10 @@ import whiteIconSvg from '../../assets/logos/icon-monochrome-white.svg';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 //mui
 import AppBar from '@mui/material/AppBar';
-import Avatar from '@mui/material/Avatar';
+//import Avatar from '@mui/material/Avatar';
 import Badge from '@mui/material/Badge';
+//components
+import Avatar from '../avatar/Avatar'
 //Styles
 import '../../styles/components/logo/_logo.scss';
 import '../../styles/components/navbar/_navbar.scss';
@@ -37,17 +39,22 @@ const theme = createTheme ({
 });
 
 function Navbar() {
+  const [userData, setUserData] = useState([]);
   const location = useLocation();
   const [ isDesktop, setDesktop] = useState(window.innerWidth > 768);
  
   const updateMedia = () => {
     setDesktop(window.innerWidth > 768);
   }
-  
+
+  //let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
+
+
   
   return (
     <ThemeProvider theme={theme}>

@@ -4,7 +4,7 @@
 //all posts
 .post-feed__post {
     background-color: white;
-    height: 35vh;
+    height: 37.5vh;
     border-radius: 3px;
     width: 100%;
     margin-top: 10px;
@@ -44,9 +44,6 @@
 .post-topline__avatar-name {
     display: flex;
     flex-direction: row;
-}
-.post-topline__username {
-    padding-left: 10px;
 }
 
 .post-content {

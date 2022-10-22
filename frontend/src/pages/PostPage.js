@@ -61,7 +61,6 @@ export const PostPage = (response) => {
                 <div className='post-parent__one-post'>
                     <div className='post-topline'>
                         <div className='post-topline__avatar-name'>
-                            <Avatar  sx={{ width: 30, height: 30, margin: 'auto' }} />
                             <p className='post-topline__username' >  
                                 {onePostData.userName}
                             </p>

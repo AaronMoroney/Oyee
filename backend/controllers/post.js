@@ -1,36 +1,26 @@
+//requirements
 const Post = require('../models/post');
-const fs = require('fs'); // file system
 
-/*
 function siteUrl(req) {
-    return req.protocol + '://' + req.get('host');
-}//working
-*/
+    return req.protocol + '://' + req.get('host');    
+}
 
-/*
 function postImageUrl(req) {
-    console.log('imageContent', req.body.imageContent)
-    return siteUrl(req) + '/images/' + req.body.imageContent;
-}//working
-*/
+    return siteUrl(req) + '/images/' + req.file.filename;
+}
 
-
-
-
-//save a new post
+//save a new post 
 exports.createPost = (req, res, next) => {
-    const url = req.protocol + '://' + req.get('host'); //working
-    const post = req.body;
-    console.log('CONTROLLER, req.body', req.body);
+    let post = (req.body);
+    //req protocal, http, create the string
     const newPost = new Post({
         userId: post.userId,
-        postTitle: post.postTitle,
-        imageContent: url + '/images/' + post.imageContent, //undefined
-        postContent: post.postContent,
         userName: post.userName,
+        postTitle: post.postTitle,
+        imageContent: postImageUrl(req),
+        postContent: post.postContent,
         usersRead: post.userId
     });
-    console.log('newPost', newPost);
     newPost.save().then(
         () => {
             res.status(201).json({
@@ -40,7 +30,7 @@ exports.createPost = (req, res, next) => {
     ).catch(
        (error) => {
         res.status(400).json({
-            errorMsg: 'cannot create post'
+            errorMsg: 'cannot create Post'
         });
        } 
     );
@@ -101,38 +91,3 @@ exports.updatePost = (req,res, next) => {
         }
     );
 };
-
-
-
-/*
-//post modify
-exports.updatePost = (req, res, next) => {
-    const post = req.body;
-    const url = req.protocol + '://' + req.get('host'); //working
-    console.log('this is the posts log', post);
-    const newPost = new Post({
-        userId: post.userId,
-        postTitle: post.postTitle,
-        imageContent: url + '/images/' + post.imageContent, //undefined
-        postContent: post.postContent,
-        userName: post.userName,
-        //usersRead comes from the frontend
-        usersRead: post.usersRead
-    }); //here ok
-    Post.update({
-        where: {
-            id: req.params.id
-        }
-    }).then(
-        (post) => {
-            res.status(200).json(post);
-        }
-    ).catch(
-        (error) => {
-            res.status(404).json({
-                error: error
-            });
-        }
-    );
-};
-*/

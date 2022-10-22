@@ -21,7 +21,7 @@ const Post = sequelize.define('post', {
         allowNull: false, 
     },
     imageContent: {
-        type: DataTypes.BLOB,
+        type: DataTypes.STRING,
     },
     postContent: {
         type: DataTypes.STRING,

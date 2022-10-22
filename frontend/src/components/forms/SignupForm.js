@@ -1,18 +1,18 @@
-
+import React, { useState }from 'react';
 //mui components
 import TextField from '@mui/material/TextField'
-//react
-//import { State } from 'react';
 import { Link } from 'react-router-dom'
 //axios
 import Axios from 'axios'
 //Theme
-import { createTheme, ThemeProvider, Button } from '@mui/material'
+import { createTheme, ThemeProvider, Button, IconButton } from '@mui/material'
 //styles
 import '../../styles/components/forms/_login-form.scss'
 import '../../styles/components/link/_link-global.scss'
 //jwt
 import jwt from 'jwt-decode'
+//icons
+import PhotoCamera from '@mui/icons-material/PhotoCamera'
 
 const theme = createTheme ({
   palette: {
@@ -31,32 +31,29 @@ const theme = createTheme ({
 
 
 function SignupForm() {
-    let userNameStorage;
-    let userPasswordStorage;
-    let companyPositionStorage;
-    let emailStorage;
-    let genderStorage;
+  
     
     /*
     ** | ERROR HANDLING function
     */
 
     //get access to DOM, always at assigned positions.
-    let nameErrorMsg = document.getElementById('nameErrorMsg');
-    let passwordErrorMsg = document.getElementById('passwordErrorMsg');
+    //let nameErrorMsg = document.getElementById('nameErrorMsg');
+    //let passwordErrorMsg = document.getElementById('passwordErrorMsg');
     //let positionErrorMsg = document.getElementById('positionErrorMsg');
-    let emailErrorMsg = document.getElementById('emailErrorMsg');
+    //let emailErrorMsg = document.getElementById('emailErrorMsg');
     //let genderErrorMsg = document.getElementById('genderErrorMsg');
 
     //email
     //let regexEmail = /\S+@\S+\.\S+/g;
     //charectors
-    let regexCharectors = /^[a-zA-Z ]/;
-
+    //let regexCharectors = /^[a-zA-Z ]/;
+    /*
     //function
     function regexCharectorsResult() {
         regexCharectors.test(userNameStorage.value, userPasswordStorage.value);
     }; 
+    */
 
     /*
     ** | POST REQS function(s)
@@ -64,24 +61,52 @@ function SignupForm() {
 
     let token = localStorage.getItem('jwt');
 
-    const createAccount = () => {
-        Axios.post('http://localhost:3000/auth/signup', {
-            userName: userNameStorage,
-            userPassword: userPasswordStorage,
-            userEmail: emailStorage,
-            userCompanyPosition: companyPositionStorage,
-            userGender: genderStorage
-        }).then(function(response) {
-            login(response);
-        }).catch(function(error) {
-           console.log(error);
-        })
+    //file upload
+    const [file, setFile] = useState();
+    const [filename, setFilename] = useState();
+
+    //set states to store values
+    const [userName, setUserName] = useState(false);
+    const [userPassword, setUserPassword] = useState(false);
+    const [userEmail, setUserEmail] = useState(false);
+    const [userCompanyPosition, setUserCompanyPosition] = useState(false);
+    const [userGender, setUserGender] = useState(false);
+
+    const saveFile = (e) => {
+        setFile(e.target.files[0]);
+        console.log(e.target.files[0]);
+        setFilename(e.target.files[0].name); 
+        console.log(e.target.files[0].name); 
     };
 
+    const formData = new FormData();
+    formData.append('userName', userName); 
+    formData.append('userPassword', userPassword); 
+    formData.append('userEmail', userEmail); 
+    formData.append('userCompanyPosition',  userCompanyPosition); 
+    formData.append('userGender', userGender); 
+    formData.append('file', file ); 
+    formData.append('filename', filename); 
+    console.log(formData);
+
+    const createAccount = () => {
+        Axios.post('http://localhost:3000/auth/signup', formData,
+        {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'multipart/form-data',
+            }
+        }).then(function(response) {
+            login(response);
+        }).catch(function(error)  {
+            console.log(error);
+        })
+    };
+    
     const login = () => {
         Axios.post('http://localhost:3000/auth/login', {
-            userName: userNameStorage,
-            userPassword: userPasswordStorage,
+            userName: userName,
+            userPassword: userPassword,
         },
         { headers: {
             'Authorization': `Bearer ${token}`
@@ -116,11 +141,12 @@ function SignupForm() {
                         }} 
                         //capture
                         onChange = {(e) => {
-                            userNameStorage = e.target.value;
-                
+                            setUserName(e.target.value);
+                            /*
                             if (userNameStorage.length <= 1 || regexCharectorsResult === false ) {
                                 nameErrorMsg.innerText = 'userName must be greater than 5 letters and contain no special charectors';
                             }
+                            */
                         }}
                     />
                     
@@ -135,11 +161,12 @@ function SignupForm() {
                         }}
                         //capture
                         onChange = {(e) => {
-                            userPasswordStorage = e.target.value;
-                   
+                            setUserPassword(e.target.value);
+                            /*
                             if (userPasswordStorage.length <= 1 || regexCharectorsResult === false ) {
                                 passwordErrorMsg.innerText = 'first name must be greater than 5 letters and contain no special charectors(except spaces where required)';
                             } 
+                            */
                         }}
                     />
                     
@@ -153,10 +180,12 @@ function SignupForm() {
                             marginBottom: 2,
                         }} 
                         onChange = {(e) => {
-                            emailStorage = e.target.value;
+                            setUserEmail(e.target.value);
+                            /*
                             if (emailStorage.length <= 1 || regexCharectorsResult === false ) {
                                 emailErrorMsg.innerText = 'email must be in the format of something@something.com';
                             } 
+                            */
                         }}
                     />
                     
@@ -173,7 +202,7 @@ function SignupForm() {
                             }} 
                             //capture
                             onChange = {(e) => {
-                                companyPositionStorage = e.target.value;  
+                                setUserCompanyPosition(e.target.value);  
                             }}
                         />
                         
@@ -190,11 +219,23 @@ function SignupForm() {
                             }} 
                             //capture
                             onChange = {(e) => {
-                                genderStorage= e.target.value;
+                                setUserGender(e.target.value);
                             }}
                         />
-                    
-
+                        <div className='file-upload__parent'>
+                            <h4 className='upload-a-file'>UPLOAD AN PROFILE PHOTO - required* </h4>
+                            <IconButton color="primary" aria-label="upload picture"  component="label"  >
+                                    <input
+                                    alt='user defined image' 
+                                    hidden accept="image/*" 
+                                    type='file' 
+                                    onChange = { saveFile }
+                                    name='image'
+                                    />
+                                    <PhotoCamera />
+                            </IconButton>
+                        </div>
+                        
                     </div>
                    
                 </div>
@@ -208,7 +249,8 @@ function SignupForm() {
                             marginTop: 1, 
                             marginBottom: 2
                             }}
-                            onClick = {() => { createAccount(); regexCharectorsResult();}}
+                            //onClick = {() => { createAccount(); regexCharectorsResult();}}
+                            onClick = {() => createAccount()}
                             > CREATE ACCOUNT
                         </Button>
                     </Link>

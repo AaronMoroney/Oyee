@@ -40,9 +40,6 @@ const theme = createTheme ({
 });
 
 export const Modal = ({showModal, setShowModal }) => {
-    //storage for e.target.value
-    //let postTitleStorage;
-    //let postContentStorage;
 
     //get values from local storage
     let token = sessionStorage.getItem('jwt');
@@ -53,37 +50,32 @@ export const Modal = ({showModal, setShowModal }) => {
     const [postTitle, setPostTitle] = useState(false);
     const [postContent, setPostContent] = useState(false);
 
-  
-
     const saveFile = (e) => {
         setFile(e.target.files[0]);
-        setFilename(e.target.files[0].name); //working
+        console.log(e.target.files[0]);
+        setFilename(e.target.files[0].name); 
+        console.log(e.target.files[0].name); 
     };
 
     //file upload
     const [file, setFile] = useState();
     const [filename, setFilename] = useState();
 
-    //when i put url search params, the file string is saved to the console.
-    const formData = new URLSearchParams();
-    formData.append('postTitle', postTitle); //set below
-    formData.append('postContent', postContent); //set below
-    formData.append('file', file); //set below 
-    formData.append('filename', filename); //set below
+    const formData = new FormData();
+    formData.append('userId', userIdStorage); 
+    formData.append('userName', userName); 
+    formData.append('postTitle', postTitle); 
+    formData.append('postContent', postContent); 
+    formData.append('file', file ); 
+    formData.append('filename', filename); 
+    console.log(formData);
 
     const createPost = () => {
-        Axios.post('http://localhost:3000/posts',   {
-            userId: userIdStorage,
-            userName: userName,
-            postTitle: postTitle, 
-            postContent: postContent,
-            ImageContent:  file + filename,
-            usersRead: userIdStorage
-        },
+        Axios.post('http://localhost:3000/posts', formData,
         {
             headers: {
                 'Authorization': `Bearer ${token}`,
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
             }
         }).then(function(response) {
             console.log(response);
@@ -127,17 +119,17 @@ export const Modal = ({showModal, setShowModal }) => {
                                     />
                                     <div className='modal-form-file-upload__parent'>
                                         <h4 className='upload-a-file'>UPLOAD AN IMAGE - required</h4>
-                                            <IconButton color="primary" aria-label="upload picture" component="label" onClick = { formData } >
-                                                <input 
-                                                
+
+                                        <IconButton color="primary" aria-label="upload picture"  component="label"  >
+                                                <input
+                                                alt='user defined image' 
                                                 hidden accept="image/*" 
                                                 type='file' 
                                                 onChange = { saveFile }
-                                                name='file'
-                                                alt='user defined image'
+                                                name='image'
                                                 />
                                                 <PhotoCamera />
-                                            </IconButton>
+                                        </IconButton>
                                     </div>
                                     <TextField
                                     id='outlined-multiline-static'

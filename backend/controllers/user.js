@@ -2,6 +2,45 @@ const bcrypt = require('bcrypt'); //import bcrypt
 const User = require('../models/user'); //import user model 
 const jwt = require('jsonwebtoken'); //import Jwt
 
+//functions
+function siteUrl(req) {
+    return req.protocol + '://' + req.get('host');    
+}
+
+function userImageUrl(req) {
+    return siteUrl(req) + '/images/' + req.file.filename;
+}
+
+//save a new post
+exports.signup = (req, res, next) => {
+    let user = (req.body);
+    console.log(user);
+    bcrypt.hash(user.userPassword, 10).then(
+        (hash) => {
+            const newUser = new User ({
+            userName: user.userName,
+            userPassword: hash,
+            userEmail: user.userEmail,
+            userCompanyPosition: user.userCompanyPosition,
+            userGender: user.userGender,
+            userImageContent: userImageUrl(req),
+        });
+        console.log(newUser);
+        newUser.save().then(
+            () => {
+                res.status(201).json({
+                    Msg: 'new user registered successfully!'
+                });
+            }
+        ).catch(
+            (error) => {
+            res.status(400).json({
+                errorMsg: 'cannot create user'
+            })
+        })
+    });
+};
+/*
 //signup
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.userPassword, 10).then(
@@ -30,6 +69,7 @@ exports.signup = (req, res, next) => {
         }
     );
 };
+*/
 
 //login
 exports.login = (req, res, next) => {
@@ -60,7 +100,8 @@ exports.login = (req, res, next) => {
                         token: token,
                         userEmail: req.body.userEmail,
                         userCompanyPosition: req.body.userCompanyPosition,
-                        userGender: req.body.userGender
+                        userGender: req.body.userGender,
+                        userImageContent: req.body.userImageContent,
                     });
                 }
             ).catch(
@@ -90,7 +131,8 @@ exports.getOneUser = (req, res, next) => {
                 userName: user.userName,
                 userEmail: user.userEmail,
                 userCompanyPosition: user.userCompanyPosition,
-                userGender: user.userGender
+                userGender: user.userGender,
+                userImageContent: user.userImageContent,
             });
         }
     ).catch(
@@ -112,7 +154,8 @@ exports.getOtherUser = (req, res, next) => {
                 userName: user.userName,
                 userEmail: user.userEmail,
                 userCompanyPosition: user.userCompanyPosition,
-                userGender: user.userGender
+                userGender: user.userGender,
+                userImageContent: user.userImageContent
             });
         }
     ).catch(

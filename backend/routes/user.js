@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-//auth
-//const auth = require('../middleware/auth');
+//controllers
 const userCtrl = require('../controllers/user');
-
+//multer
+const multer = require('../middleware/multer-config');
 
 //POST route for signup
-router.post('/signup',  userCtrl.signup);
+router.post('/signup', multer, userCtrl.signup);
 //POST route for login
 router.post('/login',  userCtrl.login);
 //GET route for logged in profile page
