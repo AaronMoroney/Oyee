@@ -9,10 +9,6 @@ import Hero from '../components/ui-template/Hero';
 //styles
 import '../styles/components/buttons/_like-functionality.scss'
 import '../styles/components/posts/_posts.scss';
-//mui icons
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt'
-import ThumbDownOffAltIcon from '@mui/icons-material/ThumbDownOffAlt'
-import Avatar from '@mui/material/avatar';
 
 export const PostPage = (response) => {
     /*
@@ -22,18 +18,15 @@ export const PostPage = (response) => {
     /*
     ** | Storage
     */
+
     let token = sessionStorage.getItem('jwt');
-    //let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
+
     /*
     ** | props
     */
     const location = useLocation();
     const { id } = location.state;
     console.log( 'frontend id', id );
-
-    /*
-    ** | postRead
-    */
 
     /*
     ** | GET ONE POST |
@@ -69,18 +62,7 @@ export const PostPage = (response) => {
                     <h4 className='post-title' > {onePostData.postTitle}</h4>
                     <img className='post-img' alt='alt' src={ onePostData.imageContent} />
                     <p className='post-content__one-post' > {onePostData.postContent} </p>
-                    <div className='like-functionality-parent'>
-                        <div className='like-functionality__up'>
-                            <ThumbUpOffAltIcon />
-                            <h3> 1 </h3>
-                        </div>
-                        <div className='like-functionality__down'>
-                            <ThumbDownOffAltIcon />
-                            <h3> 0 </h3>
-                        </div>
-                    </div>
                 </div>
-
             </div>
            
         </>

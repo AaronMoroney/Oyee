@@ -68,6 +68,7 @@ function ProfilePage() {
                 <p> Email: {userData.userEmail} </p>
               </div>
           </div>
+          
           { location.pathname === '/profilepage' ? (
           <div className='confirm-delete-button-parent'>
             <DeleteButton />

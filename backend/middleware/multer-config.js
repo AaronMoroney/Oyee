@@ -1,10 +1,11 @@
 const multer = require('multer');
-console.log('name');
+
 const MIME_TYPES = {
     'image/jpeg': 'jpg',
     'image/jpg': 'jpg',
     'image/png': 'png'
 };
+
 //what to save and how
 const storage = multer.diskStorage ({
     //where to save?
@@ -20,5 +21,5 @@ const storage = multer.diskStorage ({
     }
 });
 
-//configured multer
+//configured multer. .single('file') has to match frontend
 module.exports = multer({storage: storage}).single('file');

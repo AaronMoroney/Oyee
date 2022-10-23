@@ -1,11 +1,11 @@
 //react
-import React from 'react'
+import React, {useState} from 'react'
 //styles
 import '../../styles/components/buttons/_confirm-delete-button.scss'
-
 //mui
 import { createTheme, ThemeProvider, Button } from '@mui/material'
-
+//components
+import DeleteModal from '../../components/ui-template/DeleteModal'
 
 const theme = createTheme ({
     palette: {
@@ -36,18 +36,28 @@ const theme = createTheme ({
 });
 
 function DeleteButton() {
-  return (
+    /*
+    ** | set showDeleteModal
+    */
+
+    const [ showDeleteModal, setShowDeleteModal ] = useState(false);
+    const openDeleteModal = () => {
+        //toggle
+        setShowDeleteModal(prev => !prev)
+    }
+    return (
     <>
         <ThemeProvider theme={theme}>
-            <Button varient='text' sx={{ 
-                bgcolor: 'button.delete.main', 
-                color: 'button.delete.contrastText', 
-                marginLeft: '10%', width: '175px' 
-                }}> Delete account
-                 </Button>
+            <Button 
+                varient='text' 
+                sx={{ bgcolor: 'button.delete.main', color: 'button.delete.contrastText', marginLeft: '10%', width: '175px' }}
+                onClick={openDeleteModal}
+                > 
+                Delete account
+                <DeleteModal showDeleteModal={showDeleteModal} setShowDeleteModal={setShowDeleteModal} />  
+            </Button>
         </ThemeProvider>
     </>
-    
   )
 }
 

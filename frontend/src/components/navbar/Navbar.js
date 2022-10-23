@@ -39,7 +39,7 @@ const theme = createTheme ({
 });
 
 function Navbar() {
-  const [userData, setUserData] = useState([]);
+ 
   const location = useLocation();
   const [ isDesktop, setDesktop] = useState(window.innerWidth > 768);
  
@@ -47,15 +47,11 @@ function Navbar() {
     setDesktop(window.innerWidth > 768);
   }
 
-  //let userIdStorage = JSON.parse(sessionStorage.getItem('userId'));
-
   useEffect(() => {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   });
 
-
-  
   return (
     <ThemeProvider theme={theme}>
       <>
@@ -71,9 +67,7 @@ function Navbar() {
               <img src={ whitelogo } alt ='groupomania logo in white' className='navbar-logo__home' /> 
               : //else do this
               <img src ={ whiteIconSvg }  alt ='groupomania logo in white' className='navbar-logo__home' /> 
-            } 
-
-            
+            }             
             <div>
               <Badge sx ={{ bgcolor: 'transparent'}}/>
               <Link className='link-global' to='/profilepage'>

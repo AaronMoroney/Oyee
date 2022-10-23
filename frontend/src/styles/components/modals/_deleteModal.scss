@@ -1,0 +1,16 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins';
+
+.delete-modal-parent {
+    position: absolute;
+    margin-top: -120px;
+    @include tablet-only {
+        width: 200px;
+    }
+    @include mobile-only {
+        width: 350px;
+        flex-direction: column;
+        margin-top: -175px;
+    }
+}
+

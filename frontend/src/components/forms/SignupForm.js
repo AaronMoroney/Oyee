@@ -32,7 +32,6 @@ const theme = createTheme ({
 
 function SignupForm() {
   
-    
     /*
     ** | ERROR HANDLING function
     */
@@ -87,7 +86,6 @@ function SignupForm() {
     formData.append('userGender', userGender); 
     formData.append('file', file ); 
     formData.append('filename', filename); 
-    console.log(formData);
 
     const createAccount = () => {
         Axios.post('http://localhost:3000/auth/signup', formData,

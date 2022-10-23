@@ -54,22 +54,14 @@ function logoutButton() {
             <Link className='link-global' to ='/'>
                 <Button 
                     varient='text' 
-                    sx={{ 
-                    borderColor: 'button.delete.main',
-                    border: '2px solid',
-                    color: 'button.delete.main', 
-                    width: '175px', 
-                    height: '45px' 
-                    }}
+                    sx={{ borderColor: 'button.delete.main', border: '2px solid', color: 'button.delete.main',  width: '175px', height: '45px' }}
                     onClick ={() => logout()}
                     > 
                     Logout
                 </Button>
-            </Link>
-           
+            </Link> 
         </ThemeProvider>
     </>
-    
   )
 }
 

@@ -9,10 +9,12 @@ const multer = require('../middleware/multer-config');
 router.post('/signup', multer, userCtrl.signup);
 //POST route for login
 router.post('/login',  userCtrl.login);
-//GET route for logged in profile page
+//GET route for logged in profile 
 router.get('/profilepage/:userId', userCtrl.getOneUser);
-//GET route for logged in profile page
+//GET route other user profile 
 router.get('/userprofilepage/:userId', userCtrl.getOtherUser);
+//delete a user from DB
+router.delete('/:userId', userCtrl.deleteUser);
 
 //export router
 module.exports = router;

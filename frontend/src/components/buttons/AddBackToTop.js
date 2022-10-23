@@ -12,7 +12,7 @@ import '../../styles/components/buttons/_addBackToTop.scss'
 //theme
 import { createTheme, ThemeProvider } from '@mui/material'
 
-
+//Mui components theme provider
 const theme = createTheme ({
 palette: {
         button: {
@@ -44,18 +44,22 @@ function AddBackToTop() {
         setShowModal(prev => !prev)
     }
     
-
     return (
      <ThemeProvider theme={theme}>
         <>
-            <Fab aria-label='add' sx={{
+            <Fab aria-label='add' 
+                sx={{
                 bgcolor: 'button.secondary.main',
                 color: 'button.primary.contrastText', 
                 textTransform: 'none'
-                }}>
+                }}
+                > 
+                {/* children of FAB */}
                 <AddOutlinedIcon  onClick={openModal}/>
-                <Modal showModal={showModal} setShowModal={setShowModal} />        
+                <Modal showModal={showModal} setShowModal={setShowModal} />   
+                {/* end */}     
             </Fab> 
+            {/* hide this component when show modal is active, show it when modal is closed */}
             { showModal ? null :  
             <Fab 
                 variant='extended'
@@ -72,7 +76,6 @@ function AddBackToTop() {
         </>
      </ThemeProvider>
     )
-   
 }
 
 export default AddBackToTop

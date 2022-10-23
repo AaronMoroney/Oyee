@@ -27,7 +27,6 @@ function HomePage() {
               <AddBackToTop />
             </div>
           </div>
-          
           <Copyright />
         </div>
       </div>

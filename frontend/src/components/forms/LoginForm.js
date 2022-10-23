@@ -91,7 +91,6 @@ function loginForm() {
                         }} 
                         onChange = {(e) => {
                             userNameStorage = e.target.value;
-                            console.log(userNameStorage);
 
                             if (userNameStorage.length <= 1 || regexCharectorsResult === false ) {
                                 nameErrorMsg.innerText = 'username must be greater than 5 letter and contain no special charectors';

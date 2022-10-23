@@ -119,7 +119,6 @@ export const Modal = ({showModal, setShowModal }) => {
                                     />
                                     <div className='modal-form-file-upload__parent'>
                                         <h4 className='upload-a-file'>UPLOAD AN IMAGE - required</h4>
-
                                         <IconButton color="primary" aria-label="upload picture"  component="label"  >
                                                 <input
                                                 alt='user defined image' 

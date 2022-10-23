@@ -3,7 +3,6 @@ import React from 'react'
 //styles
 import '../../styles/components/copyright/_copyright.scss'
 
-
 function Copyright() {
   let userName = sessionStorage.getItem('userName');
   return (

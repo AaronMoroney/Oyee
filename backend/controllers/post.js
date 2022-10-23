@@ -38,7 +38,6 @@ exports.createPost = (req, res, next) => {
 
 //retrieve a list
 exports.postList = (req, res, next) => {
-    console.log('POSTLIST: this is working');
     Post.findAll({
     }).then(
         (posts) => {
@@ -74,8 +73,6 @@ exports.getOnePost = (req, res, next) => {
 
 exports.updatePost = (req,res, next) => {
     const post = req.body;
-    const url = req.protocol + '://' + req.get('host'); //working
-    console.log('this is the posts log', post);
     Post.update(
         {usersRead: post.usersRead},
         {returning: true, where: {id: req.params.id}}

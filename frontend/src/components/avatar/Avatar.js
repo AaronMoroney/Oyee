@@ -4,6 +4,7 @@ import React, { useState, useEffect} from 'react';
 import Avatar from '@mui/material/Avatar';
 //axios
 import Axios from 'axios'
+//styles
 import '../../styles/components/avatar/_avatar.scss';
 
 function AvatarComponent() {

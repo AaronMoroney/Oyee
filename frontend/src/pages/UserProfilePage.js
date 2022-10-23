@@ -61,7 +61,7 @@ export const ProfilePage = (response) => {
             <hr  className='about-employee__hr'/>
             <h3 className='about-employee__heading'>  Company title </h3>
               <div className='about-employee-list__parent'>
-              <p>{userData.userCompanyPosition}</p>
+                <p>{userData.userCompanyPosition}</p>
               </div>
         
             <h3 className='about-employee__heading'> Contact Details 😇 </h3>
@@ -71,8 +71,8 @@ export const ProfilePage = (response) => {
           </div>
           { userId === userIdStorage ? (
           <div className='confirm-delete-button-parent'>
-            <LogoutButton />
             <DeleteButton />
+            <LogoutButton />
           </div>
           ) :  null  }
         </Card> 

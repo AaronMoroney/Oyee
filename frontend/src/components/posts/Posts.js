@@ -45,7 +45,6 @@ function Posts(props) {
 
     return <>
         {data.map((posts) => {
-            //need to set up handling to check if userID isnt already there, so its not added multiple times
             let usersRead = [posts.usersRead];
             
             const usersReadFunction = () => {
@@ -91,10 +90,10 @@ function Posts(props) {
                                         ( JSON.stringify(usersRead).includes(userIdStorage)
                                         //if it returns true, display this icon
                                         ? < FileDownloadDoneIcon sx={{paddingTop: 2,}} /> 
-                                        //if its false, display this 'new' paragraph
-                                        : <p >new</p>
+                                        //if its false, display this 'new' p
+                                        : <p>new</p>
                                         ) 
-                                    : null )}
+                                    : null )} 
                                 </div>
                             </div>
                             <h4 className='post-title' > {posts.postTitle}</h4>
@@ -117,7 +116,7 @@ function Posts(props) {
                 </div>
             </>
         })}
-    </>;
+    </>; //does this need the ; ? check
 }
 
 export default Posts;

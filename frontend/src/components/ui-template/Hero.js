@@ -14,7 +14,14 @@ function Hero() {
     <>
       { location.pathname === '/homepage' ? <HeadingText />  :  null }
       <div>
-        <img src={ skyline } alt ='corporate building city skyline' className = {`${location.pathname === '/homepage' ? 'hero-backdrop-image__feed' : 'hero-backdrop-image__profile' } `} />
+        <img 
+          src={ skyline } alt ='corporate building city skyline' 
+          className = {`
+            ${location.pathname === '/homepage' ? 
+            'hero-backdrop-image__feed' 
+            : 'hero-backdrop-image__profile' } 
+          `}
+        />
         <div className = {`${location.pathname === '/homepage' ? 'hero-backdrop-overlay__feed' : 'hero-backdrop-overlay__profile' }`} />
       </div>
     </>
