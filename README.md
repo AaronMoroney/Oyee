@@ -11,7 +11,7 @@
 
 <hr>
 
-<h4>in vs studio code terminal, navigate to the project folder - run, npm install </h4> 
+<h4>In vs studio code terminal, navigate to the project folder - run, npm install </h4> 
 <hr></hr>
 
 <h4>Make sure the following dependencies are installed</h4>
