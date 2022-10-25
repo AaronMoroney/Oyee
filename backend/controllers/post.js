@@ -39,6 +39,9 @@ exports.createPost = (req, res, next) => {
 //retrieve a list
 exports.postList = (req, res, next) => {
     Post.findAll({
+        order: [
+            ['id', 'DESC'],
+        ],
     }).then(
         (posts) => {
             res.status(200).json(posts);

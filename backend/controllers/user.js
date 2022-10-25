@@ -43,8 +43,9 @@ exports.signup = (req, res, next) => {
 
 //login
 exports.login = (req, res, next) => {
+    let user = (req.body);
     User.findOne({ 
-        where: {userName: req.body.userName }, 
+        where: {userName: user.userName }, 
     }).then(
         (user) => {
             //if no user
@@ -141,6 +142,7 @@ exports.getOtherUser = (req, res, next) => {
 /* 
 ** |Delete user (logged in), need to destroy posts in DB by that user first
 */
+
 exports.deleteUser = (req, res, next) => {
     const userId = req.params.userId;
     //destroy any posts on user table that have same id as user ID from req.params

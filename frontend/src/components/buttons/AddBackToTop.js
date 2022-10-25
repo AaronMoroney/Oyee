@@ -59,20 +59,6 @@ function AddBackToTop() {
                 <Modal showModal={showModal} setShowModal={setShowModal} />   
                 {/* end */}     
             </Fab> 
-            {/* hide this component when show modal is active, show it when modal is closed */}
-            { showModal ? null :  
-            <Fab 
-                variant='extended'
-                sx={{ 
-                    height: '55.590px', 
-                    bgcolor: 'button.secondary.main', 
-                    color: 'button.primary.contrastText'
-                }}
-                >  
-                <VerticalAlignTopOutlinedIcon sx={{ mr: 1 }}/>
-                back to top
-            </Fab>
-            }
         </>
      </ThemeProvider>
     )

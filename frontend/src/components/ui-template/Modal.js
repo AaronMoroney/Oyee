@@ -68,7 +68,10 @@ export const Modal = ({showModal, setShowModal }) => {
     formData.append('postContent', postContent); 
     formData.append('file', file ); 
     formData.append('filename', filename); 
-    console.log(formData);
+
+    const refreshAfterSubmit = () => {
+        window.location.reload();
+    }
 
     const createPost = () => {
         Axios.post('http://localhost:3000/posts', formData,
@@ -147,7 +150,7 @@ export const Modal = ({showModal, setShowModal }) => {
                                 </div>
                                 <Paper 
                                 sx={{ bgcolor: 'button.confirm.main', color: 'button.confirm.contrastText', width: '150px', height: '25px', margin: 'auto' }}
-                                onClick = {() => { createPost(); setShowModal(prev=>!prev) }}
+                                onClick = {() => { createPost(); refreshAfterSubmit(); setShowModal(prev=>!prev);}}
                                 > SHARE POST </Paper>
                             </div>
                         </div>

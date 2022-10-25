@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useRef, memo } from 'react';
 //mui components
 import TextField from '@mui/material/TextField'
 import { Link } from 'react-router-dom'
@@ -31,28 +31,19 @@ const theme = createTheme ({
 
 
 function SignupForm() {
-  
+
     /*
     ** | ERROR HANDLING function
     */
 
-    //get access to DOM, always at assigned positions.
-    //let nameErrorMsg = document.getElementById('nameErrorMsg');
-    //let passwordErrorMsg = document.getElementById('passwordErrorMsg');
-    //let positionErrorMsg = document.getElementById('positionErrorMsg');
-    //let emailErrorMsg = document.getElementById('emailErrorMsg');
-    //let genderErrorMsg = document.getElementById('genderErrorMsg');
-
-    //email
-    //let regexEmail = /\S+@\S+\.\S+/g;
-    //charectors
-    //let regexCharectors = /^[a-zA-Z ]/;
-    /*
-    //function
-    function regexCharectorsResult() {
-        regexCharectors.test(userNameStorage.value, userPasswordStorage.value);
-    }; 
-    */
+    let nameErrorMsg = document.createElement('p');
+    let passwordErrorMsg = document.createElement('p');
+    let emailErrorMsg = document.createElement('p');
+    
+    //classlist add
+    nameErrorMsg.classList.add('error');
+    passwordErrorMsg.classList.add('error');
+    emailErrorMsg.classList.add('error');
 
     /*
     ** | POST REQS function(s)
@@ -77,6 +68,76 @@ function SignupForm() {
         setFilename(e.target.files[0].name); 
         console.log(e.target.files[0].name); 
     };
+
+    //email
+    let regexEmail = /\S+@\S+\.\S+/g;
+    let regexCharectors = /[a-zA-Z]/;
+
+    //useREF
+    const signupUsernameRef = useRef(null);
+    const signupPasswordRef = useRef(null);
+
+    /* if length or regex = false && message already shown
+    **     do nothing
+    ** there is no message and length or regex = false
+    **     display a message 
+    ** if length & regex are ok - and there is a message
+    **     remove the message, set 
+    ** all cases above are false  
+    **     set
+    */
+                          
+    const userNameFunction = (setUserNameStorage) => {
+        //regex
+        let regexCharectorsUsername = regexCharectors.test(setUserNameStorage.valueOf)
+        console.log(regexCharectorsUsername);
+        
+        if ((setUserNameStorage.length <= 4 || regexCharectorsUsername === false) && signupUsernameRef.current.contains(nameErrorMsg)) {
+            console.log('username, 1');
+ 
+
+        } else if (setUserNameStorage.length <= 4 || regexCharectorsUsername === false )  {
+            console.log('username, 2');
+            signupUsernameRef.current.appendChild(nameErrorMsg);
+            nameErrorMsg.innerText = 'username must be atleast 5 letters and contain no special charectors';
+    
+
+        } else if ((setUserNameStorage.length > 4 && regexCharectorsUsername === true) && signupUsernameRef.current.contains(nameErrorMsg)) {
+            console.log('username, 3');
+            signupUsernameRef.current.removeChild(nameErrorMsg);
+            setUserName(setUserNameStorage);
+  
+        } else {
+            console.log('username, 4');
+            setUserName(setUserNameStorage);
+         
+        }
+    }
+
+    function userPasswordFunction(setUserPasswordStorage) {
+
+        let regexCharectorsPassword = regexCharectors.test(setUserPasswordStorage.valueOf)
+        console.log(regexCharectorsPassword);
+
+        if ((setUserPasswordStorage.length <= 4 || regexCharectorsPassword === false) && signupPasswordRef.current.contains(passwordErrorMsg)) {
+            console.log('password, 1');
+
+        } else if  (setUserPasswordStorage.length <= 4 || regexCharectorsPassword === false) { 
+            console.log('password, 2');
+            signupPasswordRef.current.appendChild(passwordErrorMsg);
+            passwordErrorMsg.innerText = 'password must be atleast 5 letters and contain no special charectors';
+
+        } else if ((setUserPasswordStorage.length > 4 && regexCharectorsPassword === true) && signupPasswordRef.current.contains(passwordErrorMsg)) {
+            console.log('password, 3');
+            signupPasswordRef.current.removeChild(passwordErrorMsg);
+            setUserPassword(setUserPasswordStorage);
+
+        } else {
+            console.log('password, 4');
+            setUserPassword(setUserPasswordStorage);
+
+        }
+    }
 
     const formData = new FormData();
     formData.append('userName', userName); 
@@ -127,73 +188,79 @@ function SignupForm() {
             <div>
                 <h2>Create Account</h2>
                 <div className='signup-form-parent'>
-                    <p id='nameErrorMsg'>{/*text goes here*/ } </p>
                     <TextField 
+                        ref= {signupUsernameRef}
                         id='outlined-username-input' 
                         label='Username' 
                         variant='outlined' 
-                        className='login-form'
+                        className='signup-username'
                         type='text' 
                         sx = {{
                             marginBottom: 2,
                         }} 
+                        
                         //capture
-                        onChange = {(e) => {
-                            setUserName(e.target.value);
-                            /*
-                            if (userNameStorage.length <= 1 || regexCharectorsResult === false ) {
-                                nameErrorMsg.innerText = 'userName must be greater than 5 letters and contain no special charectors';
-                            }
-                            */
-                        }}
+                        onBlur = {(e) => {
+                            var setUserNameStorage = e.target.value;
+                            userNameFunction(setUserNameStorage);
+                        }} 
                     />
-                    
-                    <p id='passwordErrorMsg'>{/*text goes here*/}</p>
+
                     <TextField 
+                        ref={signupPasswordRef}
                         id='outlined-password-input'
                         label='Password' 
-                        className='login-form'
+                        className='signup-password'
                         type='password' 
                         sx = {{
                             marginBottom: 2,
                         }}
                         //capture
-                        onChange = {(e) => {
-                            setUserPassword(e.target.value);
-                            /*
-                            if (userPasswordStorage.length <= 1 || regexCharectorsResult === false ) {
-                                passwordErrorMsg.innerText = 'first name must be greater than 5 letters and contain no special charectors(except spaces where required)';
-                            } 
-                            */
+                        onBlur = {(e) => {
+                            var setUserPasswordStorage = e.target.value;
+                            userPasswordFunction(setUserPasswordStorage);
                         }}
                     />
                     
-                    <p id='emailErrorMsg'>{/*text goes here*/}</p>
+                    
                     <TextField 
                         id="outlined-email-input" 
                         label="Email" 
                         variant="outlined" 
-                        className='login-form' 
+                        className='login-form-email' 
                         sx = {{
                             marginBottom: 2,
                         }} 
-                        onChange = {(e) => {
-                            setUserEmail(e.target.value);
-                            /*
-                            if (emailStorage.length <= 1 || regexCharectorsResult === false ) {
-                                emailErrorMsg.innerText = 'email must be in the format of something@something.com';
-                            } 
-                            */
+                        onBlur = {(e) => {
+                            let userEmailStorage = e.target.value;
+                            let emailFormAccess = document.getElementsByClassName('login-form-email')[0];
+                            let regexEmailResult = regexEmail.test(userEmailStorage);
+                          
+                            if (regexEmailResult === false) {
+                                //display error message
+                                emailFormAccess.appendChild(emailErrorMsg);
+                                emailErrorMsg.innerText = 'email must be in the format something@something.something';
+                                return;
+                            } else if (regexEmailResult === true && emailFormAccess.contains(emailErrorMsg)) {
+                                //remove error message
+                                let emailFormAccess = document.getElementsByClassName('login-form-email')[0];
+                                emailFormAccess.removeChild(emailErrorMsg);
+                                setUserEmail(userEmailStorage);
+                                return;
+                            } else {
+                                //dont need error message
+                                setUserEmail(userEmailStorage);
+                                return;
+                            }
                         }}
                     />
-                    
                     
                     <div>
                         <TextField 
                             id="outlined-company-input" 
                             label="Company Position" 
                             variant="outlined" 
-                            className='login-form' 
+                            className='login-form-company' 
                             sx = {{
                                 marginBottom: 2,
                                 width: 242.5 
@@ -208,7 +275,7 @@ function SignupForm() {
                             id="outlined-gender-input" 
                             label="Pronouns" 
                             variant="outlined" 
-                            className='login-form' 
+                            className='login-form-gender' 
                             sx = {{
                                 marginBottom: 2,
                                 width: 240,
@@ -221,7 +288,7 @@ function SignupForm() {
                             }}
                         />
                         <div className='file-upload__parent'>
-                            <h4 className='upload-a-file'>UPLOAD AN PROFILE PHOTO - required* </h4>
+                            <h4 className='upload-a-file'>UPLOAD A PROFILE PHOTO - required* </h4>
                             <IconButton color="primary" aria-label="upload picture"  component="label"  >
                                     <input
                                     alt='user defined image' 
@@ -233,9 +300,7 @@ function SignupForm() {
                                     <PhotoCamera />
                             </IconButton>
                         </div>
-                        
                     </div>
-                   
                 </div>
                 <div>
                     <Link className='link-global' to='/homepage'>
@@ -258,4 +323,4 @@ function SignupForm() {
     )
 }
 
-export default SignupForm
+export default memo(SignupForm);
