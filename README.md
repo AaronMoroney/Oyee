@@ -1,4 +1,4 @@
-# GROUPOMANIA FULL-STACK SOCIAL NETWORK
+# groupomania full-stack social network
 
 <h2>Installation instructions & prerequisites for running this app </h3>
 
@@ -14,7 +14,7 @@
 <h4>In vs studio code terminal, navigate to the project folder - run, npm install </h4> 
 <hr></hr>
 
-<h4>Make sure the following dependencies are installed</h4>
+<h2>Make sure the following dependencies are installed</h2>
 <hr>
 
 <ul>
