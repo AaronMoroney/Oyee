@@ -13,7 +13,7 @@ function userImageUrl(req) {
 }
 
 //save a new post
-exports.signup = (req, res, next) => {
+exports.signup = (req, res, _) => {
     let user = (req.body);
     bcrypt.hash(user.userPassword, 10).then(
         (hash) => {
@@ -33,7 +33,7 @@ exports.signup = (req, res, next) => {
                 });
             }
         ).catch(
-            (error) => {
+            (_) => {
             res.status(400).json({
                 errorMsg: 'cannot create user'
             })
@@ -42,7 +42,7 @@ exports.signup = (req, res, next) => {
 };
 
 //login
-exports.login = (req, res, next) => {
+exports.login = (req, res, _) => {
     let user = (req.body);
     User.findOne({ 
         where: {userName: user.userName }, 
@@ -95,7 +95,7 @@ exports.login = (req, res, next) => {
 }
 
 //get one user, (logged in)
-exports.getOneUser = (req, res, next) => {
+exports.getOneUser = (req, res, _) => {
     const id = req.params.userId;
     User.findByPk(id).then(
         (user) => {
@@ -117,7 +117,7 @@ exports.getOneUser = (req, res, next) => {
 };
 
 //get one other user
-exports.getOtherUser = (req, res, next) => {
+exports.getOtherUser = (req, res, _) => {
     const id = req.params.userId;
     console.log('id log', id);
     User.findByPk(id).then(
@@ -143,7 +143,7 @@ exports.getOtherUser = (req, res, next) => {
 ** |Delete user (logged in), need to destroy posts in DB by that user first
 */
 
-exports.deleteUser = (req, res, next) => {
+exports.deleteUser = (req, res, _) => {
     const userId = req.params.userId;
     //destroy any posts on user table that have same id as user ID from req.params
     Post.destroy({ 

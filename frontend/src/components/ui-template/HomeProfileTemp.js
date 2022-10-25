@@ -14,6 +14,5 @@ function HomeProfileTemp() {
     </>
   )
 }
-
 export default HomeProfileTemp
 

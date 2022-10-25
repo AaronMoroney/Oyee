@@ -11,7 +11,6 @@ import  '../styles/_hero-bcg.scss'
 import '../styles/_home-feed.scss'
 import '../styles/components/buttons/_addBackToTop.scss'
 
-
 function HomePage() {
   return (
     <>
@@ -33,5 +32,4 @@ function HomePage() {
     </>
   )
 }
-
 export default HomePage

@@ -17,7 +17,7 @@ function AvatarComponent() {
         ).then(async(response) => {
             setUserData(response.data);
             console.log(response.data);
-        });
+        }).catch((error)=>{console.error(error);});
         },[]);
     return (
         <>

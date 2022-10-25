@@ -37,7 +37,7 @@ export const ProfilePage = (response) => {
     ).then(async(response) => {
       setUserData(response.data);
       console.log(response.data);
-    });
+    }).catch((error)=>{console.error(error);});
     },[]);
 
     return <>
@@ -74,7 +74,7 @@ export const ProfilePage = (response) => {
             <DeleteButton />
             <LogoutButton />
           </div>
-          ) :  null  }
+          ) :  <span></span> }
         </Card> 
       </div>
     </>

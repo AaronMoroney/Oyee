@@ -40,7 +40,7 @@ function Posts(props) {
         ).then(async(response) => {
             setData(response.data);
             console.log('response.data', response.data);
-        });
+        }).catch((error)=>{console.error(error);});
         }, []);
 
     return <>
@@ -58,10 +58,10 @@ function Posts(props) {
                     headers: {
                         'Authorization': `Bearer ${token}`
                     }
-                }).then(function(response) {
+                }).then((response) =>{
                     console.log(response);
-                }).catch(function(error) {
-                   console.log(error);
+                }).catch((error) =>{
+                   console.error(error);
                 })
             }
             
@@ -71,9 +71,8 @@ function Posts(props) {
 
                     <div className='post-feed__post'>
                         <div className='post-parent'>
-                           
-                            <div className='post-topline'>
 
+                            <div className='post-topline'>
                                 {/* button / link which brings you to profile page*/ }
                                 <Link className='link-global' to='/userprofilepage' state = {{userId: posts.userId}}>
                                     <div className='post-topline__avatar-name'>
@@ -83,7 +82,6 @@ function Posts(props) {
                                     </div>
                                 </Link>
                                 {/* end */ }
-
                                 <div>
                                     {/* if posts > 0, check if usersRead include the userId in session storage */ }
                                     {( data.length > 0 ? 
@@ -100,7 +98,6 @@ function Posts(props) {
                             <img className='post-img' alt='user submitted' src={ posts.imageContent } />
                             <p className='post-content' > {posts.postContent} </p>
                             <div className='post__bottomline'>
-
                                 {/* button / link which brings you to post page*/ }
                                 <Link  className='link-global'  to = '/postpage/' state = {{id: posts.id}}  >
                                     <Button  variant="text" onClick = {usersReadFunction}>
@@ -108,7 +105,7 @@ function Posts(props) {
                                     </Button>
                                 </Link>
                                 {/* end */}
-                               
+  
                             </div>
                         </div>
                     </div>

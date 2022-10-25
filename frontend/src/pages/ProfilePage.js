@@ -35,7 +35,7 @@ function ProfilePage() {
     ).then(async(response) => {
       setUserData(response.data);
       console.log(response.data);
-    });
+    }).catch((error)=>{console.error(error);});
     },[]);
 
     return <>
@@ -74,10 +74,9 @@ function ProfilePage() {
             <DeleteButton />
             <LogoutButton />
           </div>
-          ) :  null  }
+          ) :  <span></span>  }
         </Card> 
       </div>
     </>
 }
-
 export default ProfilePage

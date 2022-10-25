@@ -30,34 +30,45 @@ const theme = createTheme ({
 });
 
 function LoginForm() {
+
+    const regexCharectors = /[a-zA-Z]/;
     
-    /*
-    ** | ERROR HANDLING function
-    */
-
-    //createElements for err
-    let nameErrorMsg = document.createElement('p');
-    nameErrorMsg.classList.add('error');
-    let passwordErrorMsg = document.createElement('p');
-    passwordErrorMsg.classList.add('error');
-    
-    //email
-    //let regexEmail = /\S+@\S+\.\S+/g;
-    //charectors
-    //let regexCharectors = /^[a-zA-Z ]/;
-
-    //function
-    //function regexCharectorsResult() {
-    //    regexCharectors.test(userNameStorage.value, userPasswordStorage.value);
-    //}; 
-
     //empty state
-    const [ error, setError ] = useState(null);
+    const [ userError, setUserError] = useState(null);
+    const [ passwordError, setPasswordError] = useState(null);
     const [ userName, setUserName] = useState(null);
     const [ userPassword, setUserPassword] = useState(null);
      
     //navigate
     const Navigate =  useNavigate();
+
+    const userNameFunction = (userName) => {
+        if (userName.length < 5) {
+            setUserError('user name must be atleast 5 letters');
+            return;
+        }
+        //regex
+        if(!regexCharectors.test(userName.valueOf)){
+            setUserError('user name should contain no special charectors');
+            return;
+        }
+        setUserError('');
+        setUserName(userName);
+    }
+
+    function userPasswordFunction(password) {
+        if (password.length < 5){
+            setPasswordError('password must be atleast 5 letters');
+            return;
+        }
+        //regex
+        if(!regexCharectors.test(password.valueOf)){
+            setPasswordError('password must sould contain no special charectors');
+            return;
+        }
+        setPasswordError('');
+        setUserPassword(password);
+    }
                   
     /*
     ** | POST REQS function
@@ -74,21 +85,14 @@ function LoginForm() {
                 'Authorization': `Bearer ${token}`,
             }
         }).then(function(response) {   
-            //on response go to home
             const token = response.data.token;
             sessionStorage.setItem('jwt', token);
-            const tokenDecode = jwt(token); //decode
-            sessionStorage.setItem('userId', JSON.stringify(tokenDecode.userId));
-            const userName = response.data.userName;
-            sessionStorage.setItem('userName', userName);
-
-            //navigate to homepage on successful response
+            sessionStorage.setItem('userId', JSON.stringify(jwt(token).userId));
+            sessionStorage.setItem('userName', response.data.userName);
+            //home
             Navigate('/homepage');
-           
- 
         }).catch(function(error)  {
-            console.log(error);
-            setError(error);
+            console.error(error);
         })
     };
 
@@ -102,46 +106,31 @@ function LoginForm() {
                         label="Username" 
                         variant="outlined" 
                         className='login-form' 
+                        required
                         sx = {{
                             marginBottom: 2,
                         }} 
                         onChange = {(e) => {
-                            setUserName(e.target.value);
-                         
-                            //access for regex
-                            /*
-                            if (userNameStorage.length <= 4 || regexCharectorsResult === false ) {
-                                let loginFormAccess = document.getElementsByClassName('login-form')[0];
-                                loginFormAccess.appendChild(nameErrorMsg);
-                                nameErrorMsg.innerText = 'username must be greater than 5 letters and contain no special charectors';
-                            }
-                            */
+                            userNameFunction(e.target.value);
                         }}
                     />
-                    
+                    <p className='error'>{userError}</p>
                    
                     <TextField 
                         id='outlined-password-input'
                         label='Password' 
                         className='login-form-password'
                         type='password' 
+                        required
                         sx = {{
                             marginBottom: 2,
                         }} 
                         onChange = {(e) => {
-                            setUserPassword(e.target.value);
-                         
-                            /*
-                            //regex function
-                            if (userPasswordStorage.length <= 4 || regexCharectorsResult === false ) {
-                                let loginFormAccessPassword = document.getElementsByClassName('login-form-password')[0];
-                                loginFormAccessPassword.appendChild(passwordErrorMsg);
-                                passwordErrorMsg.innerText = 'password must be atleast 5 letters';
-                            }
-                            */
+                            userPasswordFunction(e.target.value);
                         }}
                     />
-                    {error ? <p className='error'>please check <strong> both </strong>credentials and try again </p> : null }
+                     <p className='error'>{passwordError}</p>
+                   
                 </div>
                 <div>
                     <Button varient='contained' 

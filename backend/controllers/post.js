@@ -10,7 +10,7 @@ function postImageUrl(req) {
 }
 
 //save a new post 
-exports.createPost = (req, res, next) => {
+exports.createPost = (req, res, _) => {
     let post = (req.body);
     //req protocal, http, create the string
     const newPost = new Post({
@@ -28,7 +28,7 @@ exports.createPost = (req, res, next) => {
             });
         }
     ).catch(
-       (error) => {
+       (_) => {
         res.status(400).json({
             errorMsg: 'cannot create Post'
         });
@@ -37,7 +37,7 @@ exports.createPost = (req, res, next) => {
 }
 
 //retrieve a list
-exports.postList = (req, res, next) => {
+exports.postList = (req, res, _) => {
     Post.findAll({
         order: [
             ['id', 'DESC'],
@@ -56,7 +56,7 @@ exports.postList = (req, res, next) => {
 }
 
 //find one post, working
-exports.getOnePost = (req, res, next) => {
+exports.getOnePost = (req, res, _) => {
     Post.findOne({
         where: {
             id: req.params.id
@@ -74,7 +74,7 @@ exports.getOnePost = (req, res, next) => {
     );
 };
 
-exports.updatePost = (req,res, next) => {
+exports.updatePost = (req,res, _) => {
     const post = req.body;
     Post.update(
         {usersRead: post.usersRead},

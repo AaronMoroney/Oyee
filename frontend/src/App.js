@@ -7,10 +7,7 @@ import ProfilePage from './pages/ProfilePage.js';
 import UserProfilePage from './pages/UserProfilePage.js';
 import PostPage from './pages/PostPage.js';
 
-
-
 function App() {
-  
   return (
     <BrowserRouter>
       <Routes>
@@ -24,7 +21,6 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App
 
 

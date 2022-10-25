@@ -59,6 +59,5 @@ function LoginSignupTemp() {
     </ThemeProvider>
   )
 }
-
 export default LoginSignupTemp
 

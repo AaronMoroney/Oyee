@@ -41,7 +41,7 @@ const theme = createTheme ({
 function Navbar() {
  
   const location = useLocation();
-  const [ isDesktop, setDesktop] = useState(window.innerWidth > 768);
+  const [isDesktop, setDesktop] = useState(window.innerWidth > 768);
  
   const updateMedia = () => {
     setDesktop(window.innerWidth > 768);

@@ -9,10 +9,7 @@ import CardContent from '@mui/material/CardContent'
 //assets
 import coffee from '../../assets/images/coffee.jpg'
 
-
 function Trending() {
-
-
   return (
     <div className='home-feed__trending'>
       
@@ -36,5 +33,4 @@ function Trending() {
     </div>
   )
 }
-
 export default Trending

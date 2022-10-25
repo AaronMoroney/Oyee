@@ -57,7 +57,7 @@ export const DeleteModal = ({showDeleteModal, setShowDeleteModal }) => {
         }).then(function(response) {
             console.log(response);
         }).catch(function(error)  {
-            console.log(error);
+            console.error(error);
         })
     };
 

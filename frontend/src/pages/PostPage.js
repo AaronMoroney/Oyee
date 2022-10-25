@@ -10,7 +10,7 @@ import Hero from '../components/ui-template/Hero';
 import '../styles/components/buttons/_like-functionality.scss'
 import '../styles/components/posts/_posts.scss';
 
-export const PostPage = (response) => {
+export const PostPage = () => {
     /*
     ** | Data
     */
@@ -43,7 +43,7 @@ export const PostPage = (response) => {
         ).then(async(response) => {
             setOnePostData(response.data);
             console.log(response.data)
-        });
+        }).catch((error)=>{console.error(error);});
         },[] );
 
     return (
@@ -68,5 +68,4 @@ export const PostPage = (response) => {
         </>
   )
 }
-
 export default PostPage

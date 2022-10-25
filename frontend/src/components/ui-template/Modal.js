@@ -80,10 +80,10 @@ export const Modal = ({showModal, setShowModal }) => {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'multipart/form-data',
             }
-        }).then(function(response) {
-            console.log(response);
-        }).catch(function(error)  {
-            console.log(error);
+        }).then((response) =>{
+            console.error(response);
+        }).catch((error) => {
+            console.error(error);
         })
     };
 
@@ -161,5 +161,4 @@ export const Modal = ({showModal, setShowModal }) => {
         </>
     )
 }
-
 export default Modal
