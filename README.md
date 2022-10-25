@@ -1,4 +1,4 @@
-# groupomania full-stack social network
+# Groupomania full-stack social network
 
 <h2>Installation instructions & prerequisites for running this app </h3>
 
@@ -15,7 +15,6 @@
 <hr></hr>
 
 <h2>Make sure the following dependencies are installed</h2>
-<hr>
 
 <ul>
   <li><p>nodemon server</p></li>
