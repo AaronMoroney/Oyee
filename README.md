@@ -24,7 +24,7 @@
 
 <hr>
 <ul>
-  <li><p>React</p></li>
+  <li><p>React - for full instructions & information, see README file in frontend folder</p></li>
   <li><p>React router</p></li>
   <li><p>Axios</p></li>
   <li><p>MUI components</p></li>
