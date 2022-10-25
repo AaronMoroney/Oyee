@@ -6,7 +6,7 @@
 <p>  Create a new folder <p>
 <p> navigate to the provided URL supplied in the .txt file </p>
 <p> copy the gitclone url from the online repo </p>
-<p> in your terminal, write 'git clone 'repo URL' </p>
+<p> navigate to created folder in your terminal, write 'git clone (repo URL)' </p>
 
 <hr>
 
