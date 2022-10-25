@@ -9,10 +9,7 @@
   <li><p> navigate to created folder in your terminal, write 'git clone (repo URL)'</p></li>
 </ul>
 
-<hr>
-
 <h4>In vs studio code terminal, navigate to the project folder - run, npm install </h4> 
-<hr></hr>
 
 <h2>Make sure the following dependencies are installed</h2>
 
