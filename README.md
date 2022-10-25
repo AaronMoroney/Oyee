@@ -1,14 +1,14 @@
 # fullStack_SocialNetwork_aaronMoroney
 
 <h1>Installation instructions</h1>
-<hr>
+
 <h2> Prerequisites for running this app </h2>
 <p>  Create a new folder <p>
 <p> navigate to the provided URL supplied in the .txt file </p>
 <p> copy the gitclone url from the online repo </p>
 <p> in your terminal, write 'git clone 'repo URL' </p>
 
-<hr>>
+<hr>
 
 <h3>in vs studio code terminal, navigate to the project folder - run, npm install </h3> 
 <hr></hr>
