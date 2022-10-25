@@ -1,8 +1,8 @@
-# fullStack_SocialNetwork_aaronMoroney
+# GROUPOMANIA FULL-STACK SOCIAL NETWORK
 
-<h1>Installation instructions</h1>
+<h2>Installation instructions</h2>
 
-<h2> Prerequisites for running this app </h2>
+<h3> Prerequisites for running this app </h3>
 <p>  Create a new folder <p>
 <p> navigate to the provided URL supplied in the .txt file </p>
 <p> copy the gitclone url from the online repo </p>
