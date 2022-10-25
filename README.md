@@ -33,7 +33,11 @@
 
 <hr>
 
-<p>MySql GUI workbench</P
+<p>MySql GUI workbench</p>
+
+<hr>
+
+
   
 <h3>In your terminal </h3>
 
