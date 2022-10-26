@@ -6,6 +6,7 @@ import Avatar from '@mui/material/Avatar';
 import Axios from 'axios'
 //styles
 import '../../styles/components/avatar/_avatar.scss';
+import { height } from '@mui/system';
 
 function AvatarComponent() {
 
@@ -21,8 +22,8 @@ function AvatarComponent() {
         },[]);
     return (
         <>
-            <Avatar >
-                <img className ='avatar__image'src={userData.userImageContent} />
+            <Avatar>
+                <img className ='avatar__image'src={userData.userImageContent}/>
             </Avatar> 
         </>
     )

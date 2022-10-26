@@ -54,7 +54,7 @@ function ProfilePage() {
           </div>
       </div>
       <div className=''>
-        <Card sx={{  width: '80%', borderRadius: '10px', margin: '5% 10% 0% 10%' }}>
+        <Card sx={{  width: '80%', borderRadius: '10px', margin: '2% 10% 0% 10%' }}>
           <div className='about-employee-card'>
             <h2 className='about-employee'> About me 💫 </h2>
             <hr  className='about-employee__hr'/>

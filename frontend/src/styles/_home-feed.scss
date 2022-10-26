@@ -13,7 +13,19 @@
 }
 
 .home-feed__trending {
-   margin-top: 0%;  
+   margin-top: 0%; 
+   background-color: white;
+   padding: 5%;
+   @include mobile-only {
+        width: 85vw;
+   }
+   
+}
+
+.home-feed__content {
+    @include tablet-only {
+        width: 200px;
+    }
 }
 
 .home-feed__feed {
@@ -22,8 +34,10 @@
     height: 100%;
     overflow-x: scroll; 
     white-space: wrap;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%);
-
+   // mask-image: linear-gradient(to bottom, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%);
+    @include tablet-only {
+        margin-right: 0%;
+    }
     @include mobile-only {
         height: 370px;
         width: 100%;
@@ -36,17 +50,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 30%;
-    margin-top: 15%;
+    min-width: 20%;
+    max-width: 30%;
+    margin-top: min(14%, 14% );
     @include tablet-only {
         width: 35%;
         margin-top: 20%;
        }
     @include mobile-only {
-        width: 90%;
-        margin-top: 6%;
-        margin-left: auto;
-        margin-right: auto;
+        width: 500px;
+        margin-top: 10%;
     }
 }
 .home-feed__right-parent {
@@ -66,7 +79,7 @@
     }
     @include mobile-only {
         width: 90%;
-        margin-top: 1%;
+        margin-top: 3%;
         justify-content: unset;
         margin-left: auto;
         margin-right: auto;
@@ -77,8 +90,9 @@
     margin-bottom: 10px;
     font-style: italic;
     @include mobile-only {
-        padding-top: 7.5%;
+        display: none;
     }
+    
 }
 .home-feed__trending-bold {
     font-weight: bold;

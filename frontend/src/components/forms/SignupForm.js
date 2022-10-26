@@ -16,6 +16,13 @@ import jwt from 'jwt-decode'
 import PhotoCamera from '@mui/icons-material/PhotoCamera'
 
 const theme = createTheme ({
+  breakpoints: {
+    values: {
+        mobile: 350, 
+        tablet: 768,
+        desktop: 992,
+    },
+  }, 
   palette: {
     button: {
       primary: {
@@ -199,52 +206,49 @@ function SignupForm() {
                     />
                     <p className='error'>{emailError}</p>
                     
-                    <div>
-                        <TextField 
-                            id="outlined-company-input" 
-                            label="Company Position" 
-                            variant="outlined" 
-                            className='login-form-company' 
-                            sx = {{
-                                marginBottom: 2,
-                                width: 242.5 
-                            }} 
-                            //capture
-                            onChange = {(e) => {
-                                setUserCompanyPosition(e.target.value);  
-                            }}
-                        />
+                
+                    <TextField 
+                        id="outlined-company-input" 
+                        label="Company Position" 
+                        variant="outlined" 
+                        className='login-form-company' 
+                        sx = {{
+                            marginBottom: 5,
+                          
+                        }} 
+                        //capture
+                        onChange = {(e) => {
+                            setUserCompanyPosition(e.target.value);  
+                        }}
+                    />
                         
-                        <TextField 
-                            id="outlined-gender-input" 
-                            label="Pronouns" 
-                            variant="outlined" 
-                            className='login-form-gender' 
-                            sx = {{
-                                marginBottom: 2,
-                                width: 240,
-                                marginLeft: 2
-                                
-                            }} 
-                            //capture
-                            onChange = {(e) => {
-                                setUserGender(e.target.value);
-                            }}
-                        />
-                        <div className='file-upload__parent'>
-                            <h4 className='upload-a-file'>UPLOAD A PROFILE PHOTO - required* </h4>
-                            <IconButton color="primary" aria-label="upload picture"  component="label"  >
-                                    <input
-                                    alt='user defined image' 
-                                    hidden accept="image/*" 
-                                    type='file' 
-                                    required
-                                    onChange = { saveFile }
-                                    name='image'
-                                    />
-                                    <PhotoCamera />
-                            </IconButton>
-                        </div>
+                    <TextField 
+                        id="outlined-gender-input" 
+                        label="Pronouns" 
+                        variant="outlined" 
+                        className='login-form-gender' 
+                        sx = {{
+                            marginBottom: 2,
+                            
+                        }} 
+                        //capture
+                        onChange = {(e) => {
+                            setUserGender(e.target.value);
+                        }}
+                    />
+                    <div className='file-upload__parent'>
+                        <h4 className='upload-a-file'>PROFILE PHOTO - required* </h4>
+                        <IconButton color="primary" aria-label="upload picture"  component="label"  >
+                                <input
+                                alt='user defined image' 
+                                hidden accept="image/*" 
+                                type='file' 
+                                required
+                                onChange = { saveFile }
+                                name='image'
+                                />
+                                <PhotoCamera />
+                        </IconButton>
                     </div>
                 </div>
                 <div>

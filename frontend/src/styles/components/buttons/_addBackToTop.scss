@@ -5,4 +5,9 @@
     margin-top: 2vh; 
     display: flex;
     justify-content: space-between;
+    @include mobile-only {
+        margin-bottom: 4vh;
+        margin: auto;
+        margin-bottom: 4vh;
+    }
 }
