@@ -17,10 +17,7 @@
    margin-top: 0%; 
    background-color: white;
    padding: 5%;
-   @include mobile-only {
-        width: 85vw;
-   }
-   
+   width: 25vw;
 }
 
 .home-feed__content {
@@ -59,8 +56,6 @@
         margin-top: 20%;
        }
     @include mobile-only {
-        //width: 500px;
-        //margin-top: 12%;
         display: none;
     }
 }
