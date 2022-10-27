@@ -5,11 +5,13 @@ import Feed from '../components/ui-template/Feed'
 import HomeProfileTemp from '../components/ui-template/HomeProfileTemp'
 import Trending from '../components/ui-template/Trending'
 import Copyright from '../components/copyright/Copyright'
-import AddBackToTop from '../components/buttons/AddBackToTop';
 //styles
 import  '../styles/_hero-bcg.scss'
 import '../styles/_home-feed.scss'
 import '../styles/components/buttons/_addBackToTop.scss'
+
+import AddPost from '../components/buttons/AddPost'
+import BottomNav from '../components/navbar/BottomNav'
 
 function HomePage() {
   return (
@@ -22,13 +24,11 @@ function HomePage() {
         <div className='home-feed__right'>
           <div className='home-feed__right-parent'> 
             <Trending />
-            <div className='addBackToTop'>
-              <AddBackToTop />
-            </div>
           </div>
           <Copyright />
         </div>
       </div>
+      <BottomNav />
     </>
   )
 }

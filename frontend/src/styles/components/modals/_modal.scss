@@ -2,16 +2,18 @@
 @import '../../utils/mixins';
 
 .modal-wrapper {
-    margin-top: -35%;
+    margin-top: -15%;
     position: fixed;
     width: 100%;
     height: 100%;
+    margin-bottom: 60%; 
+    @include center-item;
     @include tablet-only {
-        margin: 0%;
+        margin-bottom: 100%; 
     }
     @include mobile-only {
         width: 80%; 
-        margin: auto;
+        margin-bottom: 90%;
     }
 }
 .modal-parent {
@@ -26,7 +28,6 @@
     box-shadow: 5px 5px 500px 500px #091D39;
     @include tablet-only {
         width: 700px;
-
     }
     @include mobile-only {
         width: 350px;

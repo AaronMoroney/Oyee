@@ -3,10 +3,9 @@ import React, {useState} from 'react'
 //mui components
 import Fab from '@mui/material/Fab'
 //components
-import Modal from '../../components/ui-template/Modal'
+import Modal from '../ui-template/Modal'
 //mui icons 
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
-import VerticalAlignTopOutlinedIcon from '@mui/icons-material/VerticalAlignTopOutlined';
 //styles
 import '../../styles/components/buttons/_addBackToTop.scss'
 //theme
@@ -33,7 +32,7 @@ palette: {
     },
 });
 
-function AddBackToTop() {
+function AddPost() {
     /*
     ** | MODAL FUNCTION |
     */
@@ -49,9 +48,10 @@ function AddBackToTop() {
         <>
             <Fab aria-label='add' 
                 sx={{
-                bgcolor: 'button.secondary.main',
-                color: 'button.primary.contrastText', 
-                textTransform: 'none'
+                bgcolor: 'white',
+                color: 'button.secondary.main', 
+                textTransform: 'none',
+                marginTop: 1
                 }}
                 > 
                 {/* children of FAB */}
@@ -64,4 +64,4 @@ function AddBackToTop() {
     )
 }
 
-export default AddBackToTop
+export default AddPost
