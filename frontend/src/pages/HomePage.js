@@ -19,6 +19,8 @@ function HomePage() {
         <div className='home-feed__left'>
          <Feed />
         </div>
+
+        
         
         <div className='home-feed__right'>
           <div className='home-feed__right-parent'> 
