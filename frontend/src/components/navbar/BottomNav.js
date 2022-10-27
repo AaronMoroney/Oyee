@@ -40,7 +40,7 @@ function LabelBottomNavigation() {
   return (
     <ThemeProvider theme={theme}>
         <>
-            <BottomNavigation sx={{ width: '100%',  height: '70px', backgroundColor: 'button.secondary.main', position: 'sticky', bottom: 0}}  >
+            <BottomNavigation sx={{ width: '100%',  height: '70px', backgroundColor: 'button.secondary.main', position: 'fixed', bottom: 0}}  >
             <AddPost />
             </BottomNavigation>
         </>

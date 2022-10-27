@@ -4,7 +4,6 @@ import React from 'react'
 import Feed from '../components/ui-template/Feed'
 import HomeProfileTemp from '../components/ui-template/HomeProfileTemp'
 import Trending from '../components/ui-template/Trending'
-import Copyright from '../components/copyright/Copyright'
 //styles
 import  '../styles/_hero-bcg.scss'
 import '../styles/_home-feed.scss'
@@ -20,11 +19,11 @@ function HomePage() {
         <div className='home-feed__left'>
          <Feed />
         </div>
+        
         <div className='home-feed__right'>
           <div className='home-feed__right-parent'> 
             <Trending />
           </div>
-          <Copyright />
         </div>
       </div>
       <BottomNav />
