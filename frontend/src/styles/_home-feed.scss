@@ -6,6 +6,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin: 2.5% 10% 0% 10%;
+    height: 70vh;
     @include mobile-only {
         @include mobile-column;
         margin: 5%;
@@ -73,7 +74,6 @@
     flex-direction: column;
     justify-content: space-around;
     width: 60%;
-    height: 75vh;
     @include tablet-only {
         height: 740px;
     }

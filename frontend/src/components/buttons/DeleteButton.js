@@ -50,7 +50,7 @@ function DeleteButton() {
         <ThemeProvider theme={theme}>
             <Button 
                 varient='text' 
-                sx={{ bgcolor: 'button.delete.main', color: 'button.delete.contrastText', marginLeft: '10%', width: '175px' }}
+                sx={{ bgcolor: 'button.delete.main', color: 'button.delete.contrastText', width: '175px' }}
                 onClick={openDeleteModal}
                 > 
                 Delete account

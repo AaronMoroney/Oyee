@@ -7,7 +7,6 @@ import Axios from 'axios';
 import Navbar from '../components/navbar/Navbar';
 import Hero from '../components/ui-template/Hero';
 //styles
-import '../styles/components/buttons/_like-functionality.scss'
 import '../styles/components/posts/_posts.scss';
 
 export const PostPage = () => {

@@ -36,18 +36,6 @@ export const DeleteModal = ({showDeleteModal, setShowDeleteModal }) => {
     //for axios req
     let userIdStorage = sessionStorage.getItem('userId');
     let token = sessionStorage.getItem('jwt')
-    
-    
-    /*
-    //logout, need to call on profile delete
-    const logout = () => {
-        sessionStorage.removeItem('jwt');
-        sessionStorage.removeItem('userId');
-        sessionStorage.removeItem('userName');
-    };
-    */
-
-    //then delete
     const deleteUser = () => {
         Axios.delete(`http://localhost:3000/auth/${userIdStorage}`, 
         {

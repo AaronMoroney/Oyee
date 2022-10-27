@@ -9,8 +9,7 @@ import Copyright from '../components/copyright/Copyright'
 import  '../styles/_hero-bcg.scss'
 import '../styles/_home-feed.scss'
 import '../styles/components/buttons/_addBackToTop.scss'
-
-import AddPost from '../components/buttons/AddPost'
+//
 import BottomNav from '../components/navbar/BottomNav'
 
 function HomePage() {

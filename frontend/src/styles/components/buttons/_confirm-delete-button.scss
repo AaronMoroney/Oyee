@@ -1,11 +1,18 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins';
+
 .confirm-delete-button-parent {
     margin: 5% 10% 5% 10%;
     display: flex;
     justify-content: space-evenly;
+    @include mobile-only {
+        @include mobile-column;
+        margin-left: 10%;
+        margin-right: 10%;
+        align-items: center;
+    }
+
 }
 .confirm-button {
-    margin: 10%;
-}
-.delete-button {
     margin: 10%;
 }
