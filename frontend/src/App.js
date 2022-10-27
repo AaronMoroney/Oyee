@@ -15,7 +15,6 @@ function App() {
         <Route path = '/homepage' element = { <HomePage  /> } />
         <Route path = '/profilepage' element = { <ProfilePage /> } />
         <Route path = '/userprofilepage' element = { <UserProfilePage /> } />
-        {/* VIEW POST */}
         <Route path = '/postpage' element = { <PostPage  /> } />
       </Routes>
     </BrowserRouter>

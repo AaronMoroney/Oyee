@@ -11,8 +11,7 @@ import FileDownloadDoneIcon from '@mui/icons-material/FileDownloadDone';
 //axios
 import axios from 'axios';
 
-
-function Posts(props) {
+function Posts() {
     /*
     ** | MAP THE DATA FROM DB ONTO POSTS |
     */
@@ -46,7 +45,6 @@ function Posts(props) {
     return <>
         {data.map((posts) => {
             let usersRead = [posts.usersRead];
-            
             const usersReadFunction = () => {
                 usersRead.push((userIdStorage));
                 console.log('usersnowread', usersRead);
@@ -64,56 +62,56 @@ function Posts(props) {
                    console.error(error);
                 })
             }
-            
-            return <>
-                <div className='post-feed__buffer-top'  />
-                <div className='post-feed__parent'>
 
-                    <div className='post-feed__post'>
-                        <div className='post-parent'>
+            return ( 
+            <div key={posts.id}>
+                <div className='post-feed__buffer-top' />
+                    <div className='post-feed__parent'>
 
-                            <div className='post-topline'>
-                                {/* button / link which brings you to profile page*/ }
-                                <Link className='link-global' to='/userprofilepage' state = {{userId: posts.userId}}>
-                                    <div className='post-topline__avatar-name'>
-                                        <p className='post-topline__username' >  
-                                            {posts.userName}
-                                        </p>
+                        <div className='post-feed__post'>
+                            <div className='post-parent'>
+
+                                <div className='post-topline'>
+                                    {/* button / link which brings you to profile page*/ }
+                                    <Link className='link-global' to='/userprofilepage' state = {{userId: posts.userId}}>
+                                        <div className='post-topline__avatar-name'>
+                                            <p className='post-topline__username' >  
+                                                {posts.userName}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                    {/* end */ }
+                                    <div>
+                                        {/* if posts > 0, check if usersRead include the userId in session storage */ }
+                                        {( data.length > 0 ? 
+                                            ( JSON.stringify(usersRead).includes(userIdStorage)
+                                            //if it returns true, display this icon
+                                            ? < FileDownloadDoneIcon sx={{paddingTop: 2,}} /> 
+                                            //if its false, display this 'new' p
+                                            : <p>new</p>
+                                            ) 
+                                        : null )} 
                                     </div>
-                                </Link>
-                                {/* end */ }
-                                <div>
-                                    {/* if posts > 0, check if usersRead include the userId in session storage */ }
-                                    {( data.length > 0 ? 
-                                        ( JSON.stringify(usersRead).includes(userIdStorage)
-                                        //if it returns true, display this icon
-                                        ? < FileDownloadDoneIcon sx={{paddingTop: 2,}} /> 
-                                        //if its false, display this 'new' p
-                                        : <p>new</p>
-                                        ) 
-                                    : null )} 
+                                </div>
+                                <h4 className='post-title' > {posts.postTitle}</h4>
+                                <img className='post-img' alt='user submitted'  src={ posts.imageContent } />
+                                <p className='post-content' > {posts.postContent} </p>
+                                <div className='post__bottomline'>
+                                    {/* button / link which brings you to post page*/ }
+                                    <Link  className='link-global'  to = '/postpage/' state = {{id: posts.id}}  >
+                                        <Button  variant="text" onClick = {usersReadFunction}>
+                                            view post
+                                        </Button>
+                                    </Link>
+                                    {/* end */}
                                 </div>
                             </div>
-                            <h4 className='post-title' > {posts.postTitle}</h4>
-                            <img className='post-img' alt='user submitted' src={ posts.imageContent } />
-                            <p className='post-content' > {posts.postContent} </p>
-                            <div className='post__bottomline'>
-                                {/* button / link which brings you to post page*/ }
-                                <Link  className='link-global'  to = '/postpage/' state = {{id: posts.id}}  >
-                                    <Button  variant="text" onClick = {usersReadFunction}>
-                                        view post
-                                    </Button>
-                                </Link>
-                                {/* end */}
-  
-                            </div>
                         </div>
+                        <div className='post-feed__buffer-bottom' />
                     </div>
-                    <div className='post-feed__buffer-bottom' />
-                </div>
-            </>
+            </div> )
         })}
-    </>; //does this need the ; ? check
+    </>;
 }
 
 export default Posts;
