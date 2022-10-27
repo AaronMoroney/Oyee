@@ -58,7 +58,7 @@ function SignupForm() {
 
     //email
     const regexEmail = /\S+@\S+\.\S+/g;
-    const regexCharectors = /[a-zA-Z]/;
+    //const regexCharectors = /[a-zA-Z]/;
 
     const saveFile = (e) => {
         setFile(e.target.files[0]);
@@ -91,11 +91,13 @@ function SignupForm() {
             setPasswordError('password must be atleast 5 letters');
             return;
         }
+        /*
         //regex
         if(!regexCharectors.test(password.valueOf)){
             setPasswordError('password must sould contain no special charectors');
             return;
         }
+        */
         setPasswordError('');
         setUserPassword(password);
     }

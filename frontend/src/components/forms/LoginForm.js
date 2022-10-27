@@ -31,7 +31,7 @@ const theme = createTheme ({
 
 function LoginForm() {
 
-    const regexCharectors = /[a-zA-Z]/;
+    //const regexCharectors = /!@#$%^&*(),.?":{}|<>/;
     
     //empty state
     const [ userError, setUserError] = useState(null);
@@ -47,11 +47,13 @@ function LoginForm() {
             setUserError('user name must be atleast 5 letters');
             return;
         }
+        /*
         //regex
-        if(!regexCharectors.test(userName.valueOf)){
+        if(regexCharectors.test(userName.value)){
             setUserError('user name should contain no special charectors');
             return;
         }
+        */
         setUserError('');
         setUserName(userName);
     }
