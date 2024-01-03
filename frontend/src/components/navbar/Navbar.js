@@ -13,7 +13,6 @@ import Badge from '@mui/material/Badge';
 import Avatar from '../avatar/Avatar'
 //Styles
 import '../../styles/components/logo/_logo.scss';
-import '../../styles/components/navbar/_navbar.scss';
 import '../../styles/components/posts/_posts.scss';
 //Theme
 import { createTheme, ThemeProvider, Button } from '@mui/material';

@@ -1,12 +1,13 @@
-
 {
   "development": {
     "username": "root",
-    "password": "password",
-    "database": "groupomania_db",
+    "password": "Nomadicfreelance1",
+    "database": "oyee",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql", 
+    "port" : "3306"
   },
+
   "test": {
     "username": "root",
     "password": null,
@@ -22,4 +23,5 @@
     "dialect": "mysql"
   }
 }
+
 

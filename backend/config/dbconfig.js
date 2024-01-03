@@ -1,8 +1,9 @@
 module.exports = {
-    HOST: 'localhost',
+    HOST: '127.0.0.1',
     USER: 'root',
-    PASSWORD: 'password',
-    DB: 'groupomania_db',
+    PORT: '3306',
+    PASSWORD: 'Nomadicfreelance1',
+    DB: 'oyee',
     dialect: 'mysql',
     pool: {
         max: 5, 
@@ -11,3 +12,4 @@ module.exports = {
         idle: 10000
     }
 }
+

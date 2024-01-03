@@ -11,7 +11,7 @@ import { createTheme, ThemeProvider, Button, IconButton } from '@mui/material'
 import '../../styles/components/forms/_login-form.scss'
 import '../../styles/components/link/_link-global.scss'
 //jwt
-import jwt from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode'
 //icons
 import PhotoCamera from '@mui/icons-material/PhotoCamera'
 
@@ -40,7 +40,7 @@ function SignupForm() {
     /*
     ** | POST REQS function(s)
     */
-    const token = localStorage.getItem('jwt');
+    const token = localStorage.getItem('jwtDecode');
 
     //file upload
     const [file, setFile] = useState();
@@ -54,10 +54,10 @@ function SignupForm() {
     const [userGender, setUserGender] = useState(false);
     const [passwordError, setPasswordError] = useState(false);
     const [userError, setUserError] = useState(false);
-    const [emailError, setEmailError] = useState(false);
+    //const [emailError, setEmailError] = useState(false);
 
     //email
-    const regexEmail = /\S+@\S+\.\S+/g;
+    //const regexEmail = /\S+@\S+\.\S+/g;
     //const regexCharectors = /[a-zA-Z]/;
 
     const saveFile = (e) => {
@@ -77,12 +77,14 @@ function SignupForm() {
             setUserError('user name must be atleast 5 letters');
             return;
         }
+        /*
         //regex
         if(!regexCharectors.test(userName.valueOf)){
-            setUserError('user name  must should contain no special charectors');
+            setUserError('user name should contain no special charectors');
             return;
         }
         setUserError('');
+        */
         setUserName(userName);
     }
 
@@ -91,14 +93,14 @@ function SignupForm() {
             setPasswordError('password must be atleast 5 letters');
             return;
         }
-        /*
         //regex
+        /*
         if(!regexCharectors.test(password.valueOf)){
-            setPasswordError('password must sould contain no special charectors');
+            setPasswordError('password must should contain no special charectors');
             return;
         }
-        */
         setPasswordError('');
+        */
         setUserPassword(password);
     }
 
@@ -137,8 +139,8 @@ function SignupForm() {
         }).then(function(response) {
             //add to local storage
             const token = response.data.token;
-            sessionStorage.setItem('jwt', token);
-            sessionStorage.setItem('userId', JSON.stringify(jwt(token).userId));
+            sessionStorage.setItem('jwtDecode', token);
+            sessionStorage.setItem('userId', JSON.stringify(jwtDecode(token).userId));
             sessionStorage.setItem('userName', response.data.userName);
             //navigate to homepage on successful response
             Navigate('/homepage');
@@ -198,15 +200,17 @@ function SignupForm() {
                         }} 
                         onBlur = {(e) => {
                             let email = e.target.value;
+                            /*
                             if(!regexEmail.test(email)){
                                 setEmailError('email must be in the format something@something.something');
                                  return;
                             }
                             setEmailError('');
+                            */
                             setUserEmail(email);
                         }}
                     />
-                    <p className='error'>{emailError}</p>
+                    <p className='error'>{}</p>
                     
                 
                     <TextField 

@@ -3,8 +3,6 @@ import React from 'react'
 import { useLocation  } from "react-router-dom";
 //assets
 import skyline from '../../assets/images/skyline.jpg'
-//styles
-import '../../styles/_hero-bcg.scss'
 //components
 import HeadingText from '../headingText/HeadingText'
 

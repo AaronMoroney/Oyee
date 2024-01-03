@@ -3,94 +3,26 @@
 
 .home-feed {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin: 2.5% 10% 0% 10%;
-    height: 60vh;
-    @include mobile-only {
-        @include mobile-column;
-        margin: 5%;
-    }
-}
-
-.home-feed__trending {
-   margin-top: 0%; 
-   background-color: white;
-   padding: 5%;
-   width: 25vw;
-}
-
-.home-feed__content {
-    @include tablet-only {
-        width: 200px;
-    }
-}
-
-.home-feed__feed {
-    margin-right: 10%;
-    padding: 0px 10px 10px 0px;
-    height: 100%;
-    overflow-x: scroll; 
-    white-space: wrap;
-   // mask-image: linear-gradient(to bottom, transparent 0%, black 48px, black calc(100% - 48px), transparent 100%);
-    @include tablet-only {
-        margin-right: 0%;
-    }
-    @include mobile-only {
-        height: 370px;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-.home-feed__right {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-width: 20%;
-    max-width: 30%;
-    margin-top: min(14%, 14% );
-    @include tablet-only {
-        width: 35%;
-        margin-top: 20%;
-       }
+    justify-content: center;
+    margin: 0; //prevents scrolling
+    background-color: aqua;
+    height: 100vh;
+    width: 100vw; 
+    overflow: hidden; 
     @include mobile-only {
-        display: none;
+        flex-direction: column; // Assuming that's what the mobile-column mixin does
+        margin: 5%; // Be careful this does not make the total height exceed 100vh
+        overflow: auto; // If you want to allow scrolling on mobile
     }
 }
-.home-feed__right-parent {
-    @include mobile-only {
-        display: flex;
-        flex-direction: column-reverse;
-    }
+.home-feed__top {
+    margin: 1% 2% 1% 2%;
+    background-color: azure;
+    height: 20vh;
 }
-.home-feed__left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 60%;
-    @include tablet-only {
-        height: 740px;
-    }
-    @include mobile-only {
-        width: 90%;
-        margin-top: 3%;
-        justify-content: unset;
-        margin-left: auto;
-        margin-right: auto;
-        height: 55vh;
-    }
+.home-feed__bottom {
+    margin: 1% 2% 1% 2%;
+    background-color: azure;
+    height: 80vh;
 }
-.trending {
-    margin-bottom: 10px;
-    font-style: italic;
-    @include mobile-only {
-        display: none;
-    }
-    
-}
-.home-feed__trending-bold {
-    font-weight: bold;
-}
-

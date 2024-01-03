@@ -5,9 +5,7 @@ import { useLocation } from 'react-router-dom';
 //axios
 import Axios from 'axios';
 //components
-import Navbar from '../components/navbar/Navbar';
-import Hero from '../components/ui-template/Hero';
-import Avatar from '@mui/material/avatar';
+import Avatar from '@mui/material/Avatar';
 import LogoutButton from '../components/buttons/LogoutButton';
 import DeleteButton from '../components/buttons/DeleteButton';
 //mui
@@ -41,13 +39,9 @@ export const ProfilePage = (response) => {
     },[]);
 
     return <>
-      <div>
-        <Navbar />
-        <Hero />
-      </div>
       <div className='employee-parent'>
           <Avatar sx={{ width: '190px', height: '190px', borderRadius: '5px'}}>
-            <img className='employee-info__image' src={userData.userImageContent}/>
+            <img className='employee-info__image' src={userData.userImageContent} alt='user'/>
           </Avatar>
           <div className='employee-info-parent'>
               <h6 className = 'employee-info__gender'> {userData.userGender}</h6>

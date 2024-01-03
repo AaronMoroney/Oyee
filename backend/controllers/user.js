@@ -12,6 +12,7 @@ function userImageUrl(req) {
     return siteUrl(req) + '/images/' + req.file.filename;
 }
 
+
 //save a new post
 exports.signup = (req, res, _) => {
     let user = (req.body);
@@ -70,14 +71,15 @@ exports.login = (req, res, _) => {
                     res.status(200).json({
                         userId: user.userId, 
                         userName: user.userName,
+                        userId: user.userId, 
+                        userName: user.userName,
                         token: token,
                         userEmail: req.body.userEmail,
                         userCompanyPosition: req.body.userCompanyPosition,
                         userGender: req.body.userGender,
                         userImageContent: req.body.userImageContent,
-                    });
-                }
-            ).catch(
+                });
+            }).catch(
                 (error) => {
                     res.status(500).json({
                         error: error
@@ -92,7 +94,7 @@ exports.login = (req, res, _) => {
             })
         }
     );
-}
+};
 
 //get one user, (logged in)
 exports.getOneUser = (req, res, _) => {
@@ -169,7 +171,5 @@ exports.deleteUser = (req, res, _) => {
                 );
             }
         )
-    )
-};
-
-
+    );
+}

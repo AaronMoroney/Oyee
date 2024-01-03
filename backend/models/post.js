@@ -23,6 +23,15 @@ const Post = sequelize.define('post', {
     imageContent: {
         type: DataTypes.STRING,
     },
+    imageContent: {
+        type: DataTypes.STRING,
+    },
+    imageContent: {
+        type: DataTypes.STRING,
+    },
+    imageContent: {
+        type: DataTypes.STRING,
+    },
     postContent: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -35,6 +44,10 @@ const Post = sequelize.define('post', {
     updatedAt: {
         field: 'updated_at',
         type: DataTypes.DATE,
+        allowNull: false,
+    },
+    usersRead: {
+        type: DataTypes.JSON, 
         allowNull: false,
     },
     usersRead: {

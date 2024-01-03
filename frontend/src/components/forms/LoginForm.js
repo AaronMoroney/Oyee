@@ -11,7 +11,7 @@ import '../../styles/components/forms/_login-form.scss'
 //axios
 import Axios from 'axios'
 //token
-import jwt from 'jwt-decode'
+import { jwtDecode } from 'jwt-decode';
 
 
 //refactor second axios call into own function
@@ -47,14 +47,14 @@ function LoginForm() {
             setUserError('user name must be atleast 5 letters');
             return;
         }
-        /*
         //regex
+        /*
         if(regexCharectors.test(userName.value)){
             setUserError('user name should contain no special charectors');
             return;
         }
         */
-        setUserError('');
+        //setUserError('');
         setUserName(userName);
     }
 
@@ -64,11 +64,13 @@ function LoginForm() {
             return;
         }
         //regex
+        /*
         if(!regexCharectors.test(password.valueOf)){
             setPasswordError('password must sould contain no special charectors');
             return;
         }
         setPasswordError('');
+        */
         setUserPassword(password);
     }
                   
@@ -76,7 +78,7 @@ function LoginForm() {
     ** | POST REQS function
     */
 
-    let token = localStorage.getItem('jwt');
+    let token = localStorage.getItem('jwtDecode');
    
     const login = () => {
         Axios.post('http://localhost:3000/auth/login', {
@@ -88,8 +90,8 @@ function LoginForm() {
             }
         }).then(function(response) {   
             const token = response.data.token;
-            sessionStorage.setItem('jwt', token);
-            sessionStorage.setItem('userId', JSON.stringify(jwt(token).userId));
+            sessionStorage.setItem('jwtDecode', token);
+            sessionStorage.setItem('userId', JSON.stringify(jwtDecode(token).userId));
             sessionStorage.setItem('userName', response.data.userName);
             //home
             Navigate('/homepage');
