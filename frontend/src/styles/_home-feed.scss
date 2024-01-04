@@ -1,7 +1,7 @@
 @import './utils/variables.scss';
 @import './utils/mixins';
 
-.home-feed {
+.dashboard-parent {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,12 +16,12 @@
         overflow: auto; // If you want to allow scrolling on mobile
     }
 }
-.home-feed__top {
+.dashboard-top {
     margin: 1% 2% 1% 2%;
     background-color: azure;
     height: 20vh;
 }
-.home-feed__bottom {
+.dashboard-bottom {
     margin: 1% 2% 1% 2%;
     background-color: azure;
     height: 80vh;

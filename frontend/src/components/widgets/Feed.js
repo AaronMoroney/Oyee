@@ -3,11 +3,11 @@ import React from 'react'
 
 function Feed() {
   return (
-    <div className='home-feed__feed'>
+    <main className='home-feed__feed'>
       <div>
         <Posts />
       </div>
-    </div>
+    </main>
   )
 }
 export default Feed

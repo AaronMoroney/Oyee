@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 //axios
 import Axios from 'axios';
-//components
-import Navbar from '../components/navbar/Navbar';
-import Hero from '../components/ui-template/Hero';
+
+
 //styles
 import '../styles/components/posts/_posts.scss';
 
@@ -47,8 +46,8 @@ export const PostPage = () => {
 
     return (
         <>
-            <Navbar/>
-            <Hero />
+
+    
             <div className='post-feed__post-one-post'>
                 <div className='post-parent__one-post'>
                     <div className='post-topline'>
@@ -63,7 +62,6 @@ export const PostPage = () => {
                     <p className='post-content__one-post' > {onePostData.postContent} </p>
                 </div>
             </div>
-           
         </>
   )
 }
