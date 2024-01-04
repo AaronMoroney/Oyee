@@ -1,0 +1,29 @@
+@import '../../../utils/_variables.scss';
+@import '../../../utils/_mixins.scss';
+
+.time {
+    color: $tertiary-color;
+}
+
+.indicator-red {
+    background-color: $inactive;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+
+.indicator-green {
+    background-color: $active;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    margin-right: 5px;
+}
+
+.timezone-section {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    
+}

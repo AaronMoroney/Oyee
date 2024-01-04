@@ -1,19 +1,26 @@
-//colors
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;600;700');
+
+//unused
 $secondary-color: #D44651;
 $primary-color: #091D39;
-$primary-color__light: #1565C0;
+$primary-color__light: #6f96c2;
+//used
 $tertiary-color:   #ffffff;
 $primary-bg-color: #083F40;
+$active: #00E08C;
+$inactive: #E01B00;
 $border-radius: 40px;
 $widget-grid-gap: 10px;
+
 //fonts
 h1, h2, h3, h4, h5, h6 {
-    font-family: montserrat;
+    font-family: Inter;
     margin: 0px;
 }
 
 p {
-    font-family: montserrat;
+    font-family: Inter;
 }
 
 

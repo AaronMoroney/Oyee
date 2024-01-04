@@ -39,9 +39,7 @@ const Navbar = () => {
     // <ThemeProvider theme={theme}>
     <div className='navbar-parent'>
       <div className='top-background'>
-        <img className='logo' alt='logo'>
-          
-        </img>
+        <p className='logo'>Oyee</p>
         <Avatar sx={{ width: 56, height: 56 }}>
 
         </Avatar>
