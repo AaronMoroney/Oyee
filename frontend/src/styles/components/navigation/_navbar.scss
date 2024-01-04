@@ -1,0 +1,32 @@
+@import '../../utils/variables.scss';
+@import '../../utils/mixins';
+
+.top-background {
+    background-color: $primary-bg-color;
+    border-radius: $border-radius;
+    @include flex-between;
+    padding: 1% 1% 0% 1%;
+    height: 100%;
+}
+
+.logo {
+    padding: 1%;
+}
+
+.navbar-parent {
+    position: relative;
+    height: 100%;
+}
+
+// layout of the widgets, widgets styled seperately
+.top-background__widgets {
+    position: absolute;
+    height: 75%;
+    margin: -125px 7.5% 0px 7.5%;
+    bottom: -10;
+    width: 100%;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: $widget-grid-gap;
+}

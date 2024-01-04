@@ -2,7 +2,7 @@ import React from 'react'
 
 const Timezones = () => {
   return (
-    <>Timezones</>
+    <section>Timezones</section>
   )
 }
 

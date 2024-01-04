@@ -9,6 +9,14 @@
 @mixin justify-center {
     text-align: left;
 }
+@mixin flex-around {
+    display: flex;
+    justify-content: space-around;
+}
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+}
 //flex-center
 @mixin center-item {
     display: flex;

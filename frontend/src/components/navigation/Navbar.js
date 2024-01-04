@@ -9,6 +9,7 @@ import Trending from './nav-widgets/Trending';
 import Search from './nav-widgets/Search';
 //styles
 import '../../styles/_home-feed.scss'
+import '../../styles/components/navigation/_navbar.scss'
 
 //Theme
 //import { createTheme, ThemeProvider, Button } from '@mui/material';
@@ -36,12 +37,12 @@ import '../../styles/_home-feed.scss'
 const Navbar = () => {
   return (
     // <ThemeProvider theme={theme}>
-    <>
+    <div className='navbar-parent'>
       <div className='top-background'>
         <img className='logo' alt='logo'>
           
         </img>
-        <Avatar>
+        <Avatar sx={{ width: 56, height: 56 }}>
 
         </Avatar>
       </div>
@@ -51,7 +52,7 @@ const Navbar = () => {
         <Calendar />
         <Timezones />
       </div>
-    </>
+    </div>
     // </ThemeProvider>
   )
 }

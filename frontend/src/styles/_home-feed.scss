@@ -1,5 +1,5 @@
 @import './utils/variables.scss';
-@import './utils/mixins';
+@import './utils/mixins.scss';
 
 .dashboard-parent {
     display: flex;
@@ -18,8 +18,7 @@
 }
 .dashboard-top {
     margin: 1% 2% 1% 2%;
-    background-color: azure;
-    height: 20vh;
+    height: 18vh;
 }
 .dashboard-bottom {
     margin: 1% 2% 1% 2%;

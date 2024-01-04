@@ -13,12 +13,12 @@ import DirectMessaging from '../components/widgets/DirectMessaging'
 function HomePage() {
   return (
     <>
-    <div className='dashboard-parent'>
+    <div className='dashboard'>
       <nav className='dashboard-top'>
         <Navbar />
       </nav>
       <div className='dashboard-bottom'>
-        <div className='dashboard-bottom--grid'>
+        <div className='dashboard-bottom__grid'>
           <SecondaryNav />
           <Feed />
           <aside className="constant-aside">

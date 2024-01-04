@@ -1,8 +1,12 @@
 import React from 'react'
+//styles
+import '../../../styles/components/navigation/navigation-widgets/_trending.scss'
 
 const Trending = () => {
   return (
-    <>Trending</>
+    <section className='trending-parent'>
+      <p>Trending</p>
+    </section>
   )
 }
 
